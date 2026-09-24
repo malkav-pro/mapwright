@@ -23,7 +23,7 @@ progress:
 See: [PROJECT.md](PROJECT.md) (updated 2026-09-22)
 
 **Core value:** Finish the existing recovered world map with safe, durable editing and a seamless, bounded 16K PNG export.
-**Current focus:** Phase 2 — Recovered Assets and Stamps (design approval, then planning)
+**Current focus:** Phase 2 — Recovered Assets and Stamps (planning)
 
 ## Current Position
 
@@ -96,7 +96,7 @@ None separately captured. Remaining delivery work is in [ROADMAP.md](ROADMAP.md)
 - Existing UI/probes and engine-independent core/SQLite contracts remain disconnected; isolated evidence establishes no completed P0 feature.
 - Connected interaction, semantic import, evicted history, ordering/effect fixtures, hardware memory accounting, physical tablets and Linux acceptance remain open.
 - Phase 1 is complete (verified 2026-09-23); Phase 01.1's final run freshly re-passed every inherited Phase 1 gate on the GPU renderer, and all 22 Phase 1 requirements are marked complete.
-- Phase 2 is ready for planning once its design response (status: proposed) is approved. Phase 2 context and design were reconciled to map units on 2026-09-24.
+- Phase 2 design response approved 2026-09-24 (map units); ready for planning. Open: keyboard nudge unit.
 - Residual: rare storage flush tails near 45-50 ms can still fail a 15-sample hardware row. The GPU terrain path requires fp64 compute on the main RenderingDevice; headless or incapable devices use the CPU reference renderer.
 - Source Phase 0 is not complete; GSD Phase 1 is the first remaining delivery phase.
 

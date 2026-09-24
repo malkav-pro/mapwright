@@ -1,7 +1,7 @@
 # Phase 2: Recovered Assets and Stamps - Context
 
 **Gathered:** 2026-09-22
-**Status:** Ready for planning; visual design and implementation remain pending
+**Status:** Ready for planning; design response approved 2026-09-24; implementation pending
 **Amended:** 2026-09-24 (DOC-01 reconciliation): Phase 1.1 fixed map geometry at 1,000 map units on the longest edge, independent of editing and export pixels. Phase 2 map-relative sizes, positions, offsets and distances are therefore in **map units**, not map pixels. Example values from the pixel-era draft were converted at the recovered map's scale (8,192 px long edge = 1,000 units, ×0.1220703125).
 
 <domain>
