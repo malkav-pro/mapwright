@@ -1,0 +1,10 @@
+{
+  "command": "./Scripts/run-connected-phase1.ps1 -Case Gestures",
+  "exitCode": 1,
+  "targetTest": "Gestures",
+  "failingTest": "GestureController is missing; MapCanvas still owns transient edit state directly.",
+  "targetFile": "Scripts/App/ConnectedUiSmoke.cs",
+  "expected": "A gesture controller owns one transient edit from pointer-down through release, rejects blocked targets, cancels on every interruption without changing the durable revision, preserves pointer-centred zoom and temporary pan, and routes focused-field shortcuts away from document editing.",
+  "actual": "The connected Gestures case was discovered and executed, then failed its first planned behavior assertion because no GestureController type exists and MapCanvas still owns direct provisional stroke state.",
+  "output": "TAP version 13\nnot ok 1 - Gestures\n  ---\n  message: GestureController is missing; MapCanvas still owns transient edit state directly.\n  operator: assertion\n  ...\n1..1\n# tests 1\n# pass 0\n# fail 1\n"
+}

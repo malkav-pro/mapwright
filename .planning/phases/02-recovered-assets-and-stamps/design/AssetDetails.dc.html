@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Asset details and validation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1200px; height: 940px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">Asset details</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P2-02</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #E2CFA8;">Library defaults — not a document edit</span>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; min-height: 0;">
+
+    <!-- LEFT: the asset -->
+    <div style="width: 452px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #12141D; border-right: 1px solid #2F3447; padding: 14px; overflow: hidden;">
+
+      <!-- preview with anchor -->
+      <div style="box-sizing: border-box; border: 1px solid #2F3447; border-radius: 4px; overflow: hidden; background: #161923;">
+        <svg viewBox="0 0 424 230" width="100%" height="230" style="display:block;">
+          <defs><pattern id="ck" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#171A25"></rect><rect width="8" height="8" fill="#1D2130"></rect><rect x="8" y="8" width="8" height="8" fill="#1D2130"></rect></pattern></defs>
+          <rect width="424" height="230" fill="url(#ck)"></rect>
+          <path d="M212 34l26 56H186zM212 68l32 64H180zM212 106l38 74H174z" fill="#3E6B4E"></path>
+          <path d="M205 176h14v24h-14z" fill="#4A3C2E"></path>
+          <rect x="166" y="26" width="92" height="180" fill="none" stroke="#5C6FE0" stroke-width="1.4"></rect>
+          <circle cx="212" cy="200" r="4" fill="#93A6FF"></circle>
+          <path d="M212 190v-4M212 210v-4M202 200h-4M226 200h-4" stroke="#93A6FF" stroke-width="1.4"></path>
+          <text x="10" y="20" fill="#8990A6" font-family="'IBM Plex Mono', monospace" font-size="10">1,024 × 1,240 px · straight alpha</text>
+          <text x="10" y="222" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="10">anchor 0.50, 0.94</text>
+          <text x="272" y="34" fill="#5C6FE0" font-family="'IBM Plex Mono', monospace" font-size="10">opaque bounds</text>
+        </svg>
+      </div>
+
+      <!-- title -->
+      <div style="box-sizing: border-box; margin-top: 13px; padding: 10px 11px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <label for="t" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Title</label>
+        <div style="box-sizing: border-box; display: flex; align-items: center; height: 28px; padding: 0 8px; margin-top: 6px; background: #0D0F16; border: 1px solid #93A6FF; border-radius: 3px;">
+          <input id="t" type="text" value="Highland pine, mature with broken upper crown" style="width: 100%; background: transparent; border: none; color: #ECEDF3; font-size: 12px; padding: 0;">
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 7px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.4" stroke-linecap="round"><path d="M4 12l5 5L20 6"></path></svg>
+          <span style="font-size: 11px; color: #ADB3C6;">Used by <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">212</span> placements in 3 projects — renaming keeps every one</span>
+        </div>
+      </div>
+
+      <!-- metadata -->
+      <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Metadata</div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 7px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Category</span><span style="font-size: 11px; color: #ECEDF3;">Trees</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Tags</span><span style="font-size: 11px; color: #ECEDF3;">conifer · highland · dense</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Style</span><span style="font-size: 11px; color: #ECEDF3;">painted, highland, temperate</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Family</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">pine-highland</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">variant a of 8</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Default size</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">42 map units</span><span style="font-size: 10px; color: #6A7089;">long edge, map units</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Anchor</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">0.50, 0.94</span><span style="font-size: 10px; color: #6A7089;">base of trunk</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Allowed</span><span style="font-size: 11px; color: #ECEDF3;">rotate ±15° · mirror H</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Light</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">315°</span><span style="font-size: 10px; color: #6A7089;">shadow recommended</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Tiling</span><span style="font-size: 11px; color: #6A7089;">— not a texture</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Provenance</span><span style="font-size: 11px; color: #ECEDF3;">Aethermoor Starter 0.4.2</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Attribution</span><span style="font-size: 11px; color: #ECEDF3;">Personal use · LICENSES/starter.txt</span></div>
+      </div>
+
+      <!-- identity -->
+      <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Identity</div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 7px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Stored bytes</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">4f1c9a…e207</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Original bytes</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">b72e04…11cd</span></div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 5px;"><span style="font-size: 11px; color: #8990A6; width: 106px; flex-shrink: 0;">Local ID</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">local:0x1A4F</span></div>
+        <p style="margin: 7px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Normalised to sRGB at import, which derived the stored hash. The original is retained unchanged and is not what placements point at. Nothing above — title, tags, folder, category — is identity.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: validation -->
+    <div style="flex-grow: 1; box-sizing: border-box; display: flex; flex-direction: column; min-width: 0; padding: 14px; overflow: hidden;">
+
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Validation</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #D9A23F;">2 warnings</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5FAE7F;">6 clean</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-size: 10px; color: #6A7089;">check set v3 · cached against the asset hash</span>
+      </div>
+      <p style="margin: 8px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">A warning is an <span style="color:#ECEDF3;">inspection aid</span>. It is not a claim about seamlessness, style consistency or visual quality, it never blocks placement, and it does not need acknowledging. Only a damaged, unsupported or over-budget file is refused.</p>
+
+      <!-- warning 1: baked shadow -->
+      <div style="box-sizing: border-box; margin-top: 12px; padding: 11px 12px; background: #1C1815; border: 1px solid #4A4030; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 7px; height: 7px; border-radius: 4px; background: #E2CFA8;"></div>
+          <span style="font-size: 12px; color: #ECEDF3;">Baked shadow suspected</span>
+          <div style="flex-grow: 1;"></div>
+          <button type="button" style="height: 22px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Dismiss</button>
+          <button type="button" style="height: 22px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Disallow mirroring</button>
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 10px;">
+          <svg viewBox="0 0 150 106" width="150" height="106" style="display:block; border:1px solid #4A4030; border-radius:3px; flex-shrink:0;"><rect width="150" height="106" fill="#0D0F16"></rect><path d="M60 16l16 34H44zM60 38l20 38H40z" fill="#8990A6"></path><rect x="54" y="72" width="12" height="24" fill="#8990A6"></rect><ellipse cx="98" cy="92" rx="34" ry="8" fill="#D9A23F" opacity="0.65"></ellipse><text x="6" y="102" fill="#D9A23F" font-family="'IBM Plex Mono', monospace" font-size="8">alpha · offset lobe at 315°</text></svg>
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;">A dark, offset alpha lobe at 315° with no matching subject above it. Mapwright renders shadows from the map's light direction, so a baked one adds a second shadow, and a horizontal mirror sends it the wrong way. If that lobe is a rock rather than a shadow, dismiss this — the check reads geometry and guesses intent, and says so rather than asserting.</p>
+        </div>
+      </div>
+
+      <!-- warning 2: family scale -->
+      <div style="box-sizing: border-box; margin-top: 10px; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-left: 2px solid #D9A23F; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 7px; height: 7px; border-radius: 4px; background: #D9A23F;"></div>
+          <span style="font-size: 12px; color: #ECEDF3;">Family scale inconsistent</span>
+          <div style="flex-grow: 1;"></div>
+          <button type="button" style="height: 22px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Set default size to 446 px</button>
+        </div>
+        <div style="display: flex; gap: 12px; margin-top: 10px; align-items: center;">
+          <svg viewBox="0 0 150 76" width="150" height="76" style="display:block; border:1px solid #2F3447; border-radius:3px; flex-shrink:0;"><rect width="150" height="76" fill="#0D0F16"></rect><path d="M30 64l8-34 8 34z" fill="#456F52"></path><path d="M62 64l8-33 8 33z" fill="#456F52"></path><path d="M96 64l7-24 7 24z" fill="#D9A23F"></path><path d="M126 64l8-33 8 33z" fill="#456F52"></path><path d="M20 30h120" stroke="#5FAE7F" stroke-width="1" stroke-dasharray="3 3"></path><text x="6" y="72" fill="#6A7089" font-family="'IBM Plex Mono', monospace" font-size="8">family median height</text></svg>
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;">Apparent subject height is 31% below the <span style="font-family:'IBM Plex Mono',monospace;">pine-highland</span> median at the family's default size. Scatter mixing this variant with its siblings would draw one visibly smaller tree. Either raise this asset's default size or accept the variation deliberately.</p>
+        </div>
+      </div>
+
+      <!-- clean checks -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 15px;">Checks that passed</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 14px; margin-top: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.6" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12l5 5L20 6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">Alpha present</span><span style="font-size: 10px; color: #6A7089;">36% transparent</span></div>
+        <div style="display: flex; align-items: baseline; gap: 7px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.6" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12l5 5L20 6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">Padding</span><span style="font-size: 10px; color: #6A7089;">4% border, within tolerance</span></div>
+        <div style="display: flex; align-items: baseline; gap: 7px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.6" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12l5 5L20 6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">Not clipped</span><span style="font-size: 10px; color: #6A7089;">no opaque pixel on an edge</span></div>
+        <div style="display: flex; align-items: baseline; gap: 7px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.6" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12l5 5L20 6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">No coloured fringe</span><span style="font-size: 10px; color: #6A7089;">edge hue tracks the subject</span></div>
+        <div style="display: flex; align-items: baseline; gap: 7px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.6" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12l5 5L20 6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">Anchor matches family</span><span style="font-size: 10px; color: #6A7089;">base of trunk</span></div>
+        <div style="display: flex; align-items: baseline; gap: 7px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2.6" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12l5 5L20 6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">Dimensions and profile</span><span style="font-size: 10px; color: #6A7089;">1.27 Mpx, sRGB tagged</span></div>
+      </div>
+
+      <!-- the other findings, by type -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 16px;">The rest of the catalogue, with an example each</div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px;">
+
+        <div style="box-sizing: border-box; padding: 9px 10px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div><span style="font-size: 11px; color: #ECEDF3;">Excess padding</span></div>
+          <svg viewBox="0 0 120 56" width="100%" height="56" style="display:block; margin-top:6px; border:1px solid #2F3447; border-radius:2px;"><rect width="120" height="56" fill="#0D0F16"></rect><rect x="2" y="2" width="116" height="52" fill="none" stroke="#D9A23F" stroke-width="1" stroke-dasharray="3 3"></rect><path d="M60 24l5 12H55z" fill="#456F52"></path><rect x="58" y="34" width="4" height="8" fill="#4A3C2E"></rect></svg>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.4; color: #6A7089;">41% transparent border. Wastes atlas area and makes default size mean something different from its siblings.</p>
+        </div>
+
+        <div style="box-sizing: border-box; padding: 9px 10px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div><span style="font-size: 11px; color: #ECEDF3;">Clipped content</span></div>
+          <svg viewBox="0 0 120 56" width="100%" height="56" style="display:block; margin-top:6px; border:1px solid #2F3447; border-radius:2px;"><rect width="120" height="56" fill="#0D0F16"></rect><path d="M40 56l18-40 18 40z" fill="#456F52"></path><path d="M40 55h36" stroke="#E2685A" stroke-width="2"></path><path d="M58 16l-6-16h12z" fill="#456F52"></path><path d="M52 1h12" stroke="#E2685A" stroke-width="2"></path></svg>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.4; color: #6A7089;">Opaque pixels touch two edges. The subject was cut before it was saved; no transform recovers it.</p>
+        </div>
+
+        <div style="box-sizing: border-box; padding: 9px 10px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div><span style="font-size: 11px; color: #ECEDF3;">Coloured fringe</span></div>
+          <svg viewBox="0 0 120 56" width="100%" height="56" style="display:block; margin-top:6px; border:1px solid #2F3447; border-radius:2px;"><rect width="120" height="56" fill="#3E4A33"></rect><path d="M60 8l20 40H40z" fill="#FFFFFF" opacity="0.85"></path><path d="M60 13l17 33H43z" fill="#456F52"></path></svg>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.4; color: #6A7089;">Semi-transparent pixels carry a white matte. Reads as a halo once the stamp sits on dark terrain.</p>
+        </div>
+
+        <div style="box-sizing: border-box; padding: 9px 10px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div><span style="font-size: 11px; color: #ECEDF3;">No alpha, as a stamp</span></div>
+          <svg viewBox="0 0 120 56" width="100%" height="56" style="display:block; margin-top:6px; border:1px solid #2F3447; border-radius:2px;"><rect width="120" height="56" fill="#0D0F16"></rect><rect x="30" y="6" width="60" height="44" fill="#2B3324"></rect><path d="M60 14l14 28H46z" fill="#456F52"></path></svg>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.4; color: #6A7089;">Fully opaque. It will place as a rectangle. <span style="color:#5FAE7F;">Never warned for a texture</span> — opaque alpha is normal there.</p>
+        </div>
+
+        <div style="box-sizing: border-box; padding: 9px 10px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div><span style="font-size: 11px; color: #ECEDF3;">Texture seam candidate</span></div>
+          <svg viewBox="0 0 120 56" width="100%" height="56" style="display:block; margin-top:6px; border:1px solid #2F3447; border-radius:2px;"><rect width="60" height="56" fill="#4E5C3D"></rect><rect x="60" width="60" height="56" fill="#56653F"></rect><path d="M60 0v56" stroke="#D9A23F" stroke-width="1.6" stroke-dasharray="4 3"></path><text x="4" y="52" fill="#E2CFA8" font-family="'IBM Plex Mono', monospace" font-size="7">offset 50%</text></svg>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.4; color: #6A7089;">Offset by half in both axes; a discontinuity appears at the new centre. Inspect at working zoom — the check cannot certify tiling.</p>
+        </div>
+
+        <div style="box-sizing: border-box; padding: 9px 10px; background: #1A1416; border: 1px solid #4A2E2C; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><div style="width: 6px; height: 6px; border-radius: 3px; background: #E2685A;"></div><span style="font-size: 11px; color: #ECEDF3;">Refused, not warned</span></div>
+          <div style="margin-top: 7px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6;">damaged</div>
+            <div style="font-size: 10px; color: #8990A6;">decoder stopped at row 1,842 of 2,048</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; margin-top: 4px;">over budget</div>
+            <div style="font-size: 10px; color: #8990A6;">184 Mpx exceeds the 64 Mpx per-file limit</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; margin-top: 4px;">unsupported profile</div>
+            <div style="font-size: 10px; color: #8990A6;">a profile the converter cannot map; sRGB is assumed and said so, which is a <span style="color:#D9A23F;">warning</span>, not a refusal</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex-grow: 1;"></div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 12px; padding: 9px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">pixels/file 64 Mpx</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">decoded 86 / 256 MiB</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">concurrent decodes 4 → 1 under pressure</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 26px; padding: 0 10px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Re-run checks</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":940}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

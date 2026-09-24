@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Layers panel</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 380px; height: 980px; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border: 1px solid #2F3447; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-bottom: 1px solid #2F3447; background: #1D2130;">
+    <span style="font-size: 13px; font-weight: 600;">Layers</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-03</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">2 terrain layers</span>
+  </div>
+
+  <div style="box-sizing: border-box; padding: 9px 10px; background: #12141D; border-bottom: 1px solid #252A3A;">
+    <p style="margin: 0; font-size: 11px; line-height: 1.45; color: #8990A6;">Two terrain layers, always in this order. <span style="color:#ECEDF3;">Foreground</span> carries the land mask: subtracting it reveals <span style="color:#ECEDF3;">Background</span> underneath. Neither can be added, duplicated, deleted or reordered. A <span style="color:#E2CFA8;">baked coasts</span> tag marks imported pixels whose coastline is part of the picture, not coverage you can edit.</p>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; overflow: hidden;">
+
+    <!-- GRID: always the top layer -->
+    <div style="display: flex; align-items: center; gap: 7px; height: 48px; box-sizing: border-box; padding: 0 8px; background: #14161F; border-bottom: 1px solid #1D2130;">
+      <button type="button" aria-label="Show the grid — hidden" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="1.7" stroke-linecap="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path><path d="M4 20L20 4"></path></svg>
+      </button>
+      <div style="width: 30px; height: 30px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden;">
+        <svg viewBox="0 0 30 30" width="30" height="30" style="display:block;"><rect width="30" height="30" fill="#1C2130"></rect><g stroke="#8990A6" stroke-width="1" opacity="0.9"><path d="M10 0V30M20 0V30M0 10H30M0 20H30"></path></g></svg>
+      </div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #ADB3C6; background: #252A3A; border-radius: 2px; padding: 1px 4px; flex-shrink: 0;">GRID</span>
+          <span style="font-size: 12px; color: #ADB3C6;">Grid</span>
+        </div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; margin-top: 2px;">square · hidden · above everything</div>
+      </div>
+      <button type="button" aria-label="Grid settings" title="Spacing, colour and the export toggle" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"></path></svg>
+      </button>
+    </div>
+
+    <!-- reserved area between the grid and the terrain layers -->
+    <div style="box-sizing: border-box; margin: 10px 10px 8px; padding: 9px 10px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect></svg>
+        <span style="font-size: 11px; font-weight: 600; color: #ADB3C6;">Object, path and text layers</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">Phase 2+</span>
+      </div>
+      <p style="margin: 5px 0 0; font-size: 11px; line-height: 1.45; color: #8990A6;">Freely created and reordered, always above both terrain layers. Phase 1 ships none, so no dead rows appear here.</p>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; padding: 0 10px 8px;">
+      <div style="flex-grow: 1; height: 1px; background: #252A3A;"></div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">terrain — fixed order</span>
+      <div style="flex-grow: 1; height: 1px; background: #252A3A;"></div>
+    </div>
+
+    <!-- FOREGROUND: selected, owns the mask -->
+    <div style="display: flex; align-items: center; gap: 7px; height: 54px; box-sizing: border-box; padding: 0 8px; background: #23294A; border-left: 2px solid #5C6FE0;">
+      <button type="button" aria-label="Hide Foreground" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CFFF" stroke-width="1.7" stroke-linecap="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+      </button>
+      <div style="width: 32px; height: 32px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden;">
+        <svg viewBox="0 0 32 32" width="32" height="32" style="display:block;"><rect width="32" height="32" fill="#5C7A4E"></rect><path d="M0 22 C 6 14, 18 12, 32 18 L32 32 L0 32 Z" fill="#4E6B43"></path></svg>
+      </div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #080A14; background: #93A6FF; border-radius: 2px; padding: 1px 4px; flex-shrink: 0;">FG</span>
+          <span title="Foreground — Treedan woodland and the upper terraces" style="font-size: 12px; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Treedan woodland and the upper terraces</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+          <div style="width: 54px; height: 3px; background: #1B2140; border-radius: 2px;"><div style="width: 100%; height: 3px; background: #93A6FF; border-radius: 2px;"></div></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9AA6D8;">100%</span>
+        </div>
+      </div>
+      <button type="button" aria-label="Solo Foreground" title="Solo" style="width: 24px; height: 24px; background: transparent; border: none; color: #9AA6D8; font-size: 11px; font-weight: 600;">S</button>
+      <button type="button" aria-label="Lock Foreground" title="Unlocked" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA6D8" stroke-width="1.7" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 7.5-2"></path></svg>
+      </button>
+    </div>
+
+    <!-- Foreground's own mask: an attribute of the row, not a layer -->
+    <div style="display: flex; align-items: center; gap: 8px; height: 38px; box-sizing: border-box; padding: 0 10px 0 40px; background: #222945; border-bottom: 1px solid #1D2130;">
+      <div style="width: 20px; height: 20px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden; flex-shrink: 0;">
+        <svg viewBox="0 0 20 20" width="20" height="20" style="display:block;"><rect width="20" height="20" fill="#1C2130"></rect><path d="M1 14 C 4 8, 13 5, 19 9 L19 20 L1 20 Z" fill="#ECEDF3"></path></svg>
+      </div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <span style="font-size: 11px; color: #C6CFFF;">Land mask</span>
+        <span style="font-size: 11px; color: #8990A6;"> — the coastline is its 0.5 contour</span>
+      </div>
+      <button type="button" aria-label="Edit the land mask" title="Land tool — L" style="height: 22px; padding: 0 8px; background: #1B2140; color: #9AA6D8; border: 1px solid #3B4585; border-radius: 3px; font-size: 10px;">Edit</button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; height: 32px; box-sizing: border-box; padding: 0 10px 0 56px; background: #191D2A; border-bottom: 1px solid #1D2130;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9D7BE0" stroke-width="1.7" stroke-linecap="round"><path d="M5 20c2-4 0-6 2-9s5-2 5-6"></path></svg>
+      <span style="flex-grow: 1; font-size: 11px; color: #ADB3C6;">Silvermere river</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9D7BE0;">mask modifier · on</span>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div style="display: flex; align-items: center; gap: 7px; height: 54px; box-sizing: border-box; padding: 0 8px; border-bottom: 1px solid #1D2130;">
+      <button type="button" aria-label="Hide Background" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7" stroke-linecap="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+      </button>
+      <div style="width: 32px; height: 32px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden;">
+        <svg viewBox="0 0 32 32" width="32" height="32" style="display:block;"><rect width="32" height="32" fill="#8FB4CC"></rect><path d="M2 21 C 8 12, 20 9, 30 15 L30 32 L2 32 Z" fill="#9FA76A"></path><path d="M15 9 C 13 17, 17 22, 15 32" fill="none" stroke="#B6D2E2" stroke-width="2"></path></svg>
+      </div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #ADB3C6; background: #252A3A; border-radius: 2px; padding: 1px 4px; flex-shrink: 0;">BG</span>
+          <span style="font-size: 12px; color: #ECEDF3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Imported preview</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; margin-top: 3px;">
+          <div style="width: 54px; height: 3px; background: #252A3A; border-radius: 2px;"><div style="width: 100%; height: 3px; background: #676E88; border-radius: 2px;"></div></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C98A45;">100% · locked base</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #E2CFA8; background: #2A2113; border: 1px solid #5A4A2C; border-radius: 2px; padding: 0 4px;">baked coasts</span>
+        </div>
+      </div>
+      <button type="button" aria-label="Solo Background" title="Solo" style="width: 24px; height: 24px; background: transparent; border: none; color: #8990A6; font-size: 11px; font-weight: 600;">S</button>
+      <button type="button" aria-label="Unlock Background" title="Locked — the imported preview backs this layer" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: #2A2113; border: 1px solid #5A4A2C; border-radius: 3px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D9A23F" stroke-width="1.9" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+      </button>
+    </div>
+
+    <div style="box-sizing: border-box; margin: 11px 10px 0; padding: 9px 10px; background: #12141D; border: 1px solid #252A3A; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; color: #ADB3C6;">This project: original flattened appearance</div>
+      <p style="margin: 5px 0 0; font-size: 11px; line-height: 1.45; color: #8990A6;">Background is the imported preview, locked; everything on Foreground is yours. Started in <span style="color:#ADB3C6;">editable recovered terrain</span> instead, both layers arrive paintable with the recovered mask on Foreground. The preview is kept either way.</p>
+    </div>
+
+    <div style="box-sizing: border-box; margin: 10px; padding: 10px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; color: #ADB3C6;">No paintable layer</div>
+      <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.45; color: #8990A6;">Background is a locked preview and Foreground is hidden, so the texture brush has nowhere to go. The canvas shows a refusal cursor rather than quietly painting on the other layer.</p>
+      <button type="button" style="margin-top: 8px; height: 26px; padding: 0 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Show Foreground</button>
+    </div>
+  </div>
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 10px; height: 30px; border-top: 1px solid #252A3A;">
+    <span style="font-size: 11px; color: #8990A6;">Grid · Foreground · Background</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #6A7089;">order is fixed</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":380,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

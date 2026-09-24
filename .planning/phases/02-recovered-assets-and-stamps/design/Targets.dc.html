@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Targets and tool memory</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1560px; height: 940px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">What a control aims at</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">three separable questions: which asset, which settings, which layer</span>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; overflow: hidden; box-sizing: border-box; padding: 14px 16px;">
+
+    <!-- THE THREE TARGETS -->
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Three places a number can live, and they never share a surface</div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 9px;">
+
+      <div style="box-sizing: border-box; padding: 13px 14px; background: #161923; border: 1px solid #4A4030; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E2CFA8; background: #221E17; border: 1px solid #4A4030; border-radius: 2px; padding: 1px 6px;">library defaults</span>
+        </div>
+        <div style="font-size: 13px; color: #ECEDF3; margin-top: 8px;">Asset details</div>
+        <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.55; color: #8990A6;">Title, tags, category, default size, anchor, allowed transforms. Shared by every project. Changing them is a <span style="color:#ECEDF3;">catalogue</span> operation: it is not in map history, has no undo step, and changes nothing already placed — anywhere.</p>
+        <div style="box-sizing: border-box; margin-top: 10px; padding: 8px 9px; background: #12141D; border-radius: 3px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">Default size</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #E2CFA8; margin-top: 2px;">42 map units</div>
+          <div style="font-size: 10px; color: #6A7089; margin-top: 4px;">where a fresh placement starts</div>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 13px 14px; background: #161923; border: 1px solid #5C6FE0; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #93A6FF; background: #23294A; border: 1px solid #5C6FE0; border-radius: 2px; padding: 1px 6px;">next stamp</span>
+        </div>
+        <div style="font-size: 13px; color: #ECEDF3; margin-top: 8px;">Placement settings</div>
+        <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.55; color: #8990A6;">The Stamp tool's own state. What the <span style="color:#ECEDF3;">next click</span> will produce, shown by the ghost. Carried across asset changes. Not a document edit and not in history — but it decides what the next document edit looks like.</p>
+        <div style="box-sizing: border-box; margin-top: 10px; padding: 8px 9px; background: #12141D; border-radius: 3px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">Size</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #93A6FF; margin-top: 2px;">50 map units</div>
+          <div style="font-size: 10px; color: #6A7089; margin-top: 4px;">you set it once; it stuck</div>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 13px 14px; background: #161923; border: 1px solid #2C4437; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #5FAE7F; background: #14201A; border: 1px solid #2C4437; border-radius: 2px; padding: 1px 6px;">on the map</span>
+        </div>
+        <div style="font-size: 13px; color: #ECEDF3; margin-top: 8px;">Selected stamp</div>
+        <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.55; color: #8990A6;">A placement that exists. Every edit is a <span style="color:#ECEDF3;">document command</span>: it advances the revision, appears in history, and is undoable. It does not change what the next click places.</p>
+        <div style="box-sizing: border-box; margin-top: 10px; padding: 8px 9px; background: #12141D; border-radius: 3px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">Width</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 15px; color: #5FAE7F; margin-top: 2px;">512 px</div>
+          <div style="font-size: 10px; color: #6A7089; margin-top: 4px;">this one tree, grown by hand</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6; max-width: 1180px;">Three numbers called "size", never in the same panel. The tags above each one appear on the panel header itself, so a glance at the header answers the question before any field is touched. A fourth possibility — editing an asset's default and having placed stamps follow — is not offered at all: a placement records its own size, and the library cannot reach into a project's history.</p>
+
+    <!-- TOOL MEMORY -->
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 18px;">Every tool keeps its own settings</div>
+    <div style="box-sizing: border-box; margin-top: 9px; border: 1px solid #2F3447; border-radius: 4px; overflow: hidden;">
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 28px; padding: 0 12px; background: #14161F; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 130px;">Tool</span>
+        <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 100px;">Size</span>
+        <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 320px;">Its own remembered settings</span>
+        <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; flex-grow: 1;">Target</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px; background: #23294A; border-left: 2px solid #5C6FE0; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 12px; color: #ECEDF3; width: 130px;">Stamp <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#C6CFFF;">S</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ECEDF3; width: 100px;">50 map units</span>
+        <span style="font-size: 11px; color: #C6CFFF; width: 320px;">rotation, tint, opacity, flips, shadow</span>
+        <span style="font-size: 11px; color: #C6CFFF; flex-grow: 1;">the selected object layer</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 12px; color: #ADB3C6; width: 130px;">Scatter <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8990A6;">Shift+S</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ADB3C6; width: 100px;">225 map units</span>
+        <span style="font-size: 11px; color: #8990A6; width: 320px;">asset set, spacing, size and rotation ranges, seed</span>
+        <span style="font-size: 11px; color: #8990A6; flex-grow: 1;">the selected object layer</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 12px; color: #ADB3C6; width: 130px;">Texture brush <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8990A6;">B</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ADB3C6; width: 100px;">31 map units</span>
+        <span style="font-size: 11px; color: #8990A6; width: 320px;">preset, tip, hardness, flow, spacing, texture transform</span>
+        <span style="font-size: 11px; color: #8990A6; flex-grow: 1;">Foreground or Background</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 12px; color: #ADB3C6; width: 130px;">Land <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#8990A6;">L</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #ADB3C6; width: 100px;">125 map units</span>
+        <span style="font-size: 11px; color: #8990A6; width: 320px;">variant, roughness or softness, add or subtract</span>
+        <span style="font-size: 11px; color: #8990A6; flex-grow: 1;">Foreground's land mask</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px;">
+        <span style="font-size: 12px; color: #6A7089; width: 130px;">Text <span style="font-family:'IBM Plex Mono',monospace; font-size:10px;">T</span></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6A7089; width: 100px;">— Phase 3</span>
+        <span style="font-size: 11px; color: #6A7089; width: 320px;">its own size, never the stamp's or the brush's</span>
+        <span style="font-size: 11px; color: #6A7089; flex-grow: 1;">the selected object layer</span>
+      </div>
+    </div>
+    <p style="margin: 9px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">Switching Stamp → Texture brush → Stamp leaves 408 px at 408 and 256 at 256. No tool's size, or any other parameter, is ever adopted by another. The one thing that <em>does</em> carry is within the Stamp tool: choosing another asset keeps the settings above. Changing the Texture brush's terrain target likewise keeps that tool's settings.</p>
+
+    <!-- LAYER TARGETING -->
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 18px;">Where an object-placing tool aims</div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 9px;">
+
+      <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #2C4437; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 7px;"><div style="width: 7px; height: 7px; border-radius: 4px; background: #5FAE7F;"></div><span style="font-size: 12px; color: #ECEDF3;">An object layer is selected</span></div>
+        <div style="box-sizing: border-box; margin-top: 9px; padding: 8px 9px; background: #141822; border-radius: 3px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.9" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 12l3 3 5-6"></path></svg><span style="font-size: 11px; color: #ADB3C6;">Placing on <span style="color:#ECEDF3;">Terrain marks</span></span></div>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">It stays. Switching Stamp → Scatter → Stamp does not move the target, and nothing restores a different "last used" layer behind your back.</p>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #4A4030; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 7px;"><div style="width: 7px; height: 7px; border-radius: 4px; background: #E2CFA8;"></div><span style="font-size: 12px; color: #ECEDF3;">Foreground is selected</span></div>
+        <div style="box-sizing: border-box; margin-top: 9px; padding: 8px 9px; background: #1C1815; border-radius: 3px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #ADB3C6; background: #252A3A; border-radius: 2px; padding: 0 4px;">FG</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E2CFA8" stroke-width="2" stroke-linecap="round"><path d="M4 12h14M14 7l5 5-5 5"></path></svg><span style="font-size: 11px; color: #ECEDF3;">Terrain marks</span></div>
+          <div style="font-size: 10px; color: #E2CFA8; margin-top: 5px;">switched to the topmost object layer</div>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">Stamps cannot live on terrain, so the tool moves the target — <span style="color:#ECEDF3;">visibly</span>. The layers panel selection moves too, the status bar changes, and the panel says which layer and why. Never a silent redirect.</p>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 7px;"><div style="width: 7px; height: 7px; border-radius: 4px; background: #E2685A;"></div><span style="font-size: 12px; color: #ECEDF3;">The target layer is hidden</span></div>
+        <div style="box-sizing: border-box; margin-top: 9px; padding: 8px 9px; background: #1A1416; border-radius: 3px;">
+          <div style="font-size: 11px; color: #ECEDF3;">Terrain marks is hidden</div>
+          <div style="font-size: 10px; color: #8990A6; margin-top: 4px;">A stamp placed here would not be visible.</div>
+          <button type="button" style="height: 24px; padding: 0 9px; margin-top: 7px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Show layer</button>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">The canvas shows a refusal cursor and places nothing. Showing the layer is an explicit action you take; switching tools does not do it for you and does not sidestep it by choosing another layer.</p>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 7px;"><div style="width: 7px; height: 7px; border-radius: 4px; background: #E2685A;"></div><span style="font-size: 12px; color: #ECEDF3;">The target layer is locked</span></div>
+        <div style="box-sizing: border-box; margin-top: 9px; padding: 8px 9px; background: #1A1416; border-radius: 3px;">
+          <div style="font-size: 11px; color: #ECEDF3;">Terrain marks is locked</div>
+          <div style="font-size: 10px; color: #8990A6; margin-top: 4px;">Locking is how you protect finished work.</div>
+          <button type="button" style="height: 24px; padding: 0 9px; margin-top: 7px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Unlock layer</button>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">The same shape of refusal. A locked layer's objects are also excluded from a marquee and from a shared rotation centre, and the selection count says so.</p>
+      </div>
+    </div>
+
+    <!-- DEFAULT LAYER -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;">
+      <div style="box-sizing: border-box; padding: 13px 14px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">The protected object layer</div>
+        <p style="margin: 8px 0 0; font-size: 11px; line-height: 1.55; color: #8990A6;">Every map starts with one object layer beside Grid, Foreground and Background, so there is never a moment where the Stamp tool has nowhere to aim and asks you to create something first. Additional object layers can be added and reordered freely, with no count cap.</p>
+        <div style="box-sizing: border-box; margin-top: 10px; padding: 9px 10px; background: #12141D; border-radius: 3px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #ADB3C6; background: #252A3A; border-radius: 2px; padding: 1px 4px;">OBJ</span>
+            <span style="font-size: 11px; color: #ECEDF3; flex-grow: 1;">Objects</span>
+            <button type="button" disabled aria-label="Delete this layer — unavailable, it is the last object layer" style="height: 22px; padding: 0 8px; background: #171A25; color: #6A7089; border: 1px solid #272C3C; border-radius: 3px; font-size: 10px;">Delete</button>
+          </div>
+          <div style="font-size: 10px; color: #8990A6; margin-top: 6px;">Disabled, with the reason on hover and in the panel: <span style="color:#ADB3C6;">"The last object layer cannot be deleted. Clear its contents instead."</span></div>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Clearing its 418 objects is an ordinary undoable command. Deleting the layer itself is not offered, rather than offered and then refused.</p>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 13px 14px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Object layers hold mixed content</div>
+        <p style="margin: 8px 0 0; font-size: 11px; line-height: 1.55; color: #8990A6;">There is no stamp-only layer type. One object layer holds stamps now, and paths and labels alongside them in Phase 3, in one explicit entity order. Nothing in this design needs a new layer kind when those arrive.</p>
+        <div style="box-sizing: border-box; margin-top: 10px; padding: 9px 10px; background: #12141D; border-radius: 3px;">
+          <div style="display: flex; align-items: center; gap: 7px; height: 22px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; width: 22px;">001</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.8" stroke-linecap="round"><path d="M12 4l7 14H5z"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; flex-grow: 1;">pine-highland-a</span><span style="font-size: 9px; color: #6A7089;">stamp</span></div>
+          <div style="display: flex; align-items: center; gap: 7px; height: 22px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; width: 22px;">002</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="1.8" stroke-linecap="round"><path d="M3 18c4-10 14 4 18-8"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; flex-grow: 1;">Old Ridge Road</span><span style="font-size: 9px; color: #6A7089;">path · Phase 3</span></div>
+          <div style="display: flex; align-items: center; gap: 7px; height: 22px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; width: 22px;">003</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="1.8" stroke-linecap="round"><path d="M5 6h14M12 6v13"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; flex-grow: 1;">Treedan</span><span style="font-size: 9px; color: #6A7089;">label · Phase 3</span></div>
+          <div style="display: flex; align-items: center; gap: 7px; height: 22px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; width: 22px;">004</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.8" stroke-linecap="round"><path d="M12 4l7 14H5z"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; flex-grow: 1;">ridge-peak-a</span><span style="font-size: 9px; color: #6A7089;">stamp</span></div>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Object <em>layer</em> order stacks whole layers above the fixed Background/Foreground pair, and nothing can be placed between or beneath that pair. Object <em>entity</em> order is the list above, within one layer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1560,"height":940}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

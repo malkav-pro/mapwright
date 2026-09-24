@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "import bounds reject hostile sources before allocation",
+  "targetFile": "tests/Mapwright.ContractTests/ImportContracts.cs",
+  "expected": "One checked ImportBounds policy rejects compressed, expanded, token, nesting, base64, dimension, pixel, and aggregate-budget violations before unsafe allocation and supports safe cache-free reconstruction.",
+  "actual": "ImportBounds is absent, so hostile parser boundaries and cache reconstruction have no central executable contract.",
+  "output": "TAP version 13\nnot ok 1 - import bounds reject hostile sources before allocation\n  ---\n  message: ImportBounds is absent; compressed, expanded, token, nesting, base64, pixel, and aggregate allocations are not governed by one checked policy.\n  ...\n1..1\n# tests 1\n# pass 0\n# fail 1\n"
+}

@@ -1,0 +1,9 @@
+.godot/
+.mono/
+.tools/
+bin/
+obj/
+artifacts/
+*.user
+*.tmp
+*.mapwright/

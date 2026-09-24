@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "texture recipes persist every resolved replay field",
+  "targetFile": "tests/Mapwright.ContractTests/BrushContracts.cs",
+  "expected": "An immutable resolved texture recipe persists tip, texture transform, taper, seed, algorithm identity, and document-space samples with deterministic dab replay.",
+  "actual": "ResolvedTextureBrush, TexturePaintStroke, TextureStrokeSample, and deterministic ResolveDab behavior were absent.",
+  "output": "TAP version 13\nnot ok 1 - texture recipes expose deterministic seeded dabs\nnot ok 2 - texture recipes persist every resolved replay field\nnot ok 3 - texture strokes resolve taper in document space\n1..3\n# tests 3\n# pass 0\n# fail 3\n"
+}

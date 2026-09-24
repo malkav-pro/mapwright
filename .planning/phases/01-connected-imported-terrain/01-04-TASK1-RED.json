@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "land strokes expose resolved footprint and composition contracts",
+  "targetFile": "tests/Mapwright.ContractTests/MaskRiverContracts.cs",
+  "expected": "Resolved Edged and Round Land footprint records, an Add/Subtract command, ordered Foreground coverage evaluation, and a declared document/output raster transform are available.",
+  "actual": "The target test failed on its planned behavior assertion because Mapwright.Domain.LandShape and the remaining land-mask contract surface were absent; 20 unrelated contracts passed.",
+  "output": "TAP version 13\nnot ok 1 - land strokes expose resolved footprint and composition contracts\n1..21\n# tests 21\n# pass 20\n# fail 1\n"
+}

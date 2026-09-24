@@ -1,0 +1,13 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cqsgog5l27fl5"
+path="res://.godot/imported/terrain_sdf_color.glsl-9a871ea7be4f16f0a506bf6413549130.res"
+
+[deps]
+
+source_file="res://Shaders/terrain_sdf_color.glsl"
+dest_files=["res://.godot/imported/terrain_sdf_color.glsl-9a871ea7be4f16f0a506bf6413549130.res"]
+
+[params]

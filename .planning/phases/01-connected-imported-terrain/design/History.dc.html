@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>History and save feedback</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 420px; height: 980px; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border: 1px solid #2F3447; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; padding: 9px 11px; background: #1D2130; border-bottom: 1px solid #2F3447; display: flex; align-items: center; gap: 8px;">
+    <span style="font-size: 13px; font-weight: 600;">History</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-07 · persists across restart</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">1.8 GiB</span>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; overflow: hidden;">
+    <!-- redo side, invalidated -->
+    <div style="box-sizing: border-box; padding: 8px 11px; background: #14161F; border-bottom: 1px solid #252A3A;">
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        <span style="font-size: 11px; color: #8990A6;">2 redo steps were discarded by the new edit below</span>
+      </div>
+      <div style="margin-top: 6px; display: flex; align-items: center; gap: 8px; opacity: 0.45;">
+        <div style="width: 18px; height: 18px; border-radius: 3px; background: #252A3A;"></div>
+        <span style="flex-grow: 1; font-size: 11px; color: #8990A6; text-decoration: line-through;">Subtract land mask — Foreground</span>
+      </div>
+      <div style="margin-top: 4px; display: flex; align-items: center; gap: 8px; opacity: 0.45;">
+        <div style="width: 18px; height: 18px; border-radius: 3px; background: #252A3A;"></div>
+        <span style="flex-grow: 1; font-size: 11px; color: #8990A6; text-decoration: line-through;">Move river point 7</span>
+      </div>
+    </div>
+
+    <!-- current cursor -->
+    <div style="display: flex; align-items: center; gap: 9px; box-sizing: border-box; padding: 10px 11px; background: #23294A; border-left: 2px solid #5C6FE0;">
+      <div style="width: 22px; height: 22px; border-radius: 3px; background: #9FA76A;"></div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="font-size: 12px; color: #FFFFFF;">Paint terrain — Foreground</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9AA6D8;">rev 1,287 · 12:07:12 · 14 tiles</div>
+      </div>
+      <span style="font-size: 10px; font-weight: 600; color: #C6CFFF;">NOW</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 9px; box-sizing: border-box; padding: 9px 11px; border-bottom: 1px solid #1D2130;">
+      <div style="width: 22px; height: 22px; border-radius: 3px; background: #9D7BE0;"></div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="font-size: 12px;">Set river width — 96 px at point 7</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">rev 1,286 · 12:06:41</div>
+      </div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">delta</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 9px; box-sizing: border-box; padding: 9px 11px; border-bottom: 1px solid #1D2130;">
+      <div style="width: 22px; height: 22px; border-radius: 3px; background: #5C7A4E;"></div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="font-size: 12px;">Paint terrain — Foreground (scrub)</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">rev 1,285 · 12:05:58 · 31 tiles</div>
+      </div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">delta</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 9px; box-sizing: border-box; padding: 9px 11px; border-bottom: 1px solid #1D2130;">
+      <div style="width: 22px; height: 22px; border-radius: 3px; background: #8B8375;"></div>
+      <div style="flex-grow: 1; min-width: 0;">
+        <div style="font-size: 12px;">Set layer opacity — Background 100%</div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">rev 1,284 · 12:04:37</div>
+      </div>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2" stroke-linecap="round" aria-label="durable"><path d="M5 13l4 4 10-10"></path></svg>
+    </div>
+
+    <!-- boundary between resident deltas and reconstruction -->
+    <div style="display: flex; align-items: center; gap: 8px; padding: 8px 11px;">
+      <div style="flex-grow: 1; height: 1px; background: #2F3447;"></div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">resident deltas end · older steps replay</span>
+      <div style="flex-grow: 1; height: 1px; background: #2F3447;"></div>
+    </div>
+
+    <!-- rebuilding -->
+    <div style="box-sizing: border-box; margin: 0 11px; padding: 11px; background: #12141D; border: 1px solid #3B4159; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 7px; height: 7px; border-radius: 4px; background: #9D7BE0;"></div>
+        <span style="font-size: 12px; font-weight: 600;">Rebuilding an older step</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 24px; padding: 0 9px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Cancel</button>
+      </div>
+      <div style="margin-top: 8px; height: 4px; background: #252A3A; border-radius: 2px; overflow: hidden;"><div style="width: 46%; height: 4px; background: #9D7BE0;"></div></div>
+      <div style="margin-top: 6px; display: flex; justify-content: space-between;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">replaying 118 of 254 commands</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">46%</span>
+      </div>
+      <p style="margin: 7px 0 0; font-size: 11px; line-height: 1.45; color: #8990A6;">This step is older than the stored deltas, so it is reconstructed. Cancelling leaves you exactly where you are now — rev 1,287, nothing half-applied.</p>
+    </div>
+
+    <div style="box-sizing: border-box; margin: 11px; padding: 10px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; color: #ADB3C6;">Nothing to undo</div>
+      <p style="margin: 5px 0 0; font-size: 11px; line-height: 1.45; color: #8990A6;">A freshly imported project starts at rev 1. Undo and redo are both unavailable and say so in their tooltips rather than doing nothing.</p>
+    </div>
+  </div>
+
+  <!-- save states -->
+  <div style="flex-shrink: 0; box-sizing: border-box; border-top: 1px solid #2F3447;">
+    <div style="box-sizing: border-box; padding: 9px 11px; background: #1D2130; border-bottom: 1px solid #2F3447;">
+      <span style="font-size: 12px; font-weight: 600;">Save states</span>
+      <span style="font-size: 11px; color: #8990A6;"> — DOC-02 · DURA-01</span>
+    </div>
+    <div style="box-sizing: border-box; padding: 11px; display: flex; flex-direction: column; gap: 7px;">
+      <div style="display: flex; align-items: center; gap: 9px; padding: 8px 10px; background: #15241D; border: 1px solid #2F5A46; border-radius: 3px;">
+        <div style="width: 7px; height: 7px; border-radius: 4px; background: #5FAE7F;"></div>
+        <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">Saved 12:04:37</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8FCBAA;">durable</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 9px; padding: 8px 10px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 3px;">
+        <div style="width: 7px; height: 7px; border-radius: 4px; background: #D9A23F;"></div>
+        <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">Unsaved — 2 commands queued</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #D9A23F;">in queue</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 9px; padding: 8px 10px; background: #1C1730; border: 1px solid #3A2F59; border-radius: 3px;">
+        <div style="width: 7px; height: 7px; border-radius: 4px; background: #9D7BE0;"></div>
+        <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">Saving — waiting for queued commands</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9D7BE0;">2 left</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 9px; padding: 8px 10px; background: #221518; border: 1px solid #5E3330; border-radius: 3px;">
+        <div style="width: 7px; height: 7px; border-radius: 4px; background: #E2685A;"></div>
+        <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">Save failed — disk full</span>
+        <button type="button" style="height: 22px; padding: 0 8px; background: #2B1A19; color: #F3B5AB; border: 1px solid #5E3330; border-radius: 3px; font-size: 10px;">Retry</button>
+      </div>
+      <p style="margin: 3px 0 0; font-size: 11px; line-height: 1.45; color: #8990A6;">Saved means the commit is on disk and acknowledged. What you see on the canvas is not proof of that, so the chip never turns green while anything is queued.</p>
+      <div style="height: 1px; background: #252A3A;"></div>
+      <p style="margin: 0; font-size: 11px; line-height: 1.45; color: #8990A6;"><span style="color:#ECEDF3;">Undo in a field is not document undo.</span> While a numeric field has focus, Ctrl+Z edits the text. The field commits on Enter, blur or pointer release; the resulting command is then one document undo step.</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":420,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

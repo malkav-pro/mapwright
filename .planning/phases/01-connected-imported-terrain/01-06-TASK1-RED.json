@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "render reference preserves transparent underlay and linear soft alpha",
+  "targetFile": "tests/Mapwright.ContractTests/RenderContracts.cs",
+  "expected": "A shared CPU reference evaluator produces transparent empty pixels, linear-light straight-alpha output, Land-before-river coverage, frozen revision identity, and document-anchored whole/tiled agreement.",
+  "actual": "The three render-reference target cases failed on their planned behavior assertion because ConnectedTerrainGraph.RenderReference was absent; all 43 unrelated contracts passed.",
+  "output": "TAP version 13\nnot ok 1 - render reference applies Land before river subtraction\nnot ok 2 - render reference is frozen and document anchored across tiles\nnot ok 3 - render reference preserves transparent underlay and linear soft alpha\n1..46\n# tests 46\n# pass 43\n# fail 3\n"
+}

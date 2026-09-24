@@ -1,0 +1,203 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "BrushInspector.dc.html": {
+      "h": 880,
+      "title": "P1-04 Texture brush",
+      "w": 380,
+      "x": 460,
+      "y": 2460
+    },
+    "Compact.dc.html": {
+      "h": 768,
+      "title": "P1-02b Compressed — 1366 × 768",
+      "w": 1366,
+      "x": 2000,
+      "y": 0
+    },
+    "Export.dc.html": {
+      "h": 740,
+      "title": "P1-08 Export PNG",
+      "w": 1100,
+      "x": 3340,
+      "y": 1400
+    },
+    "Flows.dc.html": {
+      "h": 1200,
+      "title": "The six flows",
+      "w": 1700,
+      "x": 0,
+      "y": 5480
+    },
+    "History.dc.html": {
+      "h": 980,
+      "title": "P1-07 History and save",
+      "w": 420,
+      "x": 1380,
+      "y": 2460
+    },
+    "Import.dc.html": {
+      "h": 740,
+      "title": "P1-01 Import an .ink",
+      "w": 1100,
+      "x": 980,
+      "y": 1400
+    },
+    "ImportReport.dc.html": {
+      "h": 740,
+      "title": "P1-01b Bounded outcomes and report",
+      "w": 1100,
+      "x": 2160,
+      "y": 1400
+    },
+    "Layers.dc.html": {
+      "h": 980,
+      "title": "P1-03 Layers panel",
+      "w": 380,
+      "x": 0,
+      "y": 2460
+    },
+    "Main.dc.html": {
+      "h": 1080,
+      "title": "P1-02 Editor shell — 1920 × 1080",
+      "w": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "MaskInspector.dc.html": {
+      "h": 500,
+      "title": "P1-05 Land tool",
+      "w": 380,
+      "x": 920,
+      "y": 2460
+    },
+    "Recovery.dc.html": {
+      "h": 740,
+      "title": "P1-08b Recovery and failure",
+      "w": 1100,
+      "x": 4520,
+      "y": 1400
+    },
+    "River.dc.html": {
+      "h": 980,
+      "title": "P1-06 River editing",
+      "w": 1000,
+      "x": 1880,
+      "y": 2460
+    },
+    "Shortcuts.dc.html": {
+      "h": 1200,
+      "title": "Shortcuts and numeric entry",
+      "w": 1000,
+      "x": 1780,
+      "y": 5480
+    },
+    "Start.dc.html": {
+      "h": 620,
+      "title": "P1-01 Project entry",
+      "w": 900,
+      "x": 0,
+      "y": 1400
+    },
+    "States.dc.html": {
+      "h": 1400,
+      "title": "Exceptional states",
+      "w": 1560,
+      "x": 1640,
+      "y": 3760
+    },
+    "Tokens.dc.html": {
+      "h": 1400,
+      "title": "Tokens and component states",
+      "w": 1560,
+      "x": 0,
+      "y": 3760
+    },
+    "LandCursor.dc.html": {
+      "x": 3560,
+      "y": 2460,
+      "w": 900,
+      "h": 600,
+      "title": "P1-02c Land tool on the canvas"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-22T00:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "n1": {
+      "kind": "title1",
+      "maxW": 3366,
+      "text": "The editor shell",
+      "w": 240,
+      "x": 0,
+      "y": -260
+    },
+    "n2": {
+      "kind": "title1",
+      "maxW": 5620,
+      "text": "Import, export, recovery",
+      "w": 240,
+      "x": 0,
+      "y": 1140
+    },
+    "n3": {
+      "kind": "title1",
+      "maxW": 4460,
+      "text": "Panels and tools",
+      "w": 240,
+      "x": 0,
+      "y": 2200
+    },
+    "n4": {
+      "kind": "title1",
+      "maxW": 3200,
+      "text": "The shared system",
+      "w": 240,
+      "x": 0,
+      "y": 3500
+    },
+    "n5": {
+      "kind": "title1",
+      "maxW": 2780,
+      "text": "Flows and input",
+      "w": 240,
+      "x": 0,
+      "y": 5220
+    },
+    "q1": {
+      "fill": "teal",
+      "text": "Decided — brief amended 2026-09-22.\n\nExactly two terrain layers: Background below Foreground, fixed roles and order, no add / duplicate / delete / reorder. Only Foreground owns the land mask; subtracting it reveals Background. Rivers and lakes modify that same mask and create no layer. Object, path and text layers arrive later, reorderable above both.\n\nImport now asks which mode each time with neither preselected, and the preview is kept for comparison either way.",
+      "w": 520,
+      "x": 3000,
+      "y": 2460
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Compact.dc.html",
+    "Start.dc.html",
+    "Import.dc.html",
+    "ImportReport.dc.html",
+    "Export.dc.html",
+    "Recovery.dc.html",
+    "Layers.dc.html",
+    "BrushInspector.dc.html",
+    "MaskInspector.dc.html",
+    "LandCursor.dc.html",
+    "History.dc.html",
+    "River.dc.html",
+    "Tokens.dc.html",
+    "States.dc.html",
+    "Flows.dc.html",
+    "Shortcuts.dc.html"
+  ],
+  "pages": [],
+  "title": "Mapwright Phase 1 Editor"
+}

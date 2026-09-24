@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Export PNG</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1100px; height: 740px; box-sizing: border-box; display: flex; background: #0D0F16; color: #ECEDF3; font-size: 13px; border: 1px solid #3B4159; border-radius: 6px; overflow: hidden;">
+
+  <!-- settings -->
+  <div style="width: 500px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; border-right: 1px solid #252A3A;">
+    <div style="height: 46px; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 16px; background: #1D2130; border-bottom: 1px solid #2F3447;">
+      <span style="font-size: 14px; font-weight: 600;">Export PNG</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">rev 1,284</span>
+    </div>
+
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+      <div>
+        <label for="e-dest" style="display: block; font-size: 12px; color: #ADB3C6; margin-bottom: 4px;">Destination file</label>
+        <div style="display: flex; gap: 6px;">
+          <input id="e-dest" type="text" value="D:\Maps\out\aethermoor-west-16k.png" style="box-sizing: border-box; flex-grow: 1; height: 30px; padding: 0 9px; background: #0D0F16; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 12px;">
+          <button type="button" style="height: 30px; padding: 0 11px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Browse…</button>
+        </div>
+        <div style="margin-top: 5px; display: flex; align-items: center; gap: 7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.9" stroke-linecap="round"><path d="M12 3l9 17H3z"></path></svg>
+          <span style="font-size: 11px; color: #C98A45;">A file of this name exists. It is replaced only after the new one validates.</span>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: #252A3A;"></div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: baseline; gap: 8px;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Output size</span>
+          <span style="font-size: 11px; color: #6A7089;">presets fit the map’s proportions</span>
+        </div>
+        <div style="display: flex; gap: 5px;">
+          <button type="button" aria-pressed="false" style="flex-grow: 1; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px;">
+            <span style="font-size: 11px; font-weight: 600;">1080p</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">1920</span>
+          </button>
+          <button type="button" aria-pressed="false" style="flex-grow: 1; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px;">
+            <span style="font-size: 11px; font-weight: 600;">2K</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">2560</span>
+          </button>
+          <button type="button" aria-pressed="false" style="flex-grow: 1; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px;">
+            <span style="font-size: 11px; font-weight: 600;">4K</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">3840</span>
+          </button>
+          <button type="button" aria-pressed="false" style="flex-grow: 1; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px;">
+            <span style="font-size: 11px; font-weight: 600;">8K</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">7680</span>
+          </button>
+          <button type="button" aria-pressed="true" style="flex-grow: 1; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px;">
+            <span style="font-size: 11px; font-weight: 600;">16K</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9AA6D8;">16384</span>
+          </button>
+          <button type="button" aria-pressed="false" style="flex-grow: 1; height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px;">
+            <span style="font-size: 11px; font-weight: 600;">Custom</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">—</span>
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 7px; padding: 7px 9px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.9" stroke-linecap="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M12 11v5"></path></svg>
+          <span style="font-size: 11px; line-height: 1.4; color: #8990A6;">A preset sets the <em style="font-style:normal;color:#ADB3C6;">long edge</em>; the short edge follows the map’s 1 : 1 proportions. On a 3 : 2 map, 4K would give 3840 × 2560.</span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <div style="flex-grow: 1;">
+            <label for="e-w" style="display: block; font-size: 12px; color: #ADB3C6; margin-bottom: 4px;">Width</label>
+            <div style="height: 30px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 9px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="e-w" type="text" value="16384" style="width: 70px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 11px; color: #8990A6;">px</span>
+            </div>
+          </div>
+          <div style="flex-grow: 1;">
+            <label for="e-h" style="display: block; font-size: 12px; color: #ADB3C6; margin-bottom: 4px;">Height</label>
+            <div style="height: 30px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 9px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="e-h" type="text" value="16384" style="width: 70px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 11px; color: #8990A6;">px</span>
+            </div>
+          </div>
+          <div style="width: 120px;">
+            <label for="e-dpi" style="display: block; font-size: 12px; color: #ADB3C6; margin-bottom: 4px;">DPI metadata</label>
+            <div style="height: 30px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 9px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="e-dpi" type="text" value="300" style="width: 48px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 11px; color: #8990A6;">dpi</span>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M5 13l4 4 10-10"></path></svg>
+          <span style="font-size: 12px; color: #ADB3C6;">16K matches the document exactly — no resampling</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">32 bands · 512 px tiles · 64 px halo · no full-size GPU framebuffer</span><div style="flex-grow: 1;"></div><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">≈ 412 MiB</span></div>
+      </div>
+
+      <div style="height: 1px; background: #252A3A;"></div>
+
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 12px; font-weight: 600;">Exported version</div>
+        <div style="margin-top: 7px; display: flex; justify-content: space-between;"><span style="font-size: 12px; color: #8990A6;">Frozen revision</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px;">rev 1,284</span></div>
+        <div style="margin-top: 5px; display: flex; justify-content: space-between;"><span style="font-size: 12px; color: #8990A6;">Document now</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #9D7BE0;">rev 1,287 (3 newer edits)</span></div>
+        <p style="margin: 8px 0 0; font-size: 11px; line-height: 1.45; color: #ADB3C6;">The export renders the revision you started it from, through the same render graph as the viewport. Keep editing; the output will not mix versions.</p>
+      </div>
+
+      <div style="flex-grow: 1;"></div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 11px; color: #8990A6;">Export duration is not capped.</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 34px; padding: 0 14px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 4px; font-size: 13px;">Close</button>
+        <button type="button" style="height: 34px; padding: 0 16px; background: #5C6FE0; color: #080A14; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 13px; font-weight: 600;">Start export</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- states -->
+  <div style="flex-grow: 1; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 11px; min-width: 0;">
+    <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Job states — P1-08</div>
+
+    <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #2F3447; border-left: 3px solid #9D7BE0; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 12px; font-weight: 600;">Rendering</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">38% · band 14 / 32</span>
+        <button type="button" style="height: 24px; padding: 0 9px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Cancel</button>
+      </div>
+      <div style="margin-top: 8px; height: 4px; background: #252A3A; border-radius: 2px; overflow: hidden;"><div style="width: 38%; height: 4px; background: #9D7BE0;"></div></div>
+      <div style="margin-top: 6px; font-size: 11px; color: #8990A6;">Writing to a temporary sibling. Editing keeps priority.</div>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #2F3447; border-left: 3px solid #9D7BE0; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 12px; font-weight: 600;">Validating</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">no percentage claimed</span>
+        <button type="button" style="height: 24px; padding: 0 9px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Cancel</button>
+      </div>
+      <div style="margin-top: 8px; height: 4px; background: #252A3A; border-radius: 2px; overflow: hidden; position: relative;">
+        <div style="position: absolute; left: 22%; width: 28%; height: 4px; background: #9D7BE0; opacity: 0.85; border-radius: 2px;"></div>
+      </div>
+      <div style="margin-top: 6px; font-size: 11px; color: #8990A6;">Re-reading every chunk and CRC before anything replaces your file.</div>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 12px; background: #15241D; border: 1px solid #2F5A46; border-left: 3px solid #5FAE7F; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2" stroke-linecap="round"><path d="M5 13l4 4 10-10"></path></svg>
+        <span style="font-size: 12px; font-weight: 600;">Published</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 24px; padding: 0 9px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Show in folder</button>
+      </div>
+      <div style="margin-top: 7px; font-size: 12px; color: #D5D9E6;">16,384 × 16,384 · 412 MiB · validated · rev 1,284</div>
+      <div style="margin-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">aethermoor-west-16k.png · 6 min 41 s</div>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 12px; background: #161923; border: 1px solid #3B4159; border-left: 3px solid #C98A45; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 12px; font-weight: 600;">Cancelled at 61%</span>
+      </div>
+      <div style="margin-top: 7px; font-size: 12px; line-height: 1.5; color: #D5D9E6;">Nothing was published. Your previous <span style="font-family:'IBM Plex Mono',monospace;">aethermoor-west-16k.png</span> is untouched and the temporary file was removed.</div>
+      <button type="button" style="margin-top: 10px; height: 28px; padding: 0 11px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Export again</button>
+    </div>
+
+    <div style="box-sizing: border-box; padding: 12px; background: #221518; border: 1px solid #5E3330; border-left: 3px solid #E2685A; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span style="font-size: 12px; font-weight: 600;">Failed — disk full</span>
+      </div>
+      <div style="margin-top: 7px; font-size: 12px; line-height: 1.5; color: #D5D9E6;">D: ran out of space at band 27 of 32. The previous file is intact and the partial file was deleted. About 180 MiB more is needed.</div>
+      <div style="margin-top: 10px; display: flex; gap: 7px;">
+        <button type="button" style="height: 28px; padding: 0 11px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Choose another folder</button>
+        <button type="button" style="height: 28px; padding: 0 11px; background: transparent; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Retry</button>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+    <div style="display: flex; align-items: flex-start; gap: 8px; padding: 10px; background: #12141D; border: 1px solid #252A3A; border-radius: 4px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M12 11v5"></path></svg>
+      <span style="font-size: 11px; line-height: 1.45; color: #ADB3C6;">Rendering and validation are named separately on purpose: a finished render is not yet a file you can trust, and only publication replaces your previous output.</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1100,"height":740}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

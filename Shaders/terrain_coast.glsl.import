@@ -1,0 +1,13 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cacym4rymey14"
+path="res://.godot/imported/terrain_coast.glsl-46a0e833bf5b26fa8346ec73c14f58ed.res"
+
+[deps]
+
+source_file="res://Shaders/terrain_coast.glsl"
+dest_files=["res://.godot/imported/terrain_coast.glsl-46a0e833bf5b26fa8346ec73c14f58ed.res"]
+
+[params]

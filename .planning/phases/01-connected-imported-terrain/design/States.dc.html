@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Exceptional states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1560px; height: 1400px; box-sizing: border-box; padding: 24px; display: flex; flex-direction: column; gap: 16px; background: #0D0F16; color: #ECEDF3; font-size: 13px;">
+
+  <div>
+    <h2 style="margin: 0; font-family: Spectral, Georgia, serif; font-size: 24px; font-weight: 600;">Exceptional states — screen, message, next action</h2>
+    <p style="margin: 6px 0 0; font-size: 12px; color: #8990A6;">Copy is the user-facing wording, not a placeholder. Nothing here is proof that the underlying behaviour works; these are the messages the behaviour must be able to justify.</p>
+  </div>
+
+  <div style="flex-grow: 1; box-sizing: border-box; border: 1px solid #252A3A; border-radius: 5px; overflow: hidden; background: #161923; min-height: 0;">
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; gap: 0; background: #1D2130; border-bottom: 1px solid #2F3447;">
+      <div style="padding: 9px 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">State</div>
+      <div style="padding: 9px 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Screen</div>
+      <div style="padding: 9px 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Message</div>
+      <div style="padding: 9px 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Next action</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Empty project</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-01</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">No project is open. Everything stays on this machine.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Open project folder… · Import an .ink…</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Oversized .ink</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-01b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">This map declares 32,768 × 32,768 pixels. Mapwright edits up to 16,384 × 16,384, so it was not opened. Nothing was written and your file is untouched.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Import preview only · Choose another file</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Corrupt or unsupported .ink</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-01b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">This file is not a readable .ink — the compressed stream ends early at 12 MiB of 284 MiB. It may have been copied while Inkarnate was still writing it.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Export it again · Choose another file · Copy details</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Partial recovery</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-01b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Terrain bases and the preview were recovered; two object groups were not. You can paint and export now — the skipped content still shows in the preview.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Open the project · See report</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">No paintable layer</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-03</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Background is a locked preview and Foreground is hidden, so the texture brush has nowhere to go. The canvas shows a refusal cursor rather than quietly painting on the other layer.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Show Foreground · Start again in recovered-terrain mode</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Locked imported raster</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-03</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Background is the imported preview, read-only in this mode. It is your original import; editing it would break the comparison it anchors.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Paint on Foreground · Hide it to compare</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Both terrain layers hidden</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-03</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Foreground and Background are both hidden, so painting is blocked rather than applied to something you cannot see.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Show all · Show the active layer</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Missing texture</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-04</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">moor-grass-01 is missing from the pack. Strokes that used it keep their recorded identity and render as a marked placeholder until it is found.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Locate… · Pick another texture</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Invalid numeric value</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-04/05/06</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Opacity is 0–100. Enter clamps to 100; Esc restores 78. The field stays focused and nothing is committed while it is invalid.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Type a value in range · Esc to revert</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">No undo available</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-07</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Nothing to undo — this project is at its first revision. The button is disabled and its tooltip says so rather than doing nothing.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">None; the control explains itself</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Older undo rebuilding</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-07</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">This step is older than the stored deltas, so it is reconstructed — replaying 118 of 254 commands. Cancelling leaves you exactly where you are now.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Wait · Cancel (returns to rev 1,287)</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Queued save</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-07</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Saving — waiting for queued commands (2 left). The chip stays amber until the commit is acknowledged; what is on screen is not yet what is on disk.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Keep working; closing warns and waits</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Save failed — disk full</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-07/08b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Two commands are waiting and the document is not saved. Earlier work up to rev 1,282 is durable. Free space on D: and save again — the queue is held, not discarded.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Retry save · Save a copy elsewhere…</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Export cancelled or failed</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-08</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Nothing was published. Your previous aethermoor-west-16k.png is untouched and the temporary file was removed.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Export again · Choose another folder</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130;">
+      <div style="padding: 9px 12px; font-size: 12px;">Cache rebuild</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-08b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">Rebuilding render caches — 72 of 96 visible tiles. Caches are disposable; you can paint now and tiles sharpen as they finish.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Continue editing</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px; border-bottom: 1px solid #1D2130; background: #171A25;">
+      <div style="padding: 9px 12px; font-size: 12px;">Fresh process after a crash</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-08b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">The last session ended without closing. 1,284 acknowledged commands were restored, including the undo position. One brush stroke in progress was not acknowledged and is not present.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Continue editing · Open the report</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 196px 92px minmax(0, 1fr) 300px;">
+      <div style="padding: 9px 12px; font-size: 12px;">Render backend unavailable</div>
+      <div style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-08b</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #D5D9E6;">No compute-capable device was found, so the rendering editor cannot open. Your project is untouched; inspection and source export still work.</div>
+      <div style="padding: 9px 12px; font-size: 12px; color: #ADB3C6;">Open inspection view · Copy diagnostics</div>
+    </div>
+  </div>
+
+  <!-- resource pressure -->
+  <div style="flex-shrink: 0; display: flex; gap: 16px;">
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 14px 16px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Resource pressure, without GPU internals</div>
+      <div style="margin-top: 10px; display: flex; gap: 22px;">
+        <div style="flex-grow: 1;">
+          <p style="margin: 0; font-size: 12px; line-height: 1.55; color: #ADB3C6;">Normal controls never mention VRAM. The status bar carries two quiet readouts — decoded cache and editor GPU allocation — and they only change appearance when a budget is actually being enforced.</p>
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 7px;">
+            <div style="display: flex; align-items: center; gap: 9px; padding: 7px 10px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">cache 412 / 512 MiB</span>
+              <span style="flex-grow: 1; font-size: 11px; color: #6A7089;">within budget — grey, no attention drawn</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 9px; padding: 7px 10px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 3px;">
+              <div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E2CFA8;">cache full — evicting distant tiles</span>
+              <span style="flex-grow: 1; font-size: 11px; color: #ADB3C6;">zoomed-out tiles may redraw; editing is unaffected</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 9px; padding: 7px 10px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 3px;">
+              <div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F;"></div>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E2CFA8;">export working set reduced</span>
+              <span style="flex-grow: 1; font-size: 11px; color: #ADB3C6;">smaller bands, fewer in flight — the output is identical, it takes longer</span>
+            </div>
+          </div>
+        </div>
+        <div style="width: 380px; flex-shrink: 0;">
+          <div style="font-size: 12px; font-weight: 600; color: #ADB3C6;">Initial budgets shown in Project ▸ Storage</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 5px;">
+            <div style="display: flex; justify-content: space-between;"><span style="font-size: 11px; color: #8990A6;">Editor GPU allocation</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">25% of VRAM, ≤ 4 GiB</span></div>
+            <div style="display: flex; justify-content: space-between;"><span style="font-size: 11px; color: #8990A6;">Decoded CPU cache</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">512 MiB</span></div>
+            <div style="display: flex; justify-content: space-between;"><span style="font-size: 11px; color: #8990A6;">Export working buffers</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">512 MiB</span></div>
+            <div style="display: flex; justify-content: space-between;"><span style="font-size: 11px; color: #8990A6;">Process peak RAM</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">≤ 25% of system RAM</span></div>
+            <div style="display: flex; justify-content: space-between;"><span style="font-size: 11px; color: #8990A6;">History acceleration cache</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">4 GiB on disk</span></div>
+          </div>
+          <p style="margin: 9px 0 0; font-size: 11px; line-height: 1.5; color: #6A7089;">Detailed management is Phase 4. Phase 1 only needs to be honest about pressure and never silently degrade output quality without saying so.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1560,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

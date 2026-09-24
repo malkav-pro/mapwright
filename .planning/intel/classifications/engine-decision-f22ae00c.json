@@ -1,0 +1,13 @@
+{
+  "source_path": "C:/Users/almar/Documents/Codex/mapwright/docs/engine-decision.md",
+  "type": "ADR",
+  "confidence": "medium",
+  "manifest_override": false,
+  "title": "Engine decision: Godot 4 .NET",
+  "summary": "Selects Godot 4 .NET over a parallel Rust + wgpu implementation, records supporting probes, and defines save-and-restart device-loss recovery and the connected editing milestone.",
+  "scope": ["Godot 4 .NET", "Rust + wgpu", "device-loss recovery", "command journal", "GPU caches", "connected editor", "export"],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": null,
+  "notes": "Dominant content is an implementation-stack decision with evidence and an alternative rejected on cost grounds. The device-loss contract also supplies SPEC signals. Status is 'Final for the first implementation', not Accepted, so locked is false."
+}

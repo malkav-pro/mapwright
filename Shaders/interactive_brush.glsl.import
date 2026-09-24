@@ -1,0 +1,13 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://b1bxabuea2b3l"
+path="res://.godot/imported/interactive_brush.glsl-8def3c4b9d98ce6dd4e6a908eab69ba5.res"
+
+[deps]
+
+source_file="res://Shaders/interactive_brush.glsl"
+dest_files=["res://.godot/imported/interactive_brush.glsl-8def3c4b9d98ce6dd4e6a908eab69ba5.res"]
+
+[params]

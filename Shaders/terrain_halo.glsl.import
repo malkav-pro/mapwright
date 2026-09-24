@@ -1,0 +1,13 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://bnqixwfk0c5e5"
+path="res://.godot/imported/terrain_halo.glsl-1ca2e81fae3bbda2f38df35c35be44d0.res"
+
+[deps]
+
+source_file="res://Shaders/terrain_halo.glsl"
+dest_files=["res://.godot/imported/terrain_halo.glsl-1ca2e81fae3bbda2f38df35c35be44d0.res"]
+
+[params]

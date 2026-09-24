@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mapwright editor shell</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1920px; height: 1080px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <!-- a. Title strip -->
+  <div style="height: 34px; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 12px; background: #161923; border-bottom: 1px solid #2F3447;">
+    <div style="display: flex; align-items: center; gap: 7px;">
+      <div style="width: 15px; height: 15px; border-radius: 3px; background: #5C6FE0;"></div>
+      <span style="font-family: Spectral, Georgia, serif; font-size: 15px; font-weight: 600; letter-spacing: 0.2px;">Mapwright</span>
+    </div>
+    <div style="width: 1px; height: 16px; background: #2F3447;"></div>
+    <span style="font-size: 13px; color: #ECEDF3;">Aethermoor — West Reaches</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6; background: #1D2130; border: 1px solid #2F3447; border-radius: 3px; padding: 1px 6px;">rev 1,284</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">16,384 × 16,384 doc px · offline, local files only</span>
+  </div>
+
+  <!-- b. Command bar -->
+  <div style="height: 44px; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; gap: 6px; padding: 0 10px; background: #12141D; border-bottom: 1px solid #2F3447;">
+    <button type="button" style="height: 30px; padding: 0 12px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 13px;">Open…</button>
+    <button type="button" style="height: 30px; padding: 0 12px; background: #5C6FE0; color: #080A14; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 13px; font-weight: 600;">Save</button>
+    <button type="button" style="height: 30px; padding: 0 12px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 13px;">Import .ink…</button>
+    <button type="button" style="height: 30px; padding: 0 12px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 13px;">Export PNG…</button>
+
+    <div style="width: 1px; height: 22px; background: #2F3447; margin: 0 4px;"></div>
+
+    <button type="button" title="Undo Paint terrain — Foreground (Ctrl+Z)" style="height: 30px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h11a5 5 0 0 1 0 10H8"></path><path d="M4 9l4-4M4 9l4 4"></path></svg>
+      <span style="font-size: 13px;">Undo</span>
+    </button>
+    <button type="button" disabled title="Nothing to redo" style="height: 30px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #171A25; color: #6A7089; border: 1px solid #272C3C; border-radius: 3px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9H9a5 5 0 0 0 0 10h7"></path><path d="M20 9l-4-4M20 9l-4 4"></path></svg>
+      <span style="font-size: 13px;">Redo</span>
+    </button>
+
+    <div style="width: 1px; height: 22px; background: #2F3447; margin: 0 4px;"></div>
+
+    <div style="display: flex; align-items: center; gap: 6px; background: #1D2130; border: 1px solid #2F3447; border-radius: 3px; padding: 3px 9px;">
+      <div style="width: 7px; height: 7px; border-radius: 4px; background: #5FAE7F;"></div>
+      <span style="font-size: 12px; color: #ADB3C6;">Saved 12:04:37</span>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+
+    <span style="font-size: 12px; color: #8990A6; margin-right: 2px;">Overlays</span>
+    <button type="button" aria-pressed="true" style="height: 30px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 12px;">
+      <div style="width: 6px; height: 6px; border-radius: 3px; background: #93A6FF;"></div>Coast preview
+    </button>
+    <button type="button" aria-pressed="true" style="height: 30px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 12px;">
+      <div style="width: 6px; height: 6px; border-radius: 3px; background: #93A6FF;"></div>Isolines
+    </button>
+    <button type="button" aria-pressed="false" style="height: 30px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">
+      <div style="width: 6px; height: 6px; border-radius: 3px; background: #525872;"></div>Tile bounds
+    </button>
+  </div>
+
+  <!-- c. Work area -->
+  <div style="flex-grow: 1; display: flex; min-height: 0;">
+
+    <!-- Tool rail -->
+    <div style="width: 56px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 0; background: #161923; border-right: 1px solid #2F3447;">
+      <button type="button" aria-label="Pan (H, or hold Space)" title="Pan — H, or hold Space" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #161923; border: 1px solid transparent; border-radius: 4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"></path><path d="M12 11V4.5a1.5 1.5 0 0 1 3 0V11"></path><path d="M15 11V6.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1.2a5 5 0 0 1-3.9-1.9L5 15.5a1.6 1.6 0 0 1 2.4-2.1L9 15"></path></svg>
+      </button>
+      <button type="button" aria-label="Texture brush (B) — active" title="Texture brush — B" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 3.5a2.1 2.1 0 0 1 3 3L11 16l-4 1 1-4z"></path><path d="M6 19c-1.2 1-2.5 1.2-4 1 1.2-1 1.4-2.2 1.4-3.4"></path></svg>
+      </button>
+      <button type="button" aria-label="Land tool (L)" title="Land tool — L" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #161923; border: 1px solid transparent; border-radius: 4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7"><circle cx="12" cy="12" r="8"></circle><path d="M12 4a8 8 0 0 0 0 16z" fill="#ADB3C6" stroke="none" opacity="0.5"></path></svg>
+      </button>
+      <button type="button" aria-label="River tool (R)" title="River tool — R" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #161923; border: 1px solid transparent; border-radius: 4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c2-4 0-6 2-9s5-2 5-6"></path><path d="M11 20c2-3 1-5 3-7"></path></svg>
+      </button>
+      <div style="width: 26px; height: 1px; background: #2F3447; margin: 4px 0;"></div>
+      <button type="button" aria-label="Sample texture from layer (I)" title="Sample texture — I" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #161923; border: 1px solid transparent; border-radius: 4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 4l2 2-9 9-3 1 1-3z"></path><path d="M7 14l-3 3v3h3l3-3"></path></svg>
+      </button>
+      <div style="flex-grow: 1;"></div>
+      <button type="button" aria-label="Project storage and caches" title="Project storage" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #161923; border: 1px solid transparent; border-radius: 4px;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7" stroke-linecap="round"><ellipse cx="12" cy="6" rx="7" ry="3"></ellipse><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"></path><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"></path></svg>
+      </button>
+    </div>
+
+    <!-- Active tool panel, docked beside the rail -->
+    <div style="width: 318px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border-right: 1px solid #2F3447;">
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 9px 11px; background: #1D2130; border-bottom: 1px solid #2F3447;">
+        <span style="font-size: 13px; font-weight: 600;">Texture brush</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">B</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" aria-label="Close the tool panel" title="Close — the tool stays active" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 8px 11px; background: #12141D; border-bottom: 1px solid #252A3A;">
+        <div style="display: flex; align-items: center; gap: 7px;">
+          <span style="font-size: 11px; color: #8990A6;">Painting on</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-size: 11px; color: #8990A6;">unlocked</span>
+        </div>
+        <div style="margin-top: 6px; display: flex; gap: 5px;">
+          <button type="button" aria-pressed="true" style="flex-grow: 1; height: 28px; display: flex; align-items: center; justify-content: center; gap: 6px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 12px; font-weight: 600;">
+            <span style="width: 12px; height: 12px; border-radius: 2px; background: #5C7A4E; display: block;"></span>Foreground
+          </button>
+          <button type="button" aria-pressed="false" disabled title="Background is the locked imported preview in this project" style="flex-grow: 1; height: 28px; display: flex; align-items: center; justify-content: center; gap: 6px; background: #171A25; color: #6A7089; border: 1px solid #272C3C; border-radius: 3px; font-size: 12px;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Background
+          </button>
+        </div>
+      </div>
+
+      <div style="flex-grow: 1; box-sizing: border-box; padding: 11px; display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: hidden;">
+
+        <div>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Texture</span>
+            <div style="flex-grow: 1;"></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">terrain · local pack</span>
+          </div>
+          <div style="margin-top: 8px; height: 92px; border-radius: 4px; border: 1px solid #3B4159; background: #9FA76A; position: relative; overflow: hidden;">
+            <svg viewBox="0 0 294 92" width="100%" height="100%" style="display:block;">
+              <rect width="294" height="92" fill="#9FA76A"></rect>
+              <g fill="#8C9459"><circle cx="30" cy="26" r="6"></circle><circle cx="96" cy="60" r="7"></circle><circle cx="180" cy="30" r="6"></circle><circle cx="250" cy="66" r="7"></circle></g>
+              <g fill="#AAB278"><circle cx="64" cy="70" r="5"></circle><circle cx="140" cy="20" r="5"></circle><circle cx="216" cy="52" r="5"></circle></g>
+            </svg>
+            <span style="position: absolute; left: 7px; bottom: 6px; padding: 2px 6px; background: rgba(16,18,22,0.8); border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3;">heath-scrub-02 · 1024²</span>
+          </div>
+          <div style="margin-top: 7px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px;">
+            <button type="button" aria-label="heath-scrub-02, selected" style="height: 40px; background: #9FA76A; border: 2px solid #5C6FE0; border-radius: 3px;"></button>
+            <button type="button" aria-label="moor-grass-01" style="height: 40px; background: #8C9459; border: 1px solid #3B4159; border-radius: 3px;"></button>
+            <button type="button" aria-label="scree-fine" style="height: 40px; background: #8B8375; border: 1px solid #3B4159; border-radius: 3px;"></button>
+            <button type="button" aria-label="pine-dense" style="height: 40px; background: #4E6B43; border: 1px solid #3B4159; border-radius: 3px;"></button>
+            <button type="button" aria-label="tidal-sand" style="height: 40px; background: #D8C79C; border: 1px solid #3B4159; border-radius: 3px;"></button>
+          </div>
+        </div>
+
+        <div style="height: 1px; background: #252A3A;"></div>
+
+        <div style="display: flex; flex-direction: column; gap: 11px;">
+          <!-- size -->
+          <div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="1.9" stroke-linecap="round"><path d="M4 20L20 4"></path><path d="M4 12v8h8"></path></svg>
+              <label for="s-size" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Brush size</label>
+              <button type="button" aria-label="Reset brush size to 128" title="Reset to 128" style="width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"></path><path d="M20 4v4h-4"></path></svg>
+              </button>
+              <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+                <input id="s-size" type="text" value="256" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+                <span style="font-size: 10px; color: #8990A6;">px</span>
+              </div>
+            </div>
+            <div style="margin-top: 7px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 42%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 42%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+          </div>
+          <!-- hardness -->
+          <div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="1.9"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.4"></circle></svg>
+              <label for="s-hard" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Hardness</label>
+              <button type="button" aria-label="Reset hardness" title="Reset to 50" style="width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"></path><path d="M20 4v4h-4"></path></svg>
+              </button>
+              <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+                <input id="s-hard" type="text" value="45" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+                <span style="font-size: 10px; color: #8990A6;">%</span>
+              </div>
+            </div>
+            <div style="margin-top: 7px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 45%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 45%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+          </div>
+          <!-- opacity -->
+          <div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="1.9"><path d="M12 3s6 6.6 6 10.4A6 6 0 0 1 6 13.4C6 9.6 12 3 12 3z"></path></svg>
+              <label for="s-op" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Opacity</label>
+              <button type="button" aria-label="Reset opacity" title="Reset to 100" style="width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"></path><path d="M20 4v4h-4"></path></svg>
+              </button>
+              <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+                <input id="s-op" type="text" value="78" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+                <span style="font-size: 10px; color: #8990A6;">%</span>
+              </div>
+            </div>
+            <div style="margin-top: 7px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 78%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 78%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+          </div>
+          <!-- flow + spacing, compact rows -->
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <label for="s-flow" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Flow</label>
+            <div style="width: 118px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 60%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 60%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+            <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="s-flow" type="text" value="60" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 10px; color: #8990A6;">%</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <label for="s-sp" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Spacing</label>
+            <div style="width: 118px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 18%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 18%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+            <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="s-sp" type="text" value="18" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 10px; color: #8990A6;">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 1px; background: #252A3A;"></div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: baseline; gap: 7px;">
+            <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Texture rotation</span>
+            <span style="font-size: 10px; color: #6A7089;">not the footprint</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <label for="s-rot" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Angle</label>
+            <div style="width: 118px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 3.3%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 3.3%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+            <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="s-rot" type="text" value="12" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 10px; color: #8990A6;">°</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <label for="s-jit" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Jitter ±</label>
+            <div style="width: 118px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 50%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 50%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+            <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="s-jit" type="text" value="90" style="width: 38px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+              <span style="font-size: 10px; color: #8990A6;">°</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex-grow: 1;"></div>
+        <div style="display: flex; align-items: center; gap: 8px; padding: 8px 9px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.9" stroke-linecap="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M12 11v5"></path></svg>
+          <span style="font-size: 11px; line-height: 1.4; color: #8990A6;">Texture is anchored in document space, so strokes, tiles and export scale stay aligned.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canvas -->
+    <div style="flex-grow: 1; position: relative; min-width: 0; background: #0A0C14; overflow: hidden;">
+      <svg viewBox="0 0 1166 978" width="100%" height="100%" style="display: block;" aria-label="Map canvas showing the recovered Aethermoor coastline, its two terrain layers and the Silvermere river">
+        <defs>
+          <pattern id="m-scrub" width="14" height="14" patternUnits="userSpaceOnUse">
+            <rect width="14" height="14" fill="#9FA76A"></rect>
+            <circle cx="4" cy="5" r="1.5" fill="#8C9459"></circle><circle cx="10" cy="11" r="1.6" fill="#AAB278"></circle>
+          </pattern>
+          <pattern id="m-forest" width="16" height="16" patternUnits="userSpaceOnUse">
+            <rect width="16" height="16" fill="#5C7A4E"></rect>
+            <circle cx="5" cy="6" r="2.6" fill="#4E6B43"></circle><circle cx="12" cy="12" r="2.4" fill="#68885A"></circle>
+          </pattern>
+          <pattern id="m-rock" width="18" height="18" patternUnits="userSpaceOnUse">
+            <rect width="18" height="18" fill="#8B8375"></rect>
+            <path d="M0 12l5-6 5 6z" fill="#7A7367"></path><path d="M9 18l6-8 4 8z" fill="#9A9184"></path>
+          </pattern>
+          <pattern id="m-sand" width="12" height="12" patternUnits="userSpaceOnUse">
+            <rect width="12" height="12" fill="#D8C79C"></rect>
+            <circle cx="3" cy="8" r="1.1" fill="#CBB98C"></circle><circle cx="9" cy="3" r="1" fill="#E3D4AD"></circle>
+          </pattern>
+          <clipPath id="m-land"><path d="M170 120 C 330 60, 600 70, 770 140 C 910 200, 995 300, 1052 430 C 1110 560, 1052 720, 900 810 C 748 900, 500 900, 348 830 C 216 770, 130 640, 120 480 C 112 340, 76 190, 170 120 Z"></path></clipPath>
+        </defs>
+
+        <rect x="0" y="0" width="1166" height="978" fill="#8FB4CC"></rect>
+        <g fill="none" stroke="#FFFFFF" stroke-opacity="0.45">
+          <path d="M156 104 C 326 40, 604 50, 782 124 C 928 188, 1014 292, 1070 426 C 1130 562, 1068 730, 910 824 C 752 918, 496 918, 340 846 C 204 784, 116 648, 106 482 C 98 338, 56 178, 156 104 Z" stroke-width="3"></path>
+          <path d="M138 86 C 320 16, 616 28, 798 106 C 950 174, 1038 284, 1094 422 C 1158 566, 1088 748, 924 846 C 762 944, 490 944, 328 868 C 186 802, 98 660, 88 484 C 80 334, 34 164, 138 86 Z" stroke-width="2" stroke-opacity="0.3"></path>
+        </g>
+        <g fill="none" stroke="#2F4757" stroke-opacity="0.35" stroke-dasharray="5 6" stroke-width="1">
+          <path d="M186 138 C 338 82, 592 92, 758 158 C 896 216, 980 312, 1034 436 C 1090 560, 1036 706, 890 792 C 744 878, 508 878, 362 812 C 232 754, 148 632, 138 480 C 130 346, 92 202, 186 138 Z"></path>
+          <path d="M216 168 C 358 118, 588 126, 740 186 C 870 240, 950 328, 1000 444 C 1052 558, 1004 690, 870 768 C 734 846, 518 846, 384 786 C 264 732, 186 618, 178 478 C 170 354, 132 228, 216 168 Z"></path>
+        </g>
+
+        <g clip-path="url(#m-land)">
+          <rect x="80" y="40" width="1080" height="900" fill="url(#m-sand)"></rect>
+          <path d="M170 120 C 330 60, 600 70, 770 140 C 910 200, 995 300, 1052 430 C 1110 560, 1052 720, 900 810 C 748 900, 500 900, 348 830 C 216 770, 130 640, 120 480 C 112 340, 76 190, 170 120 Z" fill="url(#m-scrub)" opacity="0.92"></path>
+          <path d="M464 210 C 588 170, 720 200, 786 290 C 842 366, 824 470, 748 520 C 662 576, 540 560, 484 490 C 428 420, 408 260, 464 210 Z" fill="url(#m-rock)" opacity="0.95"></path>
+          <path d="M596 250 l 52 78 -104 0 z M682 300 l 44 66 -88 0 z" fill="#B3A997" opacity="0.7"></path>
+          <path d="M212 520 C 306 470, 420 500, 458 590 C 496 690, 420 790, 306 790 C 212 790, 156 700, 165 620 C 171 570, 184 536, 212 520 Z" fill="url(#m-forest)" opacity="0.95"></path>
+          <path d="M764 600 C 840 570, 926 610, 945 690 C 964 776, 888 830, 812 810 C 742 792, 718 700, 737 646 Z" fill="url(#m-forest)" opacity="0.9"></path>
+          <path d="M556 300 C 542 400, 598 470, 589 560 C 580 660, 504 700, 490 800 C 480 870, 466 900, 448 930" fill="none" stroke="#8FB4CC" stroke-width="26" stroke-linecap="round"></path>
+          <path d="M556 300 C 542 400, 598 470, 589 560 C 580 660, 504 700, 490 800 C 480 870, 466 900, 448 930" fill="none" stroke="#B6D2E2" stroke-width="12" stroke-linecap="round" opacity="0.8"></path>
+        </g>
+        <path d="M170 120 C 330 60, 600 70, 770 140 C 910 200, 995 300, 1052 430 C 1110 560, 1052 720, 900 810 C 748 900, 500 900, 348 830 C 216 770, 130 640, 120 480 C 112 340, 76 190, 170 120 Z" fill="none" stroke="#2F4757" stroke-width="2.5" stroke-opacity="0.8"></path>
+
+        <g stroke="#93A6FF" stroke-opacity="0.5" stroke-dasharray="4 7" stroke-width="1">
+          <path d="M660 0 V 978"></path>
+        </g>
+        <text x="668" y="26" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="11" opacity="0.85">tile 12,8 │ 12,9</text>
+      </svg>
+
+      <!-- cursor preview: footprint, falloff, affected region -->
+      <div style="position: absolute; left: 446px; top: 446px; width: 168px; height: 168px;">
+        <div style="position: absolute; inset: 0; border: 1px dashed #93A6FF; border-radius: 2px; opacity: 0.55;"></div>
+        <div style="position: absolute; left: 16px; top: 16px; width: 136px; height: 136px; border: 1.5px solid #F4F6FB; border-radius: 68px; box-shadow: 0 0 0 1px rgba(16,18,22,0.7);"></div>
+        <div style="position: absolute; left: 44px; top: 44px; width: 80px; height: 80px; border: 1px dashed #F4F6FB; border-radius: 40px; opacity: 0.7;"></div>
+        <div style="position: absolute; left: 82px; top: 82px; width: 4px; height: 4px; border-radius: 2px; background: #F4F6FB;"></div>
+        <div style="position: absolute; left: 172px; top: 56px; padding: 4px 7px; background: rgba(16,18,22,0.88); border: 1px solid #3B4159; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; white-space: nowrap;">ø 256 px · hard 45% · 12°</div>
+      </div>
+
+      <!-- background job -->
+      <div style="position: absolute; right: 12px; top: 12px; width: 268px; box-sizing: border-box; padding: 10px 12px; background: rgba(20,23,27,0.94); border: 1px solid #3B4159; border-radius: 5px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 7px; height: 7px; border-radius: 4px; background: #9D7BE0;"></div>
+          <span style="font-size: 12px; font-weight: 600; color: #ECEDF3;">Exporting rev 1,284</span>
+          <div style="flex-grow: 1;"></div>
+          <button type="button" style="height: 22px; padding: 0 8px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Cancel</button>
+        </div>
+        <div style="margin-top: 8px; height: 4px; background: #252A3A; border-radius: 2px; overflow: hidden;">
+          <div style="width: 38%; height: 4px; background: #9D7BE0;"></div>
+        </div>
+        <div style="margin-top: 6px; display: flex; justify-content: space-between;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">Rendering band 14 / 32</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">38%</span>
+        </div>
+        <div style="margin-top: 6px; font-size: 11px; color: #8990A6;">Editing continues at rev 1,287. The frozen revision is unaffected.</div>
+      </div>
+
+      <!-- scale bar -->
+      <div style="position: absolute; left: 12px; bottom: 54px; display: flex; align-items: center; gap: 8px; padding: 5px 9px; background: rgba(16,18,22,0.86); border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="width: 68px; height: 3px; background: #ECEDF3;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">2,048 doc px</span>
+      </div>
+
+      <!-- bottom hint pill -->
+      <div style="position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 6px 12px; background: rgba(20,23,27,0.94); border: 1px solid #2F3447; border-radius: 5px; white-space: nowrap;">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 11px; color: #8990A6;">Pan</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; background: #252A3A; border: 1px solid #3B4159; border-radius: 3px; padding: 1px 6px;">Space</span>
+          <span style="font-size: 11px; color: #8990A6;">+ drag</span>
+        </div>
+        <div style="width: 1px; height: 12px; background: #2F3447;"></div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 11px; color: #8990A6;">Zoom</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; background: #252A3A; border: 1px solid #3B4159; border-radius: 3px; padding: 1px 6px;">Ctrl</span>
+          <span style="font-size: 11px; color: #8990A6;">+ wheel</span>
+        </div>
+        <div style="width: 1px; height: 12px; background: #2F3447;"></div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 11px; color: #8990A6;">Size</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; background: #252A3A; border: 1px solid #3B4159; border-radius: 3px; padding: 1px 6px;">[ ]</span>
+        </div>
+      </div>
+
+      <div style="position: absolute; right: 0; top: 0; width: 4px; height: 100%; background: #5C6FE0; opacity: 0.55;" title="Drag to resize the layers column"></div>
+    </div>
+
+    <!-- Layers column -->
+    <div style="width: 340px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border-left: 1px solid #2F3447;">
+      <div style="display: flex; align-items: center; gap: 2px; padding: 0 8px; background: #1D2130; border-bottom: 1px solid #2F3447;">
+        <button type="button" aria-pressed="true" style="height: 34px; padding: 0 10px; background: transparent; color: #ECEDF3; border: none; border-bottom: 2px solid #5C6FE0; font-size: 12px; font-weight: 600;">Layers</button>
+        <button type="button" aria-pressed="false" style="height: 34px; padding: 0 10px; background: transparent; color: #8990A6; border: none; border-bottom: 2px solid transparent; font-size: 12px;">History</button>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 25px; padding: 0 8px; display: flex; align-items: center; gap: 5px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="1.9" stroke-linecap="round"><path d="M4 20L20 4"></path><path d="M4 12v8h8"></path></svg>Compare base
+        </button>
+      </div>
+
+      <div style="flex-grow: 1; overflow: hidden; min-height: 0;">
+        <div style="display: flex; align-items: center; gap: 7px; height: 46px; box-sizing: border-box; padding: 0 8px; background: #14161F; border-bottom: 1px solid #1D2130;">
+          <button type="button" aria-label="Show the grid — hidden" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="1.7" stroke-linecap="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path><path d="M4 20L20 4"></path></svg>
+          </button>
+          <div style="width: 28px; height: 28px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden;">
+            <svg viewBox="0 0 28 28" width="28" height="28" style="display:block;"><rect width="28" height="28" fill="#1C2130"></rect><g stroke="#8990A6" stroke-width="1" opacity="0.9"><path d="M9 0V28M19 0V28M0 9H28M0 19H28"></path></g></svg>
+          </div>
+          <div style="flex-grow: 1; min-width: 0;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #ADB3C6; background: #252A3A; border-radius: 2px; padding: 1px 4px; flex-shrink: 0;">GRID</span>
+              <span style="font-size: 12px; color: #ADB3C6;">Grid</span>
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; margin-top: 2px;">square · hidden</div>
+          </div>
+          <button type="button" aria-label="Grid settings" title="Spacing, colour and the export toggle" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"></path></svg>
+          </button>
+        </div>
+
+        <div style="box-sizing: border-box; margin: 9px 9px 11px; padding: 8px 10px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <span style="font-size: 11px; font-weight: 600; color: #ADB3C6;">Object layers</span>
+            <div style="flex-grow: 1;"></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">Phase 2</span>
+          </div>
+          <p style="margin: 4px 0 0; font-size: 11px; line-height: 1.4; color: #8990A6;">Object, path and text layers are created and reordered freely above both terrain layers. Phase 1 ships none, so no dead rows appear.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; padding: 0 9px 8px;">
+          <div style="flex-grow: 1; height: 1px; background: #252A3A;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">terrain — fixed order</span>
+          <div style="flex-grow: 1; height: 1px; background: #252A3A;"></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 7px; height: 52px; box-sizing: border-box; padding: 0 8px; background: #23294A; border-left: 2px solid #5C6FE0;">
+          <button type="button" aria-label="Hide Foreground" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C6CFFF" stroke-width="1.7" stroke-linecap="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+          </button>
+          <div style="width: 30px; height: 30px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden;">
+            <svg viewBox="0 0 30 30" width="30" height="30" style="display:block;"><rect width="30" height="30" fill="#5C7A4E"></rect><path d="M0 20 C 6 13, 17 11, 30 17 L30 30 L0 30 Z" fill="#4E6B43"></path></svg>
+          </div>
+          <div style="flex-grow: 1; min-width: 0;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #080A14; background: #93A6FF; border-radius: 2px; padding: 1px 4px; flex-shrink: 0;">FG</span>
+              <span title="Foreground — Treedan woodland and the upper terraces" style="font-size: 12px; color: #FFFFFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Treedan woodland and the upper terraces</span>
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9AA6D8; margin-top: 2px;">100%</div>
+          </div>
+          <button type="button" aria-label="Solo Foreground" title="Solo" style="width: 24px; height: 24px; background: transparent; border: none; color: #9AA6D8; font-size: 11px; font-weight: 600;">S</button>
+          <button type="button" aria-label="Lock Foreground" title="Unlocked" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9AA6D8" stroke-width="1.7" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 7.5-2"></path></svg>
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; height: 36px; box-sizing: border-box; padding: 0 9px 0 40px; background: #222945; border-bottom: 1px solid #1D2130;">
+          <div style="width: 20px; height: 20px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden; flex-shrink: 0;">
+            <svg viewBox="0 0 20 20" width="20" height="20" style="display:block;"><rect width="20" height="20" fill="#1C2130"></rect><path d="M1 14 C 4 8, 13 5, 19 9 L19 20 L1 20 Z" fill="#ECEDF3"></path></svg>
+          </div>
+          <span style="flex-grow: 1; font-size: 11px; color: #C6CFFF;">Land mask <span style="color: #8990A6;">— the coastline is its 0.5 contour</span></span>
+          <button type="button" aria-label="Edit the land mask" title="Land tool — L" style="height: 22px; padding: 0 8px; background: #1B2140; color: #9AA6D8; border: 1px solid #3B4585; border-radius: 3px; font-size: 10px;">Edit</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; height: 30px; box-sizing: border-box; padding: 0 9px 0 56px; background: #191D2A; border-bottom: 1px solid #1D2130;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9D7BE0" stroke-width="1.7" stroke-linecap="round"><path d="M5 20c2-4 0-6 2-9s5-2 5-6"></path></svg>
+          <span style="flex-grow: 1; font-size: 11px; color: #ADB3C6;">Silvermere river</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9D7BE0;">mask modifier · on</span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 7px; height: 52px; box-sizing: border-box; padding: 0 8px; border-bottom: 1px solid #1D2130;">
+          <button type="button" aria-label="Hide Background" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.7" stroke-linecap="round"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+          </button>
+          <div style="width: 30px; height: 30px; border-radius: 3px; border: 1px solid #3B4159; overflow: hidden;">
+            <svg viewBox="0 0 30 30" width="30" height="30" style="display:block;"><rect width="30" height="30" fill="#8FB4CC"></rect><path d="M2 20 C 8 12, 19 9, 28 14 L28 30 L2 30 Z" fill="#9FA76A"></path><path d="M14 9 C 12 16, 16 21, 14 30" fill="none" stroke="#B6D2E2" stroke-width="2"></path></svg>
+          </div>
+          <div style="flex-grow: 1; min-width: 0;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #ADB3C6; background: #252A3A; border-radius: 2px; padding: 1px 4px; flex-shrink: 0;">BG</span>
+              <span style="font-size: 12px; color: #ECEDF3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Imported preview</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px; margin-top: 2px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C98A45;">100% · locked base</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #E2CFA8; background: #2A2113; border: 1px solid #5A4A2C; border-radius: 2px; padding: 0 4px;">baked coasts</span></div>
+          </div>
+          <button type="button" aria-label="Solo Background" title="Solo" style="width: 24px; height: 24px; background: transparent; border: none; color: #8990A6; font-size: 11px; font-weight: 600;">S</button>
+          <span title="Locked — the imported preview backs this layer" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.8" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+          </span>
+        </div>
+
+        <div style="box-sizing: border-box; margin: 11px 9px 0; padding: 9px 10px; background: #12141D; border: 1px solid #252A3A; border-radius: 4px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.45; color: #8990A6;">Started in <span style="color:#ECEDF3;">original flattened appearance</span>: Background is the imported preview, locked, and everything on Foreground is yours. The preview is kept in either mode, for comparison.</p>
+        </div>
+      </div>
+
+      <div style="height: 28px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 10px; border-top: 1px solid #252A3A;">
+        <span style="font-size: 11px; color: #8990A6;">Grid · Foreground · Background</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" aria-label="Move layer up" style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; background: #252A3A; border: 1px solid #3B4159; border-radius: 3px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="2.4" stroke-linecap="round"><path d="M12 19V5M6 11l6-6 6 6"></path></svg>
+        </button>
+        <button type="button" aria-label="Move layer down" style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; background: #252A3A; border: 1px solid #3B4159; border-radius: 3px;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- d. Status bar -->
+  <div style="height: 30px; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; gap: 14px; padding: 0 12px; background: #12141D; border-top: 1px solid #2F3447;">
+    <div style="display: flex; align-items: center; gap: 6px;">
+      <div style="width: 7px; height: 7px; border-radius: 4px; background: #D9A23F;"></div>
+      <span style="font-size: 12px; color: #ADB3C6;">Autosave queued · 2 commands</span>
+    </div>
+    <div style="width: 1px; height: 14px; background: #2F3447;"></div>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">x 8,412 · y 5,109</span>
+    <div style="width: 1px; height: 14px; background: #2F3447;"></div>
+    <span style="font-size: 12px; color: #ADB3C6;">Layer <span style="color: #ECEDF3;">Foreground</span></span>
+    <div style="width: 1px; height: 14px; background: #2F3447;"></div>
+    <span style="font-size: 12px; color: #ADB3C6;">Tool <span style="color: #ECEDF3;">Texture brush 256 px</span></span>
+
+    <div style="flex-grow: 1;"></div>
+
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">cache 412 / 512 MiB</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">gpu 1.4 / 4.0 GiB</span>
+    <div style="width: 1px; height: 14px; background: #2F3447;"></div>
+    <button type="button" aria-label="Zoom out" style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px;">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"></path></svg>
+    </button>
+    <div style="width: 120px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+      <div style="width: 34%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+      <span style="position: absolute; left: 34%; top: -4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 6px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+    </div>
+    <button type="button" aria-label="Zoom in" style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px;">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+    </button>
+    <div style="width: 62px; height: 22px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+      <input type="text" value="37.5" aria-label="Zoom percent" style="width: 34px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0;">
+      <span style="font-size: 10px; color: #8990A6;">%</span>
+    </div>
+    <button type="button" style="height: 22px; padding: 0 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Fit</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1920,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

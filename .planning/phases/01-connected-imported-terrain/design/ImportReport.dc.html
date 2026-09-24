@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Import outcomes and report</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1100px; height: 740px; box-sizing: border-box; padding: 18px; display: flex; flex-direction: column; gap: 14px; background: #0D0F16; color: #ECEDF3; font-size: 13px;">
+
+  <div style="display: flex; align-items: baseline; gap: 10px;">
+    <h2 style="margin: 0; font-family: Spectral, Georgia, serif; font-size: 20px; font-weight: 600;">Bounded import outcomes</h2>
+    <span style="font-size: 12px; color: #8990A6;">IMPT-03 · every limit produces a readable result and a next action</span>
+  </div>
+
+  <div style="display: flex; gap: 14px;">
+    <!-- rejection -->
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 14px; background: #161923; border: 1px solid #3B4159; border-left: 3px solid #E2685A; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span style="font-size: 13px; font-weight: 600;">Rejected before decoding</span>
+      </div>
+      <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #D5D9E6;">This map declares 32,768 × 32,768 pixels. Mapwright edits documents up to 16,384 × 16,384, so it was not opened.</p>
+      <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #ADB3C6;">Nothing was written and your file is untouched. Export a smaller size from Inkarnate, or import the preview only as a locked base.</p>
+      <div style="margin-top: 11px; display: flex; gap: 7px;">
+        <button type="button" style="height: 30px; padding: 0 11px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Import preview only</button>
+        <button type="button" style="height: 30px; padding: 0 11px; background: transparent; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Choose another file</button>
+      </div>
+      <div style="margin-top: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">limit: document axis ≤ 16,384 px</div>
+    </div>
+
+    <!-- degradation -->
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 14px; background: #161923; border: 1px solid #3B4159; border-left: 3px solid #C98A45; border-radius: 4px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="2" stroke-linecap="round"><path d="M12 3l9 17H3z"></path><path d="M12 9v5M12 17h.01"></path></svg>
+        <span style="font-size: 13px; font-weight: 600;">Imported with degradation</span>
+      </div>
+      <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #D5D9E6;">The scene description nests deeper than Mapwright reads (52 of a 48-level limit). Terrain and the preview were recovered; two object groups were not.</p>
+      <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #ADB3C6;">You can paint and export now. The skipped groups stay listed in the import report, and the preview still shows them.</p>
+      <div style="margin-top: 11px; display: flex; gap: 7px;">
+        <button type="button" style="height: 30px; padding: 0 11px; background: #5C6FE0; color: #080A14; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 12px; font-weight: 600;">Open the project</button>
+        <button type="button" style="height: 30px; padding: 0 11px; background: transparent; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">See report</button>
+      </div>
+      <div style="margin-top: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">limits: JSON depth 48 · inflate 6 GiB · tokens 40 M</div>
+    </div>
+  </div>
+
+  <div style="height: 1px; background: #252A3A;"></div>
+
+  <!-- report -->
+  <div style="flex-grow: 1; box-sizing: border-box; display: flex; gap: 14px; min-height: 0;">
+    <div style="flex-grow: 1; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border: 1px solid #252A3A; border-radius: 4px; overflow: hidden;">
+      <div style="box-sizing: border-box; padding: 11px 13px; border-bottom: 1px solid #252A3A; display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 13px; font-weight: 600;">Import report</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">rev 1 · aethermoor-west.ink</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 26px; padding: 0 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Copy as text</button>
+      </div>
+      <div style="flex-grow: 1; overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-bottom: 1px solid #1D2130;">
+          <div style="width: 6px; height: 6px; border-radius: 3px; background: #5FAE7F;"></div>
+          <span style="flex-grow: 1; font-size: 12px;">Terrain recovered onto Background and Foreground, with source transforms</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">editable</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-bottom: 1px solid #1D2130;">
+          <div style="width: 6px; height: 6px; border-radius: 3px; background: #5FAE7F;"></div>
+          <span style="flex-grow: 1; font-size: 12px;">1 river recovered as an editable modifier of Foreground’s land mask</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">editable</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-bottom: 1px solid #1D2130;">
+          <div style="width: 6px; height: 6px; border-radius: 3px; background: #C98A45;"></div>
+          <span style="flex-grow: 1; font-size: 12px;">37 stamps could not be matched to a local asset</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C98A45;">shown in preview only</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-bottom: 1px solid #1D2130;">
+          <div style="width: 6px; height: 6px; border-radius: 3px; background: #C98A45;"></div>
+          <span style="flex-grow: 1; font-size: 12px;">2 fonts are not installed — labels keep their recorded font identity</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C98A45;">Phase 3</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 13px; border-bottom: 1px solid #1D2130;">
+          <div style="width: 6px; height: 6px; border-radius: 3px; background: #9D7BE0;"></div>
+          <span style="flex-grow: 1; font-size: 12px;">Baked effects recorded as provenance; baked coasts are not editable geometry</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">not replayed</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 9px 13px;">
+          <div style="width: 6px; height: 6px; border-radius: 3px; background: #8990A6;"></div>
+          <span style="flex-grow: 1; font-size: 12px;">Original .ink stored immutably</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">sha256 9f4c…be21</span>
+        </div>
+      </div>
+      <div style="box-sizing: border-box; padding: 9px 13px; border-top: 1px solid #252A3A; font-size: 11px; color: #8990A6;">The report stays with the project and reopens from <span style="color:#ADB3C6;">File ▸ Import report</span>.</div>
+    </div>
+
+    <div style="width: 330px; flex-shrink: 0; box-sizing: border-box; padding: 14px; background: #161923; border: 1px solid #252A3A; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Partial recovery, in the editor</div>
+      <p style="margin: 9px 0 0; font-size: 12px; line-height: 1.5; color: #ADB3C6;">Recovered-but-not-replayable content keeps a baked fallback. The layer row marks it, and the inspector says what editing it would change.</p>
+      <div style="margin-top: 12px; padding: 10px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 24px; height: 24px; border-radius: 3px; background: #7A6E58;"></div>
+          <div style="flex-grow: 1;">
+            <div style="font-size: 12px;">Background — recovered terrain</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C98A45;">baked fallback · replay untrusted</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.9" stroke-linecap="round"><path d="M12 3l9 17H3z"></path></svg>
+        </div>
+        <p style="margin: 9px 0 0; font-size: 11px; line-height: 1.45; color: #ADB3C6;">Painting here replaces the baked pixels for the affected tiles. The imported description is kept but not re-run, so the rest of the layer will not shift.</p>
+      </div>
+      <div style="margin-top: 12px; display: flex; align-items: flex-start; gap: 8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M12 11v5"></path></svg>
+        <span style="font-size: 11px; line-height: 1.45; color: #8990A6;">Native edits you make are stored separately from imported history, so a later importer change cannot rewrite your work.</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1100,"height":740}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

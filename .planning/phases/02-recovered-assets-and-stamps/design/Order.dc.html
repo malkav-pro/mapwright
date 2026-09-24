@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Selection and object order</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1240px; height: 1020px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">Selection and object order</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P2-06</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">Select tool · <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">V</span></span>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; min-height: 0;">
+
+    <!-- LEFT -->
+    <div style="flex-grow: 1; box-sizing: border-box; display: flex; flex-direction: column; min-width: 0; padding: 13px 14px; overflow: hidden;">
+
+      <!-- marquee + multi-transform -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Three selected — scale is individual, rotation is shared</div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px;">
+
+        <div>
+          <div style="font-size: 10px; color: #8990A6; margin-bottom: 5px;">Marquee, then the arrangement</div>
+          <svg viewBox="0 0 250 176" width="100%" height="176" style="display:block; border:1px solid #2F3447; border-radius:3px; background:#3E4A33;">
+            <path d="M0 132q54-18 110-6t140-12v62H0z" fill="#4E5C3D"></path>
+            <g><path d="M60 118l12-26h-24zM60 100l15-30h-30z" fill="#3E6B4E"></path><path d="M56 118h8v12h-8z" fill="#4A3C2E"></path></g>
+            <g><path d="M122 124l11-24h-22zM122 108l14-28h-28z" fill="#456F52"></path><path d="M118 124h8v10h-8z" fill="#4A3C2E"></path></g>
+            <g><path d="M186 114l13-28h-26zM186 96l16-32h-32z" fill="#2F5A42"></path><path d="M182 114h8v14h-8z" fill="#4A3C2E"></path></g>
+            <rect x="38" y="52" width="176" height="86" fill="#5C6FE0" opacity="0.1"></rect>
+            <rect x="38" y="52" width="176" height="86" fill="none" stroke="#93A6FF" stroke-width="1.2" stroke-dasharray="4 3"></rect>
+            <rect x="44" y="62" width="34" height="72" fill="none" stroke="#5C6FE0" stroke-width="1.1"></rect>
+            <rect x="106" y="74" width="32" height="64" fill="none" stroke="#5C6FE0" stroke-width="1.1"></rect>
+            <rect x="168" y="58" width="36" height="74" fill="none" stroke="#5C6FE0" stroke-width="1.1"></rect>
+            <circle cx="126" cy="96" r="4" fill="#9D7BE0"></circle>
+            <path d="M126 88v-4M126 108v-4M116 96h-4M140 96h-4" stroke="#9D7BE0" stroke-width="1.2"></path>
+            <text x="8" y="18" fill="#9D7BE0" font-family="'IBM Plex Mono', monospace" font-size="9">shared centre</text>
+            <text x="8" y="170" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="9">3 selected · 1 outline each</text>
+          </svg>
+        </div>
+
+        <div>
+          <div style="font-size: 10px; color: #5FAE7F; margin-bottom: 5px;">Scale 130% — each in place</div>
+          <svg viewBox="0 0 250 176" width="100%" height="176" style="display:block; border:1px solid #2C4437; border-radius:3px; background:#3E4A33;">
+            <path d="M0 132q54-18 110-6t140-12v62H0z" fill="#4E5C3D"></path>
+            <g><path d="M60 118l16-34h-32zM60 96l19-38h-38z" fill="#3E6B4E"></path><path d="M55 118h10v12h-10z" fill="#4A3C2E"></path></g>
+            <g><path d="M122 124l14-31h-28zM122 104l18-36h-36z" fill="#456F52"></path><path d="M117 124h10v10h-10z" fill="#4A3C2E"></path></g>
+            <g><path d="M186 114l17-36h-34zM186 90l21-42h-42z" fill="#2F5A42"></path><path d="M181 114h10v14h-10z" fill="#4A3C2E"></path></g>
+            <path d="M60 130v6M122 134v6M186 128v6" stroke="#5FAE7F" stroke-width="1.4"></path>
+            <circle cx="60" cy="130" r="2.4" fill="#5FAE7F"></circle><circle cx="122" cy="134" r="2.4" fill="#5FAE7F"></circle><circle cx="186" cy="128" r="2.4" fill="#5FAE7F"></circle>
+            <text x="8" y="18" fill="#5FAE7F" font-family="'IBM Plex Mono', monospace" font-size="9">anchors unmoved</text>
+            <text x="8" y="170" fill="#5FAE7F" font-family="'IBM Plex Mono', monospace" font-size="9">bigger trees, same spacing</text>
+          </svg>
+        </div>
+
+        <div>
+          <div style="font-size: 10px; color: #9D7BE0; margin-bottom: 5px;">Rotate 18° — the arrangement</div>
+          <svg viewBox="0 0 250 176" width="100%" height="176" style="display:block; border:1px solid #3A3252; border-radius:3px; background:#3E4A33;">
+            <path d="M0 132q54-18 110-6t140-12v62H0z" fill="#4E5C3D"></path>
+            <g transform="rotate(18 126 96)">
+              <g><path d="M60 118l12-26h-24zM60 100l15-30h-30z" fill="#3E6B4E"></path><path d="M56 118h8v12h-8z" fill="#4A3C2E"></path></g>
+              <g><path d="M122 124l11-24h-22zM122 108l14-28h-28z" fill="#456F52"></path><path d="M118 124h8v10h-8z" fill="#4A3C2E"></path></g>
+              <g><path d="M186 114l13-28h-26zM186 96l16-32h-32z" fill="#2F5A42"></path><path d="M182 114h8v14h-8z" fill="#4A3C2E"></path></g>
+            </g>
+            <circle cx="126" cy="96" r="4" fill="#9D7BE0"></circle>
+            <path d="M126 96l68 22" stroke="#9D7BE0" stroke-width="1" stroke-dasharray="3 3"></path>
+            <path d="M126 96l72 0" stroke="#9D7BE0" stroke-width="1" stroke-dasharray="3 3" opacity="0.45"></path>
+            <text x="8" y="18" fill="#9D7BE0" font-family="'IBM Plex Mono', monospace" font-size="9">pivot = bounds centre of the</text>
+            <text x="8" y="30" fill="#9D7BE0" font-family="'IBM Plex Mono', monospace" font-size="9">unlocked selection</text>
+            <text x="8" y="170" fill="#9D7BE0" font-family="'IBM Plex Mono', monospace" font-size="9">positions swing, each tree turns with it</text>
+          </svg>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; margin-top: 11px; padding: 11px 12px; background: #141822; border: 1px solid #3B4159; border-radius: 4px;">
+        <p style="margin: 0; font-size: 11px; line-height: 1.55; color: #8990A6;">The two behave differently on purpose. <span style="color:#ECEDF3;">Scaling</span> resizes each stamp about its own anchor — a forest gets bigger trees, not a spread-out forest. <span style="color:#ECEDF3;">Rotating</span> turns the whole arrangement about one shared centre — the <em>proposed convention</em> is the bounding-box centre of the unlocked selection, computed once when the drag begins so the pivot cannot drift mid-gesture. Each stamp also turns by the same angle, so the group reads as rigid.</p>
+        <p style="margin: 7px 0 0; font-size: 11px; line-height: 1.55; color: #8990A6;">This is a temporary selection behaviour, not a group object: deselecting leaves no persistent grouping. A completed drag is <span style="color:#ECEDF3;">one undo step</span> covering every affected stamp; <span style="font-family:'IBM Plex Mono',monospace;">Esc</span> mid-drag cancels the whole preview.</p>
+      </div>
+
+      <!-- reorder + overlap -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 16px;">Reordering three overlapping transparent stamps</div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px;">
+        <div>
+          <div style="font-size: 10px; color: #8990A6; margin-bottom: 5px;">Before — 014, 015, 016</div>
+          <svg viewBox="0 0 250 130" width="100%" height="130" style="display:block; border:1px solid #2F3447; border-radius:3px; background:#3E4A33;">
+            <circle cx="92" cy="72" r="36" fill="#274C39" opacity="0.72"></circle>
+            <circle cx="126" cy="60" r="36" fill="#5C7A4A" opacity="0.72"></circle>
+            <circle cx="158" cy="76" r="36" fill="#3E6B4E" opacity="0.78"></circle>
+            <text x="8" y="18" fill="#ADB3C6" font-family="'IBM Plex Mono', monospace" font-size="9">p2 · p1 · p2</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size: 10px; color: #5FAE7F; margin-bottom: 5px;">After — 015 sent to back</div>
+          <svg viewBox="0 0 250 130" width="100%" height="130" style="display:block; border:1px solid #2C4437; border-radius:3px; background:#3E4A33;">
+            <circle cx="126" cy="60" r="36" fill="#5C7A4A" opacity="0.72"></circle>
+            <circle cx="92" cy="72" r="36" fill="#274C39" opacity="0.72"></circle>
+            <circle cx="158" cy="76" r="36" fill="#3E6B4E" opacity="0.78"></circle>
+            <text x="8" y="18" fill="#5FAE7F" font-family="'IBM Plex Mono', monospace" font-size="9">p1 · p2 · p2 — one undo step</text>
+          </svg>
+        </div>
+        <div>
+          <div style="font-size: 10px; color: #E2685A; margin-bottom: 5px;">Regrouped by atlas page — refused</div>
+          <svg viewBox="0 0 250 130" width="100%" height="130" style="display:block; border:1px solid #4A2E2C; border-radius:3px; background:#3E4A33;">
+            <circle cx="126" cy="60" r="36" fill="#5C7A4A" opacity="0.72"></circle>
+            <circle cx="158" cy="76" r="36" fill="#3E6B4E" opacity="0.78"></circle>
+            <circle cx="92" cy="72" r="36" fill="#274C39" opacity="0.72"></circle>
+            <text x="8" y="18" fill="#E2685A" font-family="'IBM Plex Mono', monospace" font-size="9">two draws, wrong overlap</text>
+          </svg>
+        </div>
+      </div>
+      <p style="margin: 9px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">The list is what composites. Batching is allowed only for a <span style="color:#ECEDF3;">consecutive</span> run that happens to share a page; the renderer never sorts the list by page. The acceptance fixture is an unbatched draw-order reference, and the third figure is what failing it looks like — the same three stamps, a different picture where they overlap.</p>
+
+      <!-- picking -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 16px;">Picking</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 8px;">
+        <div>
+          <svg viewBox="0 0 380 158" width="100%" height="158" style="display:block; border:1px solid #2F3447; border-radius:3px; background:#3E4A33;">
+            <rect x="40" y="24" width="120" height="120" fill="none" stroke="#6A7089" stroke-width="1" stroke-dasharray="3 3"></rect>
+            <path d="M100 56l26 62H74z" fill="#3E6B4E"></path>
+            <rect x="94" y="112" width="12" height="26" fill="#4A3C2E"></rect>
+            <circle cx="58" cy="40" r="6" fill="none" stroke="#E2685A" stroke-width="1.6"></circle>
+            <path d="M54 36l8 8M62 36l-8 8" stroke="#E2685A" stroke-width="1.4"></path>
+            <text x="172" y="38" fill="#E2685A" font-family="'IBM Plex Mono', monospace" font-size="10">a click in transparent padding</text>
+            <text x="172" y="52" fill="#8990A6" font-family="'IBM Plex Mono', monospace" font-size="10">picks nothing here — it falls</text>
+            <text x="172" y="66" fill="#8990A6" font-family="'IBM Plex Mono', monospace" font-size="10">through to whatever is below</text>
+            <circle cx="100" cy="96" r="6" fill="none" stroke="#5FAE7F" stroke-width="1.6"></circle>
+            <path d="M96 96h8M100 92v8" stroke="#5FAE7F" stroke-width="1.4"></path>
+            <text x="172" y="100" fill="#5FAE7F" font-family="'IBM Plex Mono', monospace" font-size="10">a click on opaque pixels picks it</text>
+            <text x="172" y="120" fill="#6A7089" font-family="'IBM Plex Mono', monospace" font-size="9">candidates come from the spatial index,</text>
+            <text x="172" y="132" fill="#6A7089" font-family="'IBM Plex Mono', monospace" font-size="9">then an alpha test decides</text>
+          </svg>
+        </div>
+        <div>
+          <svg viewBox="0 0 380 158" width="100%" height="158" style="display:block; border:1px solid #2F3447; border-radius:3px; background:#3E4A33;">
+            <circle cx="120" cy="86" r="40" fill="#274C39" opacity="0.8"></circle>
+            <circle cx="152" cy="74" r="40" fill="#5C7A4A" opacity="0.8"></circle>
+            <circle cx="180" cy="90" r="40" fill="#3E6B4E" opacity="0.85"></circle>
+            <circle cx="150" cy="84" r="6" fill="none" stroke="#93A6FF" stroke-width="1.8"></circle>
+            <rect x="232" y="24" width="140" height="112" rx="3" fill="#0D0F16" opacity="0.94"></rect>
+            <text x="240" y="42" fill="#ECEDF3" font-family="'IBM Plex Mono', monospace" font-size="10">Alt-click 2 of 3</text>
+            <rect x="240" y="50" width="124" height="20" rx="2" fill="#23294A" stroke="#5C6FE0" stroke-width="1"></rect>
+            <text x="246" y="64" fill="#C6CFFF" font-family="'IBM Plex Mono', monospace" font-size="9">016 spruce-dark-a</text>
+            <rect x="240" y="74" width="124" height="20" rx="2" fill="#252A3A"></rect>
+            <text x="246" y="88" fill="#ADB3C6" font-family="'IBM Plex Mono', monospace" font-size="9">015 oak-broadleaf-b</text>
+            <rect x="240" y="98" width="124" height="20" rx="2" fill="#252A3A"></rect>
+            <text x="246" y="112" fill="#ADB3C6" font-family="'IBM Plex Mono', monospace" font-size="9">014 pine-highland-a</text>
+            <text x="240" y="132" fill="#6A7089" font-family="'IBM Plex Mono', monospace" font-size="9">Alt-click again to step down</text>
+          </svg>
+        </div>
+      </div>
+      <p style="margin: 9px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">A normal click takes the <span style="color:#ECEDF3;">topmost visible alpha-aware hit</span>: the nearest-to-front object whose actual pixels are opaque enough under the pointer. Transparent padding never intercepts a click as if it were artwork. <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">Alt-click</span> steps down the stack of hits at that point, showing the position in the stack each time and wrapping at the bottom. An object obscured completely is still reachable from the order list, which is also the keyboard route.</p>
+    </div>
+
+    <!-- RIGHT: the order list -->
+    <div style="width: 436px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border-left: 1px solid #2F3447;">
+
+      <div style="box-sizing: border-box; padding: 10px 12px; background: #1D2130; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 600;">Terrain marks</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">object layer</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; background: #23294A; border: 1px solid #5C6FE0; border-radius: 2px; padding: 1px 6px;">3 of 418</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Row 001 is drawn last</span> — the top of this list is the front of the picture. Layer order stacks whole layers; this list orders the entities <em>within</em> one layer, and paths and labels will share these rows in Phase 3.</p>
+      </div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-bottom: 1px solid #252A3A; flex-shrink: 0;">
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 8px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px; flex-grow: 1;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5"></path></svg>
+          <input type="text" value="" placeholder="Filter these 418 objects" aria-label="Filter objects" style="flex-grow: 1; min-width: 0; background: transparent; border: none; color: #ECEDF3; font-size: 11px; padding: 0;">
+        </div>
+        <button type="button" aria-pressed="true" title="Show each object's atlas page" style="height: 26px; padding: 0 8px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 10px;">Pages</button>
+      </div>
+
+      <div style="flex-grow: 1; min-height: 0; overflow: hidden;">
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 24px; padding: 0 12px; background: #14161F; border-bottom: 1px solid #1D2130;">
+          <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 26px;">#</span>
+          <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; flex-grow: 1;">front → back</span>
+          <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 30px;">page</span>
+          <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 34px;">opac</span>
+        </div>
+
+        <!-- drop indicator -->
+        <div style="height: 2px; background: #5C6FE0; margin: 0 12px;"></div>
+
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 12px; background: #23294A; border-left: 2px solid #5C6FE0; border-bottom: 1px solid #1D2130;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M8 7h8M8 12h8M8 17h8"></path></svg>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; width: 26px;">014</span>
+          <div style="width: 20px; height: 20px; border: 1px solid #5C6FE0; border-radius: 2px; overflow: hidden; flex-shrink: 0;"><svg viewBox="0 0 20 20" width="20" height="20" style="display:block;"><rect width="20" height="20" fill="#1A1E2B"></rect><path d="M10 3l4 8H6zM10 9l5 9H5z" fill="#3E6B4E"></path></svg></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">pine-highland-a</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9D7BE0; background: #1E1A2A; border: 1px solid #3A3252; border-radius: 2px; padding: 0 4px; width: 22px; text-align: center;">p2</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; width: 34px; text-align: right;">88%</span>
+        </div>
+
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 12px; background: #23294A; border-left: 2px solid #5C6FE0; border-bottom: 1px solid #1D2130;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M8 7h8M8 12h8M8 17h8"></path></svg>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; width: 26px;">015</span>
+          <div style="width: 20px; height: 20px; border: 1px solid #5C6FE0; border-radius: 2px; overflow: hidden; flex-shrink: 0;"><svg viewBox="0 0 20 20" width="20" height="20" style="display:block;"><rect width="20" height="20" fill="#1A1E2B"></rect><circle cx="10" cy="8" r="5" fill="#5C7A4A"></circle><rect x="9" y="12" width="2" height="6" fill="#4A3C2E"></rect></svg></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">oak-broadleaf-b</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #8990A6; background: #1D2130; border: 1px solid #2F3447; border-radius: 2px; padding: 0 4px; width: 22px; text-align: center;">p1</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; width: 34px; text-align: right;">100%</span>
+        </div>
+
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 12px; background: #23294A; border-left: 2px solid #5C6FE0; border-bottom: 1px solid #1D2130;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M8 7h8M8 12h8M8 17h8"></path></svg>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; width: 26px;">016</span>
+          <div style="width: 20px; height: 20px; border: 1px solid #5C6FE0; border-radius: 2px; overflow: hidden; flex-shrink: 0;"><svg viewBox="0 0 20 20" width="20" height="20" style="display:block;"><rect width="20" height="20" fill="#1A1E2B"></rect><path d="M10 4l4 8H6zM10 10l5 8H5z" fill="#274C39"></path></svg></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">spruce-dark-a</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9D7BE0; background: #1E1A2A; border: 1px solid #3A3252; border-radius: 2px; padding: 0 4px; width: 22px; text-align: center;">p2</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #C6CFFF; width: 34px; text-align: right;">100%</span>
+        </div>
+
+        <!-- placeholder row -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 12px; background: #17141A; border-bottom: 1px solid #1D2130;">
+          <span style="width: 11px; flex-shrink: 0;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; width: 26px;">017</span>
+          <div style="width: 20px; height: 20px; border: 1px dashed #E2CFA8; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#E2CFA8" stroke-width="2.2" stroke-linecap="round"><path d="M12 5l8 14H4z"></path></svg></div>
+          <span style="font-size: 10px; color: #E2CFA8; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Oak, large — art missing</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; width: 22px; text-align: center;">—</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6; width: 34px; text-align: right;">100%</span>
+        </div>
+
+        <!-- locked row -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 36px; padding: 0 12px; border-bottom: 1px solid #1D2130; opacity: 0.6;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; width: 26px;">018</span>
+          <div style="width: 20px; height: 20px; border: 1px solid #3B4159; border-radius: 2px; overflow: hidden; flex-shrink: 0;"><svg viewBox="0 0 20 20" width="20" height="20" style="display:block;"><rect width="20" height="20" fill="#1A1E2B"></rect><path d="M2 15l6-8 4 5 3-3 3 6z" fill="#6B6152"></path></svg></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ridge-peak-c</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; width: 22px; text-align: center;">p1</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6; width: 34px; text-align: right;">100%</span>
+        </div>
+
+        <!-- scatter group -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 7px; height: 42px; padding: 0 12px; background: #141822; border-bottom: 1px solid #1D2130;">
+          <span style="width: 11px; flex-shrink: 0;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; width: 26px;">019</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9D7BE0" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;"><circle cx="6" cy="8" r="2"></circle><circle cx="13" cy="5" r="2"></circle><circle cx="18" cy="11" r="2"></circle><circle cx="9" cy="16" r="2"></circle><circle cx="16" cy="19" r="2"></circle></svg>
+          <div style="flex-grow: 1; min-width: 0;">
+            <div style="font-size: 10px; color: #ECEDF3;">Scatter — 4 assets</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">384 placements · seed 0x7C41A9</div>
+          </div>
+          <button type="button" aria-label="Expand this scatter group" style="width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; background: #252A3A; border: 1px solid #3B4159; border-radius: 3px; flex-shrink: 0;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ECEDF3" stroke-width="2.6" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+
+        <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; height: 26px; background: #12141D; border-bottom: 1px solid #1D2130;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">020 – 418 · virtualised</span></div>
+
+        <!-- mixed values -->
+        <div style="box-sizing: border-box; margin: 12px; padding: 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Mixed values across the three</div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 9px;">
+            <span style="font-size: 11px; color: #ADB3C6; width: 58px; flex-shrink: 0;">Size</span>
+            <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 90px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="Mixed" aria-label="Size, mixed across the selection" style="width: 52px; background: transparent; border: none; color: #8990A6; font-style: italic; font-size: 11px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">px</span></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; flex-grow: 1;">42 · 50 · 62</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 7px;">
+            <span style="font-size: 11px; color: #ADB3C6; width: 58px; flex-shrink: 0;">Scale by</span>
+            <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 90px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #93A6FF; border-radius: 3px;"><input type="text" value="130" aria-label="Relative scale percent" style="width: 52px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">%</span></div>
+            <span style="font-size: 10px; color: #6A7089; flex-grow: 1;">→ 442 · 530 · 666</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 7px;">
+            <span style="font-size: 11px; color: #ADB3C6; width: 58px; flex-shrink: 0;">Opacity</span>
+            <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 90px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="Mixed" aria-label="Opacity, mixed across the selection" style="width: 52px; background: transparent; border: none; color: #8990A6; font-style: italic; font-size: 11px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">%</span></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; flex-grow: 1;">88 · 100 · 100</span>
+          </div>
+          <p style="margin: 8px 0 0; font-size: 10px; line-height: 1.55; color: #8990A6;"><span style="font-style: italic; color:#ADB3C6;">Mixed</span> is never rendered as <span style="font-family:'IBM Plex Mono',monospace;">0</span> or as a blank field — either would read as a real value. Typing an <span style="color:#ECEDF3;">absolute</span> number into Size sets all three to it. <span style="color:#ECEDF3;">Scale by</span> is the relative control and keeps the variation. Rotation and opacity offer the same pair; position is absolute only for one stamp and relative (<span style="font-family:'IBM Plex Mono',monospace;">Move by</span>) for several.</p>
+        </div>
+
+        <!-- locked conflict -->
+        <div style="box-sizing: border-box; margin: 0 12px 12px; padding: 11px; background: #1C1815; border: 1px solid #4A4030; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E2CFA8" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+            <span style="font-size: 11px; color: #ECEDF3;">One of the four you dragged over is locked</span>
+          </div>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.55; color: #8990A6;"><span style="color:#ADB3C6;">"3 of 4 selected. ridge-peak-c is on a locked layer and was left out — it is excluded from the shared rotation centre too."</span> The marquee does not silently skip it and does not silently unlock it: the count says three, the row shows a padlock, and <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">Unlock layer</span> is the explicit next action. A hidden layer behaves the same way, with <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">Show layer</span>.</p>
+          <button type="button" style="height: 24px; padding: 0 9px; margin-top: 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Unlock Coastal detail</button>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 5px; padding: 8px 12px; background: #12141D; border-top: 1px solid #2F3447; flex-shrink: 0;">
+        <button type="button" title="Send to back — Ctrl+[" style="height: 24px; padding: 0 7px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">To back</button>
+        <button type="button" title="Backward — [" style="height: 24px; padding: 0 7px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Back</button>
+        <button type="button" title="Forward — ]" style="height: 24px; padding: 0 7px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Fwd</button>
+        <button type="button" title="Bring to front — Ctrl+]" style="height: 24px; padding: 0 7px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">To front</button>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" title="Duplicate — Ctrl+D" style="height: 24px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Duplicate</button>
+        <button type="button" title="Copy — Ctrl+C" style="height: 24px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Copy</button>
+        <button type="button" title="Paste — Ctrl+V" style="height: 24px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Paste</button>
+      </div>
+      <div style="box-sizing: border-box; padding: 0 12px 9px; background: #12141D; flex-shrink: 0;">
+        <p style="margin: 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Duplicate and paste land just in front of the frontmost source row, offset by a small fixed amount, selected and ready to drag. Copies get <span style="color:#ADB3C6;">new entity identities</span> and keep the same asset references — a duplicate is a second placement of one asset, never a second copy of the bytes. Paste is same-map only in P0.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":1020}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

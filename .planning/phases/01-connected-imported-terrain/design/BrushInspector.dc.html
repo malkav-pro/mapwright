@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Texture brush inspector</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 380px; height: 880px; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border: 1px solid #2F3447; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; padding: 9px 11px; background: #1D2130; border-bottom: 1px solid #2F3447;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 3.5a2.1 2.1 0 0 1 3 3L11 16l-4 1 1-4z"></path></svg>
+      <span style="font-size: 13px; font-weight: 600;">Texture brush</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">B</span>
+      <div style="flex-grow: 1;"></div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-04</span>
+    </div>
+    <div style="margin-top: 5px; font-size: 11px; color: #8990A6;">Painting on <span style="color: #ECEDF3;">Foreground</span> · paint does not change land coverage</div>
+  </div>
+
+  <div style="flex-grow: 1; box-sizing: border-box; padding: 11px; display: flex; flex-direction: column; gap: 11px; min-height: 0; overflow: hidden;">
+
+    <!-- preset library -->
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 7px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Preset</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">14 in this pack</span>
+      </div>
+      <div style="margin-top: 7px; display: flex; gap: 6px;">
+        <button type="button" style="flex-grow: 1; height: 30px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 9px; background: #0D0F16; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; text-align: left;">
+          <span style="width: 16px; height: 16px; border-radius: 2px; background: #9FA76A; flex-shrink: 0; display: block;"></span>
+          <span style="flex-grow: 1; font-size: 12px;">Heath scrub, tapered</span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#8990A6" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <button type="button" style="height: 30px; padding: 0 10px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Save as…</button>
+      </div>
+      <div style="margin-top: 7px; display: flex; align-items: center; gap: 8px; padding: 7px 9px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px;">
+        <svg width="34" height="14" viewBox="0 0 34 14" style="flex-shrink:0;"><path d="M1 7 C 6 2.6, 12 1.6, 17 1.6 C 22 1.6, 28 2.6, 33 7 C 28 11.4, 22 12.4, 17 12.4 C 12 12.4, 6 11.4, 1 7 Z" fill="#9FA76A"></path></svg>
+        <span style="font-size: 11px; line-height: 1.4; color: #8990A6;">This preset <span style="color: #ADB3C6;">tapers</span> — strokes narrow at both ends on their own, with no pressure involved.</span>
+      </div>
+    </div>
+
+    <div style="height: 1px; background: #252A3A;"></div>
+
+    <!-- tip + footprint -->
+    <div style="box-sizing: border-box; border: 1px solid #3B4159; border-radius: 5px; overflow: hidden;">
+      <div style="display: flex;">
+        <div style="width: 42px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 8px 0; background: #12141D; border-right: 1px solid #252A3A;">
+          <button type="button" aria-label="Round tip" title="Round" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid transparent; border-radius: 4px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#8990A6" stroke="none"><circle cx="12" cy="12" r="8"></circle></svg>
+          </button>
+          <button type="button" aria-label="Edged tip — selected" title="Edged" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="#93A6FF" stroke="none"><path d="M12 3l2.1 4.6 5 .5-3.7 3.4 1 4.9L12 14l-4.4 2.4 1-4.9L4.9 8.1l5-.5z"></path></svg>
+          </button>
+        </div>
+
+        <div style="flex-grow: 1; box-sizing: border-box; padding: 10px; display: flex; flex-direction: column; gap: 9px; min-width: 0;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <label for="b-size" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Size</label>
+              <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+                <input id="b-size" type="text" value="256" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+                <span style="font-size: 10px; color: #8990A6;">px ø</span>
+              </div>
+            </div>
+            <div style="margin-top: 6px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 42%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 42%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+            </div>
+          </div>
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 7px;">
+              <label for="b-hard" style="flex-grow: 1; font-size: 12px; color: #ECEDF3;">Hardness</label>
+              <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #93A6FF; border-radius: 3px; box-shadow: 0 0 0 1px #93A6FF;">
+                <input id="b-hard" type="text" value="45" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+                <span style="font-size: 10px; color: #8990A6;">%</span>
+              </div>
+            </div>
+            <div style="margin-top: 6px; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+              <div style="width: 45%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+              <span style="position: absolute; left: 45%; top: -6px; width: 16px; height: 16px; margin-left: -8px; border-radius: 8px; background: #FFFFFF; border: 1px solid #0D0F16; box-shadow: 0 0 0 2px #93A6FF; display: block;"></span>
+            </div>
+          </div>
+
+          <!-- edged-only controls -->
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <label for="b-rough" style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Roughness</label>
+            <div style="width: 52px; height: 24px; box-sizing: border-box; display: flex; align-items: center; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+              <input id="b-rough" type="text" value="6" style="width: 100%; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <input id="b-corners" type="checkbox" checked style="width: 14px; height: 14px; accent-color: #5C6FE0;">
+              <label for="b-corners" style="font-size: 12px; color: #ADB3C6;">Smooth</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="box-sizing: border-box; padding: 7px 10px; background: #12141D; border-top: 1px solid #252A3A;">
+        <span style="font-size: 11px; line-height: 1.4; color: #8990A6;"><span style="color: #ADB3C6;">Edged</span> — a ragged tip. Roughness and corner smoothing appear only for this tip; a round tip shows hardness alone.</span>
+      </div>
+    </div>
+
+    <!-- stroke -->
+    <div style="display: flex; flex-direction: column; gap: 9px;">
+      <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Stroke</span>
+
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <label for="b-op" style="width: 62px; font-size: 12px; color: #ADB3C6;">Opacity</label>
+        <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+          <div style="width: 78%; height: 4px; background: #676E88; border-radius: 2px;"></div>
+          <span style="position: absolute; left: 78%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ADB3C6; border: 1px solid #0D0F16; display: block;"></span>
+        </div>
+        <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #1B1215; border: 1px solid #E2685A; border-radius: 3px;">
+          <input id="b-op" type="text" value="180" aria-invalid="true" style="width: 42px; background: transparent; border: none; color: #F3B5AB; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+          <span style="font-size: 10px; color: #8990A6;">%</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 7px; margin: -5px 0 0 71px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        <span style="font-size: 10px; color: #F3B5AB;">0–100. Enter clamps to 100; Esc restores 78.</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <label for="b-flow" style="width: 62px; font-size: 12px; color: #ADB3C6;">Flow</label>
+        <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+          <div style="width: 60%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+          <span style="position: absolute; left: 60%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+        </div>
+        <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+          <input id="b-flow" type="text" value="60" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+          <span style="font-size: 10px; color: #8990A6;">%</span>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <label for="b-sp" style="width: 62px; font-size: 12px; color: #ADB3C6;">Spacing</label>
+        <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+          <div style="width: 18%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+          <span style="position: absolute; left: 18%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+        </div>
+        <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+          <input id="b-sp" type="text" value="18" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+          <span style="font-size: 10px; color: #8990A6;">%</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 1px; background: #252A3A;"></div>
+
+    <!-- texture -->
+    <div>
+      <div style="display: flex; align-items: baseline; gap: 7px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Texture</span>
+        <span style="font-size: 10px; color: #6A7089;">anchored in document space</span>
+      </div>
+      <div style="margin-top: 7px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px;">
+        <button type="button" aria-label="heath-scrub-02, selected" style="height: 44px; background: #9FA76A; border: 2px solid #5C6FE0; border-radius: 3px;"></button>
+        <button type="button" aria-label="moor-grass-01, missing" style="height: 44px; background: repeating-linear-gradient(45deg,#3A342A,#3A342A 4px,#2A251E 4px,#2A251E 8px); border: 1px solid #5A4A2C; border-radius: 3px;"></button>
+        <button type="button" aria-label="scree-fine" style="height: 44px; background: #8B8375; border: 1px solid #3B4159; border-radius: 3px;"></button>
+        <button type="button" aria-label="pine-dense" style="height: 44px; background: #4E6B43; border: 1px solid #3B4159; border-radius: 3px;"></button>
+        <button type="button" aria-label="tidal-sand" style="height: 44px; background: #D8C79C; border: 1px solid #3B4159; border-radius: 3px;"></button>
+      </div>
+      <div style="margin-top: 7px; display: flex; align-items: center; gap: 8px;">
+        <div style="flex-grow: 1; min-width: 0;">
+          <div style="font-size: 12px;">heath-scrub-02</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8990A6;">1024² · local pack · sha 4a1f…</div>
+        </div>
+        <button type="button" style="height: 26px; padding: 0 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Browse…</button>
+      </div>
+      <div style="margin-top: 7px; display: flex; align-items: center; gap: 8px; padding: 7px 9px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 3px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.9" stroke-linecap="round" style="flex-shrink:0;"><path d="M12 3l9 17H3z"></path><path d="M12 9v5M12 17h.01"></path></svg>
+        <span style="flex-grow: 1; font-size: 11px; color: #E2CFA8;">moor-grass-01 is missing from the pack</span>
+        <button type="button" style="height: 22px; padding: 0 7px; background: #2A2113; color: #E2CFA8; border: 1px solid #5A4A2C; border-radius: 3px; font-size: 10px;">Locate…</button>
+      </div>
+
+      <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 9px;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <label for="b-scale" style="width: 62px; font-size: 12px; color: #ADB3C6;">Scale</label>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+            <div style="width: 50%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+            <span style="position: absolute; left: 50%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+          </div>
+          <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+            <input id="b-scale" type="text" value="100" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+            <span style="font-size: 10px; color: #8990A6;">%</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <label for="b-rot" style="width: 62px; font-size: 12px; color: #ADB3C6;">Rotation</label>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+            <div style="width: 3.3%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+            <span style="position: absolute; left: 3.3%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+          </div>
+          <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+            <input id="b-rot" type="text" value="12" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+            <span style="font-size: 10px; color: #8990A6;">°</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <label for="b-jit" style="width: 62px; font-size: 12px; color: #ADB3C6;">Jitter ±</label>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+            <div style="width: 50%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+            <span style="position: absolute; left: 50%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span>
+          </div>
+          <div style="width: 74px; height: 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+            <input id="b-jit" type="text" value="90" style="width: 42px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+            <span style="font-size: 10px; color: #8990A6;">°</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="width: 62px; font-size: 12px; color: #6A7089;">Seed</span>
+          <div style="flex-grow: 1; height: 24px; box-sizing: border-box; display: flex; align-items: center; padding: 0 8px; background: #14161F; border: 1px solid #272C3C; border-radius: 3px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6A7089;">stroke-local · recorded for replay</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1;"></div>
+    <div style="display: flex; align-items: center; gap: 8px; padding: 8px 9px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px;">
+      <span style="flex-grow: 1; font-size: 11px; color: #8990A6;">[ ] resize · Shift+[ ] hardness · drag a label to scrub</span>
+      <button type="button" style="height: 24px; padding: 0 8px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Reset</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":380,"height":880}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

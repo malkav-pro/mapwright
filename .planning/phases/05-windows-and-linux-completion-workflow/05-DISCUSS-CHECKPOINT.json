@@ -1,0 +1,71 @@
+{
+  "phase": "05",
+  "phase_name": "Windows and Linux Completion Workflow",
+  "timestamp": "2026-09-23T14:42:09.945Z",
+  "areas_completed": [],
+  "areas_remaining": [
+    "Input and focus",
+    "Layout and scaling",
+    "Status and background work",
+    "Platform differences and failures"
+  ],
+  "decisions": {
+    "Input and focus": [
+      {
+        "question": "What happens when switching to another application during an unfinished brush stroke or object drag?",
+        "answer": "Cancel the unfinished gesture and restore the state before that stroke or drag.",
+        "options_presented": [
+          "Cancel the unfinished gesture (recommended)",
+          "Commit it up to that point"
+        ],
+        "notes": "User selected 1 and selected all four Phase 5 discussion areas. Already committed work remains durable; do not create an undo step for cancelled previews."
+      },
+      {
+        "question": "What happens if the pointer moves over a side panel while the mouse button or pen remains down?",
+        "answer": "Keep the gesture active until release; prevent panel controls from activating and keep brush painting within the canvas.",
+        "options_presented": [
+          "Keep the gesture active until release (recommended)",
+          "Finish the gesture at the canvas edge"
+        ],
+        "notes": "User selected 1. Retain pointer capture across canvas/panel boundaries; release ends the gesture. Application focus loss still cancels under the prior decision. Tablet-as-pointer scope remains; pressure is deferred."
+      },
+      {
+        "question": "How should numeric fields such as size, rotation and opacity apply changes?",
+        "answer": "Preview live; Enter or leaving the field commits one undo step, Escape restores the previous value.",
+        "options_presented": [
+          "Preview changes live (recommended)",
+          "Apply only on Enter"
+        ],
+        "notes": "User selected 1. Document-property edits form one durable undo step per completed edit, not one per keystroke. Tool-default settings remain tool state rather than fabricating document history. In-app field-focus change commits; handling numeric drafts during application deactivation is a design detail that must not conflict with cancellation of active canvas gestures."
+      },
+      {
+        "question": "How should keyboard tool switching work?",
+        "answer": "Single-key shortcuts when the canvas has focus, shown in tooltips; text and numeric typing take precedence.",
+        "options_presented": [
+          "Single-key shortcuts when canvas has focus (recommended)",
+          "Modifier combinations only"
+        ],
+        "notes": "User selected 1. Exact tool bindings remain design proposals. Ordinary text/numeric editing, dialogs and focused lists must not be intercepted by canvas tool shortcuts."
+      }
+    ]
+  },
+  "deferred_ideas": [],
+  "canonical_refs": [
+    "docs/spec.md",
+    "docs/architecture.md",
+    "docs/engine-decision.md",
+    "docs/README.md",
+    ".planning/PROJECT.md",
+    ".planning/REQUIREMENTS.md",
+    ".planning/ROADMAP.md",
+    ".planning/phases/01-connected-imported-terrain/01-CONTEXT.md",
+    ".planning/phases/01.1-normalize-document-geometry-to-1-000-map-units-with-independ/01.1-CONTEXT.md",
+    ".planning/phases/02-recovered-assets-and-stamps/02-CONTEXT.md",
+    ".planning/phases/03-water-paths-and-labels/03-CONTEXT.md",
+    ".planning/phases/04-project-finishing-and-safe-publication/04-CONTEXT.md",
+    ".planning/phases/05-windows-and-linux-completion-workflow/05-DESIGN-SPEC.md",
+    ".planning/codebase/STACK.md",
+    ".planning/codebase/ARCHITECTURE.md",
+    ".planning/codebase/CONVENTIONS.md"
+  ]
+}

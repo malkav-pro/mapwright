@@ -1,0 +1,18 @@
+{
+  "reviewedAtUtc": "2026-09-23T13:20:26Z",
+  "fixtureSha256": "67b69858634b1a2eee8082efd80043e915dcebb36e29c8dc66e42c6406e54fab",
+  "sourceFingerprint": "87855a8279f7c000fffae17b62798465414963628f566d585c3e2669b5393c0e",
+  "review": "Fresh physical Vulkan captures: map aspect and labels aligned without visible stretch; main and compact controls reachable; Land, texture and opacity cues distinct at 100% and 150%; high zoom requests finer display detail.",
+  "captures": [
+    {"path":"artifacts/phase11-acceptance/visual/compact-highzoom.png","sha256":"4d177e9188d384cd125fdb12e4d2f3692a210b4c6544402aa16daeb8d8364591"},
+    {"path":"artifacts/phase11-acceptance/visual/compact-shell.png","sha256":"ea75634266a36c44a1c00bc86fa278fc67d687c0a03a94bed827f7cf64b7ea1f"},
+    {"path":"artifacts/phase11-acceptance/visual/main-highzoom.png","sha256":"dad2fb457b5ad4a92532c8c4960abbaf520552e94ce2616bc07a01b61db86093"},
+    {"path":"artifacts/phase11-acceptance/visual/main-shell.png","sha256":"e573c02b10361c3407204c5d3e7084815faf22882fd1cf72a25aafc434bbaf3b"},
+    {"path":"artifacts/phase11-acceptance/visual/scope-land-100.png","sha256":"58ab52cddc164be96d91044a7db2afc4653549f4d18bbafd3021c4cf7314dfb8"},
+    {"path":"artifacts/phase11-acceptance/visual/scope-land-150.png","sha256":"a0d61f97ca4665520f314a5f9785aeaf01e59177f2cf1706b6b9baff0b405189"},
+    {"path":"artifacts/phase11-acceptance/visual/scope-opacity-100.png","sha256":"4db4f4d6c7f7b5a2a84d7b2ffa163aba1c5f51062a7c44d2cd1ee53c18671d39"},
+    {"path":"artifacts/phase11-acceptance/visual/scope-opacity-150.png","sha256":"fcc21481b620bcdc8c3b315832ec638589d51317c7d3a79e0228073c882c6493"},
+    {"path":"artifacts/phase11-acceptance/visual/scope-texture-100.png","sha256":"e28c0c76df63e4054f26a73f130142d66f9b8906f7110cf5692ac64441268662"},
+    {"path":"artifacts/phase11-acceptance/visual/scope-texture-150.png","sha256":"0d64aa041d7b0cb3da78387593393edc0af97057b58fb2ecc3646fa9b78b87fa"}
+  ]
+}

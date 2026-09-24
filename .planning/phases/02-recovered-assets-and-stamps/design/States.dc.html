@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Phase 2 states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1560px; height: 1500px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">States and their exact copy</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">17 states · each with where it appears, what it says and the next action</span>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; overflow: hidden; box-sizing: border-box; padding: 13px 16px;">
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px;">
+
+      <!-- 1 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S1</span><span style="font-size: 12px; color: #ECEDF3;">Empty library</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-01</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #12141D; border-left: 2px solid #3B4159; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"Nothing in the library yet. Install a pack, or import PNG and WebP files and give them a category."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Install a pack…</span> or <span style="color:#ADB3C6;">Import images…</span>, both focusable, the first focused.</div>
+      </div>
+
+      <!-- 2 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S2</span><span style="font-size: 12px; color: #ECEDF3;">Empty search</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-01</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #12141D; border-left: 2px solid #3B4159; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"Nothing matches 'pine · conifer · winter'. 612 trees are in the library; three filters are narrowing them."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Clear tags</span> or <span style="color:#ADB3C6;">Clear all filters</span>. The filters stay visible so the cause is readable, not guessed at.</div>
+      </div>
+
+      <!-- 3 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S3</span><span style="font-size: 12px; color: #ECEDF3;">Thumbnails loading</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-01, P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #12141D; border-left: 2px solid #3B4159; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">Per tile: a spinner and "Loading…". Footer: "4 thumbnails building".</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: none needed. Scrolling, filtering, selecting and placing all work. Nothing waits for the grid to finish.</div>
+      </div>
+
+      <!-- 4 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S4</span><span style="font-size: 12px; color: #ECEDF3;">Missing thumbnail</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-01</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #12141D; border-left: 2px solid #3B4159; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"No thumbnail. The asset is here and places normally."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: none. A cache state — <span style="color:#ADB3C6;">not</span> S5. The two are drawn differently on purpose.</div>
+      </div>
+
+      <!-- 5 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S5</span><span style="font-size: 12px; color: #ECEDF3;">Original file missing</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-01, P2-02</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1A1416; border-left: 2px solid #E2685A; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"The stored bytes for this asset are gone from the library. It cannot be placed. Projects already using it keep their own copy and are unaffected."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Re-import the file</span>, or remove the library entry. Placement is disabled with that reason on the button.</div>
+      </div>
+
+      <!-- 6 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S6</span><span style="font-size: 12px; color: #ECEDF3;">Duplicate asset</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #12141D; border-left: 2px solid #3B4159; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"Already in the library as 'Highland pine, mature' — same stored bytes. This file reuses that asset rather than adding a second copy."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Show it</span>. No decision is required; the import proceeds either way.</div>
+      </div>
+
+      <!-- 7 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A4030; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S7</span><span style="font-size: 12px; color: #ECEDF3;">Validation warning</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-01, P2-02, P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1C1815; border-left: 2px solid #E2CFA8; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"41% of this image is transparent border. Added, with a badge." · "A dark offset lobe suggests a baked shadow. Mapwright renders shadows; a baked one will double."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Inspect</span>, <span style="color:#ADB3C6;">Dismiss</span>, or nothing. Never blocks use and never asks for acknowledgement.</div>
+      </div>
+
+      <!-- 8 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S8</span><span style="font-size: 12px; color: #ECEDF3;">Oversized decode rejected</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1A1416; border-left: 2px solid #E2685A; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"panorama-ridge.webp is 16,384 × 11,264 — 184 Mpx, over the 64 Mpx per-file limit. Not added."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: resize it outside Mapwright and import again. The limit is named, so the fix is knowable.</div>
+      </div>
+
+      <!-- 9 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S9</span><span style="font-size: 12px; color: #ECEDF3;">Damaged file</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1A1416; border-left: 2px solid #E2685A; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"oak-broadleaf-h.png could not be decoded past row 1,842 of 2,048. Not added."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: replace the file. A partial decode is never accepted — it would place with a torn edge and look like a rendering fault.</div>
+      </div>
+
+      <!-- 10 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S10</span><span style="font-size: 12px; color: #ECEDF3;">Bad pack manifest</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1A1416; border-left: 2px solid #E2685A; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"This pack's manifest names schema mapwright.pack/4. This build reads up to 2. Nothing was imported." · malformed JSON gives the line and column.</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Import the files as loose images</span>, which states what is lost — no stable local IDs, no declared metadata.</div>
+      </div>
+
+      <!-- 11 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A4030; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S11</span><span style="font-size: 12px; color: #ECEDF3;">Import cancelled</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-03</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1C1815; border-left: 2px solid #E2CFA8; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"Import cancelled. 114 of 184 assets were added and are usable. Re-importing the pack adds the remaining 70 and skips these."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Resume import</span> or carry on. Nothing is rolled back; every added asset is whole.</div>
+      </div>
+
+      <!-- 12 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A4030; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S12</span><span style="font-size: 12px; color: #ECEDF3;">Missing original art</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-04, on the map</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1C1815; border-left: 2px solid #E2CFA8; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">Map, on hover or selection: "Mountain range, wide". Report: "9 instances · ink:mtn-range-03 · geometry preserved, artwork unresolved."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Replace…</span>. The command bar carries a running count so it is never only discoverable by hovering.</div>
+      </div>
+
+      <!-- 13 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2C4437; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S13</span><span style="font-size: 12px; color: #ECEDF3;">Replacement completed</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-04</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #14201A; border-left: 2px solid #5FAE7F; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"9 instances now use 'Highland ridge, wide'. Each kept its own position, size, rotation and appearance. 6 source ids still unresolved."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Undo</span> (one step, named "Replace art — 9 instances"), or continue down the list.</div>
+      </div>
+
+      <!-- 14 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S14</span><span style="font-size: 12px; color: #ECEDF3;">No selection</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-05, P2-06</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #12141D; border-left: 2px solid #3B4159; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"Nothing selected. Click a stamp on the map, or a row in the order list."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: the <span style="color:#ADB3C6;">Placement settings</span> panel stays fully live above it — there is always something to do.</div>
+      </div>
+
+      <!-- 15 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #5C6FE0; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S15</span><span style="font-size: 12px; color: #ECEDF3;">One selected · mixed multi-selection</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-05, P2-06</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #141822; border-left: 2px solid #5C6FE0; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">One: exact values, header "1 on the map". Several: header "3 selected", differing fields read <em>Mixed</em> with the actual values beneath, plus <span style="font-family:'IBM Plex Mono',monospace;">Scale by</span> and <span style="font-family:'IBM Plex Mono',monospace;">Move by</span> for relative change.</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: absolute entry sets all; relative entry keeps the spread. <em>Mixed</em> is never shown as 0 or as a blank.</div>
+      </div>
+
+      <!-- 16 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S16</span><span style="font-size: 12px; color: #ECEDF3;">Hidden or locked target layer</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">P2-05, P2-06, P2-07</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1A1416; border-left: 2px solid #E2685A; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">"Terrain marks is hidden. A stamp placed here would not be visible." · "…is locked. Locking is how you protect finished work." · marquee: "3 of 4 selected. ridge-peak-c is on a locked layer and was left out."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Show layer</span> / <span style="color:#ADB3C6;">Unlock layer</span>, explicitly. The canvas shows a refusal cursor and places nothing meanwhile.</div>
+      </div>
+
+      <!-- 17 -->
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #161923; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: baseline; gap: 7px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">S17</span><span style="font-size: 12px; color: #ECEDF3;">Unsaved placement · save failure</span></div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089; margin-top: 3px;">status bar, everywhere</div>
+        <div style="box-sizing: border-box; margin-top: 8px; padding: 8px 9px; background: #1A1416; border-left: 2px solid #E2685A; border-radius: 3px;">
+          <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">Pending: "Autosave queued · 3 commands", amber. Failed: "Save failed — the disk is full. 3 commands are not yet durable. Editing continues; do not rely on these edits surviving a restart."</p>
+        </div>
+        <div style="font-size: 10px; color: #8990A6; margin-top: 7px;">Next: <span style="color:#ADB3C6;">Retry save</span>, <span style="color:#ADB3C6;">Save as…</span> elsewhere. The chip is never green while work is queued.</div>
+      </div>
+    </div>
+
+    <!-- copy principles -->
+    <div style="box-sizing: border-box; margin-top: 14px; padding: 13px 14px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Rules these seventeen follow</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 22px; margin-top: 10px;">
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">1</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Every state names the limit or the cause.</span> "184 Mpx over the 64 Mpx limit", not "the file is too large". A number makes the fix knowable.</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">2</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Every disabled control carries its reason</span> where it sits, in text, not only in a tooltip — a tooltip is unreachable by keyboard.</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">3</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Every state has a next action</span> that is focusable, or says plainly that none is needed.</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">4</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">A catalogue problem never blocks the map.</span> S1–S11 leave editing fully responsive; none of them is modal over the canvas.</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">5</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Rejection and warning are visually distinct.</span> Red for refused, amber for worth a look, neutral grey for a cache state. S4 and S5 read alike in words and must not look alike.</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">6</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Nothing here suggests a network.</span> No "syncing", no cloud glyph, no retry-with-connection language. Hashing and decoding are local work and are named as such.</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">7</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">A destructive scope is stated before it runs</span>, with a count — "Replace 9 instances", never "Replace all".</p></div>
+        <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #93A6FF; flex-shrink: 0;">8</span><p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">Library refresh keeps your place.</span> Scroll position, grid selection, map selection and viewport are untouched by a background rescan.</p></div>
+      </div>
+    </div>
+
+    <!-- catalogue vs document -->
+    <div style="box-sizing: border-box; margin-top: 12px; padding: 13px 14px; background: #141822; border: 1px solid #3B4159; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Which of these create a document undo step</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 10px;">
+        <div>
+          <div style="font-size: 11px; color: #5FAE7F;">Document commands — in history, undoable</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #ADB3C6; margin-top: 6px;">Place a stamp · transform, tint, flip, opacity or shadow on a selection · reorder · duplicate · paste · delete · replace missing art (one step per scope) · commit a scatter stroke (one step per stroke) · re-roll a committed group · add, remove, reorder, rename, hide, lock, solo or re-opacity a layer · clear a layer's contents</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: #E2CFA8;">Catalogue and tool operations — no undo step</div>
+          <div style="font-size: 11px; line-height: 1.7; color: #ADB3C6; margin-top: 6px;">Install or cancel a pack import · rename, retag, refile or recategorise an asset · change an asset's default size or anchor · dismiss a validation warning · re-run checks · change placement settings · change scatter controls or the pending seed · remember a replacement mapping · search, filter, scroll or select in the browser</div>
+        </div>
+      </div>
+      <p style="margin: 10px 0 0; font-size: 10px; line-height: 1.55; color: #6A7089;">The split is the reason the two panel groups are labelled. A catalogue change is durable but lives in the shared library, outside any project's revision history, so <span style="font-family:'IBM Plex Mono',monospace;">Ctrl+Z</span> after renaming an asset undoes the last <em>map</em> edit — which would be a nasty surprise if the panels did not say which is which. Undoing a map edit likewise never reverts a rename.</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1560,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

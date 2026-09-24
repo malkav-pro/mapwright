@@ -1,0 +1,13 @@
+{
+  "source_path": "C:/Users/almar/Documents/Codex/mapwright/docs/spike-report.md",
+  "type": "ADR",
+  "confidence": "medium",
+  "manifest_override": false,
+  "title": "Phase 0 spike report",
+  "summary": "Selects Godot 4 .NET for the first implementation, reports spike measurements, and records restart recovery requirements and outstanding connected editing acceptance gates.",
+  "scope": ["Godot 4 .NET", "Rust + wgpu", "terrain renderer", "Vulkan device loss", "command journal", "Inkarnate import", "terrain export", "river editing", "undo", "viewport responsiveness"],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": null,
+  "notes": "The Decision section and Godot versus Rust + wgpu trade-off comparison select an engine, supporting ADR classification. Technical acceptance targets, recovery contracts and measurement results also resemble SPEC and DOC content. No Accepted status is present; the engine decision's description as final does not satisfy the locked-status rule."
+}

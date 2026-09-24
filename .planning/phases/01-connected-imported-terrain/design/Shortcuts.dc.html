@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shortcuts and numeric entry</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1000px; height: 1200px; box-sizing: border-box; padding: 22px; display: flex; flex-direction: column; gap: 14px; background: #0D0F16; color: #ECEDF3; font-size: 13px;">
+
+  <div>
+    <h2 style="margin: 0; font-family: Spectral, Georgia, serif; font-size: 22px; font-weight: 600;">Shortcuts by scope, and numeric entry</h2>
+    <p style="margin: 5px 0 0; font-size: 12px; color: #8990A6;">A key belongs to exactly one scope. The scope is whatever has keyboard focus — nothing is global except the four in the last block.</p>
+  </div>
+
+  <!-- canvas scope -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-size: 12px; font-weight: 600;">Canvas scope</span>
+      <span style="font-size: 11px; color: #8990A6;">the map surface has focus</span>
+    </div>
+    <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 26px;">
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">B / L / R / H</span><span style="font-size: 12px; color: #ADB3C6;">texture brush · land · river · pan</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Space (hold)</span><span style="font-size: 12px; color: #ADB3C6;">pan, then return to the previous tool</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">[ / ]</span><span style="font-size: 12px; color: #ADB3C6;">size −/+ 10% of current, min 1 px</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Shift + [ / ]</span><span style="font-size: 12px; color: #ADB3C6;">hardness, or land softness, ∓ 5 points</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Alt (hold)</span><span style="font-size: 12px; color: #ADB3C6;">invert Add / Subtract while held</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + wheel</span><span style="font-size: 12px; color: #ADB3C6;">zoom about the pointer</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">wheel / Shift + wheel</span><span style="font-size: 12px; color: #ADB3C6;">pan vertically / horizontally</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">0 / 1</span><span style="font-size: 12px; color: #ADB3C6;">fit the map / 100% zoom</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Esc</span><span style="font-size: 12px; color: #ADB3C6;">cancel the gesture in progress</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Del</span><span style="font-size: 12px; color: #ADB3C6;">delete the selected river point</span></div>
+    </div>
+  </div>
+
+  <!-- text/numeric -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-size: 12px; font-weight: 600;">Text and numeric scope</span>
+      <span style="font-size: 11px; color: #8990A6;">a field has focus — single letters never reach a tool</span>
+    </div>
+    <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 26px;">
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">↑ / ↓</span><span style="font-size: 12px; color: #ADB3C6;">± 1 step (1 px, 1%, 1°)</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Shift + ↑ / ↓</span><span style="font-size: 12px; color: #ADB3C6;">± 10 steps</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Alt + ↑ / ↓</span><span style="font-size: 12px; color: #ADB3C6;">± 0.1 where decimals are allowed</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Enter</span><span style="font-size: 12px; color: #ADB3C6;">commit, clamp, return focus to the canvas</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Esc</span><span style="font-size: 12px; color: #ADB3C6;">restore the last committed value</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Tab / Shift + Tab</span><span style="font-size: 12px; color: #ADB3C6;">commit and move within the inspector</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + Z</span><span style="font-size: 12px; color: #ADB3C6;">undoes the <em style="font-style:normal;color:#ECEDF3;">text</em>, not the document</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">drag the label</span><span style="font-size: 12px; color: #ADB3C6;">scrub the value; one drag = one command</span></div>
+    </div>
+  </div>
+
+  <!-- inspector/list -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-size: 12px; font-weight: 600;">Inspector and list scope</span>
+      <span style="font-size: 11px; color: #8990A6;">a layer row, history row or panel control has focus</span>
+    </div>
+    <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 26px;">
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">↑ / ↓</span><span style="font-size: 12px; color: #ADB3C6;">move the selection between rows</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + ↑ / ↓</span><span style="font-size: 12px; color: #ADB3C6;">reorder the selected layer</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">F2</span><span style="font-size: 12px; color: #ADB3C6;">rename in place</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Space</span><span style="font-size: 12px; color: #ADB3C6;">toggle visibility of the focused row</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">L / S</span><span style="font-size: 12px; color: #ADB3C6;">lock · solo the focused row</span></div>
+      <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">F6</span><span style="font-size: 12px; color: #ADB3C6;">cycle canvas → inspector → layers → status</span></div>
+    </div>
+  </div>
+
+  <!-- modal + global -->
+  <div style="display: flex; gap: 14px;">
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+      <span style="font-size: 12px; font-weight: 600;">Modal scope</span>
+      <div style="margin-top: 9px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 96px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Enter</span><span style="font-size: 12px; color: #ADB3C6;">the primary action</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 96px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Esc</span><span style="font-size: 12px; color: #ADB3C6;">cancel; a running import stops and writes nothing</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 96px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Tab</span><span style="font-size: 12px; color: #ADB3C6;">cycles inside the dialog only</span></div>
+      </div>
+    </div>
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+      <span style="font-size: 12px; font-weight: 600;">Application scope</span>
+      <span style="font-size: 11px; color: #8990A6;"> — the only four that work everywhere</span>
+      <div style="margin-top: 9px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + S</span><span style="font-size: 12px; color: #ADB3C6;">save (waits for the queue)</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + Z</span><span style="font-size: 12px; color: #ADB3C6;">document undo — except inside a field</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + Shift + Z</span><span style="font-size: 12px; color: #ADB3C6;">document redo</span></div>
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 118px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF;">Ctrl + Shift + E</span><span style="font-size: 12px; color: #ADB3C6;">export PNG…</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- numeric contract -->
+  <div style="flex-grow: 1; box-sizing: border-box; padding: 14px 16px; background: #161923; border: 1px solid #252A3A; border-radius: 5px; display: flex; flex-direction: column; gap: 10px; min-height: 0;">
+    <div style="font-size: 12px; font-weight: 600;">Numeric contract</div>
+    <div style="display: grid; grid-template-columns: 150px 118px 118px minmax(0, 1fr); gap: 0; border: 1px solid #252A3A; border-radius: 4px; overflow: hidden;">
+      <div style="padding: 7px 10px; background: #1D2130; font-size: 11px; font-weight: 600; color: #8990A6;">Field</div>
+      <div style="padding: 7px 10px; background: #1D2130; font-size: 11px; font-weight: 600; color: #8990A6;">Unit</div>
+      <div style="padding: 7px 10px; background: #1D2130; font-size: 11px; font-weight: 600; color: #8990A6;">Range</div>
+      <div style="padding: 7px 10px; background: #1D2130; font-size: 11px; font-weight: 600; color: #8990A6;">Display and steps</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Brush size</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">doc px, diameter</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">1 – 4096</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">integer; slider is logarithmic, the field is not; [ ] step 10% of current</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Hardness, opacity, flow, spacing, land softness, bank softness</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">%</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">0 – 100</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">integer shown; stored as 0–1; spacing below 1% is rejected, not silently raised. Land softness defaults to 0 (a hard edge)</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Texture rotation</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">°</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">0 – 359</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">wraps rather than clamps: 370 becomes 10</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Rotation jitter</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">± °</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">0 – 180</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">clamps; the seed is recorded per stroke so replay matches</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">River width</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">doc px</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">1 – 2048</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">per point; integer</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Land tool roughness</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">—</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">1 – 20</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">integer; Edge variant only, paired with the Smooth checkbox</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Coast stroke, fade, ring gap, isolines</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">doc px</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">fixed</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">not user-editable in P0 — derived from the mask; see DESIGN-RESPONSE §13</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Zoom</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">%</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">1 – 1600</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">one decimal shown below 100%, none above; not an undoable command</div>
+
+      <div style="padding: 7px 10px; font-size: 12px; border-top: 1px solid #1D2130;">Layer opacity</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">%</div>
+      <div style="padding: 7px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; border-top: 1px solid #1D2130;">0 – 100</div>
+      <div style="padding: 7px 10px; font-size: 11px; color: #8990A6; border-top: 1px solid #1D2130;">a drag is one command on release, not one per frame</div>
+    </div>
+    <p style="margin: 0; font-size: 11px; line-height: 1.5; color: #8990A6;">Out-of-range input: the field turns red and stays focused, nothing is committed, Enter clamps to the nearest bound and Esc restores. Non-numeric text is refused on commit with the same wording. Ranges are design proposals for engineering to confirm; no renderer maximum is invented here.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1000,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

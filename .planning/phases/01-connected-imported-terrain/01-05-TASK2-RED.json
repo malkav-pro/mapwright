@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "history resident deltas are bounded and compatible",
+  "targetFile": "tests/Mapwright.ContractTests/HistoryContracts.cs",
+  "expected": "At most 16 compatible resident tile deltas accelerate recent moves, evicted revisions rebuild with real progress and atomic cancellation, and deleting or invalidating acceleration preserves authoritative commands.",
+  "actual": "History compatibility and resident delta types, cancellable reconstruction, cache deletion, and command-based compatibility rebuild were absent.",
+  "output": "TAP version 13\nnot ok 1 - history resident deltas are bounded and compatible\nnot ok 2 - history evicted reconstruction cancellation is atomic\nnot ok 3 - history cache deletion and version mismatch preserve authority\n1..3\n# tests 3\n# pass 0\n# fail 3\n"
+}

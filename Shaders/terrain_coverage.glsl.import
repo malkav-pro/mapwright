@@ -1,0 +1,13 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cu85rtlavq4cr"
+path="res://.godot/imported/terrain_coverage.glsl-4cb69ee9969c41084cce33d28bd10c47.res"
+
+[deps]
+
+source_file="res://Shaders/terrain_coverage.glsl"
+dest_files=["res://.godot/imported/terrain_coverage.glsl-4cb69ee9969c41084cce33d28bd10c47.res"]
+
+[params]

@@ -1,0 +1,10 @@
+{
+  "command": "dotnet run --project tests/Mapwright.ContractTests/Mapwright.ContractTests.csproj --no-restore -p:UseSharedCompilation=false -nodeReuse:false",
+  "exitCode": 1,
+  "targetTest": "acceptance metrics reject missing empty and uncorrelated samples",
+  "failingTest": "AcceptanceMetricEngine is absent; the recorder cannot distinguish invalid evidence from a pass.",
+  "targetFile": "tests/Mapwright.ContractTests/AcceptanceContracts.cs",
+  "expected": "The acceptance metric engine correlates input sequence IDs to the first frame presenting the matching committed revision, calculates nearest-rank p50/p95/p99 only for complete samples, preserves sequence order for equal timestamps, requires all four scenarios in warm/cold/evicted states, and rejects missing resource readings.",
+  "actual": "All 53 pre-existing contracts passed. The five new acceptance contracts were discovered and each failed its planned behavior assertion because AcceptanceMetricEngine does not exist.",
+  "output": "TAP version 13\nnot ok 1 - acceptance metrics reject missing empty and uncorrelated samples\n  ---\n  message: AcceptanceMetricEngine is absent; the recorder cannot distinguish invalid evidence from a pass.\n  operator: assertion\n  ...\n1..1\n# tests 1\n# pass 0\n# fail 1\n"
+}

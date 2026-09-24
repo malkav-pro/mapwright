@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>River editing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1000px; height: 980px; box-sizing: border-box; display: flex; background: #0D0F16; border: 1px solid #2F3447; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <!-- canvas close-up -->
+  <div style="flex-grow: 1; position: relative; min-width: 0; background: #0A0C14;">
+    <svg viewBox="0 0 620 978" width="100%" height="100%" style="display: block;" aria-label="Close-up of the Silvermere river with its centreline points and width profile">
+      <rect width="620" height="978" fill="#9FA76A"></rect>
+      <path d="M0 0 H620 V180 C 480 220, 360 168, 220 210 C 130 236, 60 220, 0 240 Z" fill="#8C9459" opacity="0.6"></path>
+      <path d="M0 700 C 120 660, 240 720, 360 700 C 480 680, 560 720, 620 706 V978 H0 Z" fill="#5C7A4E" opacity="0.85"></path>
+
+      <!-- bank softness band -->
+      <path d="M300 60 C 276 220, 348 340, 330 470 C 312 600, 228 660, 214 800 C 204 900, 190 940, 176 978" fill="none" stroke="#7E9E8E" stroke-width="128" stroke-linecap="round" opacity="0.32"></path>
+      <!-- water -->
+      <path d="M300 60 C 276 220, 348 340, 330 470 C 312 600, 228 660, 214 800 C 204 900, 190 940, 176 978" fill="none" stroke="#8FB4CC" stroke-width="82" stroke-linecap="round"></path>
+      <path d="M300 60 C 276 220, 348 340, 330 470 C 312 600, 228 660, 214 800 C 204 900, 190 940, 176 978" fill="none" stroke="#B6D2E2" stroke-width="34" stroke-linecap="round" opacity="0.75"></path>
+      <!-- centreline -->
+      <path d="M300 60 C 276 220, 348 340, 330 470 C 312 600, 228 660, 214 800 C 204 900, 190 940, 176 978" fill="none" stroke="#93A6FF" stroke-width="1.6" stroke-dasharray="6 5"></path>
+
+      <!-- points -->
+      <circle cx="300" cy="60" r="6" fill="#0D0F16" stroke="#93A6FF" stroke-width="2"></circle>
+      <circle cx="292" cy="230" r="6" fill="#0D0F16" stroke="#93A6FF" stroke-width="2"></circle>
+      <circle cx="338" cy="360" r="6" fill="#0D0F16" stroke="#93A6FF" stroke-width="2"></circle>
+      <!-- selected point 7 -->
+      <circle cx="330" cy="470" r="11" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.8"></circle>
+      <circle cx="330" cy="470" r="7" fill="#93A6FF" stroke="#080A14" stroke-width="2"></circle>
+      <line x1="289" y1="470" x2="371" y2="470" stroke="#FFFFFF" stroke-width="1.6"></line>
+      <line x1="289" y1="464" x2="289" y2="476" stroke="#FFFFFF" stroke-width="1.6"></line>
+      <line x1="371" y1="464" x2="371" y2="476" stroke="#FFFFFF" stroke-width="1.6"></line>
+      <circle cx="262" cy="640" r="6" fill="#0D0F16" stroke="#93A6FF" stroke-width="2"></circle>
+      <circle cx="214" cy="800" r="6" fill="#0D0F16" stroke="#93A6FF" stroke-width="2"></circle>
+      <circle cx="176" cy="978" r="6" fill="#0D0F16" stroke="#93A6FF" stroke-width="2"></circle>
+
+      <!-- freshly painted land that does not close the river -->
+      <path d="M380 520 C 450 490, 540 520, 560 590 C 578 656, 500 700, 430 676 C 372 656, 348 556, 380 520 Z" fill="#8B8375" opacity="0.95"></path>
+      <path d="M380 520 C 450 490, 540 520, 560 590 C 578 656, 500 700, 430 676 C 372 656, 348 556, 380 520 Z" fill="none" stroke="#6E675C" stroke-width="2"></path>
+    </svg>
+
+    <div style="position: absolute; left: 356px; top: 452px; padding: 4px 8px; background: rgba(16,18,22,0.9); border: 1px solid #5C6FE0; border-radius: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C6CFFF; white-space: nowrap;">point 7 · width 96 px · x 9,204 y 6,118</div>
+
+    <div style="position: absolute; right: 12px; top: 300px; width: 232px; box-sizing: border-box; padding: 10px; background: rgba(16,18,22,0.9); border: 1px solid #3B4159; border-radius: 4px;">
+      <div style="font-size: 11px; font-weight: 600; color: #ECEDF3;">Painted after the river</div>
+      <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.45; color: #ADB3C6;">This rock was painted onto Foreground over the bank. The river modifies the land mask <em style="font-style:normal;color:#ECEDF3;">after</em> painting, so the channel stays open — painting cannot close it.</p>
+    </div>
+
+    <div style="position: absolute; left: 12px; bottom: 12px; display: flex; align-items: center; gap: 10px; padding: 6px 10px; background: rgba(16,18,22,0.86); border: 1px solid #2F3447; border-radius: 4px;">
+      <span style="font-size: 11px; color: #ADB3C6;">Drag a point to move · Alt-click a segment to insert · Del removes</span>
+    </div>
+  </div>
+
+  <!-- inspector -->
+  <div style="width: 380px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border-left: 1px solid #2F3447;">
+    <div style="box-sizing: border-box; padding: 9px 11px; background: #1D2130; border-bottom: 1px solid #2F3447;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9D7BE0" stroke-width="1.8" stroke-linecap="round"><path d="M5 20c2-4 0-6 2-9s5-2 5-6"></path><path d="M11 20c2-3 1-5 3-7"></path></svg>
+        <span style="font-size: 13px; font-weight: 600;">Silvermere river</span>
+        <div style="flex-grow: 1;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P1-06</span>
+      </div>
+      <div style="margin-top: 5px; display: flex; align-items: center; gap: 6px;">
+        <span style="font-size: 11px; color: #8990A6;">Modifier of</span>
+        <span style="font-size: 12px; color: #ECEDF3;">Foreground</span>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" role="switch" aria-checked="true" aria-label="River modifier enabled" style="width: 34px; height: 18px; padding: 0; background: #5C6FE0; border: 1px solid #5C6FE0; border-radius: 9px; position: relative;">
+          <span style="position: absolute; right: 2px; top: 1px; width: 14px; height: 14px; border-radius: 7px; background: #080A14; display: block;"></span>
+        </button>
+      </div>
+    </div>
+
+    <div style="flex-grow: 1; box-sizing: border-box; padding: 11px; display: flex; flex-direction: column; gap: 12px; min-height: 0;">
+
+      <div>
+        <span style="display: block; font-size: 12px; color: #ADB3C6; margin-bottom: 4px;">Target</span>
+        <div style="box-sizing: border-box; width: 100%; height: 28px; display: flex; align-items: center; gap: 7px; padding: 0 8px; background: #14161F; border: 1px solid #272C3C; border-radius: 3px;">
+          <div style="width: 14px; height: 14px; border-radius: 2px; border: 1px solid #3B4159; overflow: hidden;">
+            <svg viewBox="0 0 14 14" width="14" height="14" style="display:block;"><rect width="14" height="14" fill="#2F4757"></rect><path d="M1 10 C 3 5, 9 3, 13 6 L13 14 L1 14 Z" fill="#ECEDF3"></path></svg>
+          </div>
+          <span style="flex-grow: 1; font-size: 12px; color: #ADB3C6;">Foreground — land mask</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">fixed</span>
+        </div>
+        <div style="margin-top: 5px; font-size: 11px; line-height: 1.45; color: #8990A6;">Rivers and lakes subtract Foreground’s land coverage, so the channel is <span style="color:#ADB3C6;">Background showing through</span> — no water layer is created, and the coast follows the same 0.5 contour as the rest of the map.</div>
+      </div>
+
+      <div style="height: 1px; background: #252A3A;"></div>
+
+      <div>
+        <div style="display: flex; align-items: center; gap: 7px;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Centreline</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">12 points</span>
+        </div>
+        <div style="margin-top: 8px; border: 1px solid #252A3A; border-radius: 3px; overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 6px 9px; background: #12141D; border-bottom: 1px solid #252A3A;">
+            <span style="width: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">#</span>
+            <span style="flex-grow: 1; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">position (doc px)</span>
+            <span style="width: 56px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; text-align: right;">width</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; padding: 6px 9px; border-bottom: 1px solid #1D2130;">
+            <span style="width: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">05</span>
+            <span style="flex-grow: 1; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">9,118 · 5,402</span>
+            <span style="width: 56px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; text-align: right;">84 px</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; padding: 6px 9px; background: #23294A; border-bottom: 1px solid #1D2130;">
+            <span style="width: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #FFFFFF;">07</span>
+            <span style="flex-grow: 1; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #FFFFFF;">9,204 · 6,118</span>
+            <span style="width: 56px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #FFFFFF; text-align: right;">96 px</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; padding: 6px 9px;">
+            <span style="width: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">08</span>
+            <span style="flex-grow: 1; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">8,940 · 6,690</span>
+            <span style="width: 56px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6; text-align: right;">88 px</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: #252A3A;"></div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px;">
+        <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Selected point 7</span>
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <label for="r-w" style="width: 72px; font-size: 12px; color: #ADB3C6;">Width</label>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+            <div style="width: 48%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+            <div style="position: absolute; left: 48%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16;"></div>
+          </div>
+          <div style="width: 76px; height: 26px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+            <input id="r-w" type="text" value="96" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+            <span style="font-size: 10px; color: #8990A6;">px</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <label for="r-soft" style="width: 72px; font-size: 12px; color: #ADB3C6;">Bank softness</label>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;">
+            <div style="width: 34%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div>
+            <div style="position: absolute; left: 34%; top: -5px; width: 14px; height: 14px; margin-left: -7px; border-radius: 7px; background: #ECEDF3; border: 1px solid #0D0F16;"></div>
+          </div>
+          <div style="width: 76px; height: 26px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;">
+            <input id="r-soft" type="text" value="34" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;">
+            <span style="font-size: 10px; color: #8990A6;">%</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button type="button" style="flex-grow: 1; height: 28px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Apply width to all</button>
+          <button type="button" style="height: 28px; padding: 0 10px; background: #252A3A; color: #F3B5AB; border: 1px solid #5E3330; border-radius: 3px; font-size: 12px;">Delete point</button>
+        </div>
+      </div>
+
+      <div style="height: 1px; background: #252A3A;"></div>
+
+      <!-- width profile -->
+      <div>
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.6px; color: #8990A6; text-transform: uppercase;">Width profile</div>
+        <div style="margin-top: 8px; height: 120px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px; overflow: hidden;">
+          <svg viewBox="0 0 356 120" width="100%" height="100%" style="display:block;">
+            <g stroke="#252A3A" stroke-width="1">
+              <path d="M0 30 H356"></path><path d="M0 60 H356"></path><path d="M0 90 H356"></path>
+            </g>
+            <path d="M8 86 C 60 78, 90 66, 130 58 C 170 50, 210 44, 250 52 C 290 60, 320 74, 348 84" fill="none" stroke="#9D7BE0" stroke-width="2"></path>
+            <circle cx="8" cy="86" r="3" fill="#9D7BE0"></circle>
+            <circle cx="130" cy="58" r="3" fill="#9D7BE0"></circle>
+            <circle cx="190" cy="45" r="5" fill="#93A6FF" stroke="#080A14" stroke-width="1.5"></circle>
+            <circle cx="250" cy="52" r="3" fill="#9D7BE0"></circle>
+            <circle cx="348" cy="84" r="3" fill="#9D7BE0"></circle>
+            <text x="6" y="14" fill="#6A7089" font-family="'IBM Plex Mono',monospace" font-size="9">width</text>
+            <text x="316" y="114" fill="#6A7089" font-family="'IBM Plex Mono',monospace" font-size="9">mouth</text>
+            <text x="6" y="114" fill="#6A7089" font-family="'IBM Plex Mono',monospace" font-size="9">source</text>
+          </svg>
+        </div>
+        <div style="margin-top: 6px; font-size: 11px; color: #8990A6;">Drag a handle to set that point's width; the channel updates live across tiles and the coast recomputes on release.</div>
+      </div>
+
+      <div style="flex-grow: 1;"></div>
+
+      <div style="display: flex; align-items: flex-start; gap: 8px; padding: 9px 10px; background: #12141D; border: 1px solid #252A3A; border-radius: 3px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8h.01M12 11v5"></path></svg>
+        <span style="font-size: 11px; line-height: 1.45; color: #ADB3C6;">Dragging shows a live preview. One drag becomes one undoable command on release: <span style="color:#ECEDF3;">Move river point 7</span>. Esc during the drag cancels it and nothing is committed.</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1000,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

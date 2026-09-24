@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "brush roles reject hidden paint targets",
+  "targetFile": "tests/Mapwright.ContractTests/BrushContracts.cs",
+  "expected": "Hidden terrain targets reject texture paint, fixed-role state commands and a solo truth table exist, and repeated state requests are explicit no-ops.",
+  "actual": "The hidden Background accepted paint; the five state command types, solo visibility oracle, and DocumentChange.IsNoOp were absent.",
+  "output": "TAP version 13\nnot ok 1 - brush roles expose fixed terrain state commands\nnot ok 2 - brush roles expose solo visibility truth table\nnot ok 3 - brush roles reject hidden paint targets\nnot ok 4 - brush roles report no-op state changes\n1..4\n# tests 4\n# pass 0\n# fail 4\n"
+}

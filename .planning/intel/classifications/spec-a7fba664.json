@@ -1,0 +1,13 @@
+{
+  "source_path": "C:/Users/almar/Documents/Codex/mapwright/docs/spec.md",
+  "type": "SPEC",
+  "confidence": "medium",
+  "manifest_override": false,
+  "title": "Malkav's Mapwright: Specification and Architecture (final)",
+  "summary": "Defines Mapwright's native map editor architecture, document model, rendering, persistence, Inkarnate recovery, feature priorities, resource budgets, and acceptance gates.",
+  "scope": ["Mapwright", "Godot", "C#", "document model", "tiled rendering", "coverage masks", "water modifiers", "command history", "assets", "SQLite", "Inkarnate import", "PNG export", "Windows", "Linux"],
+  "cross_refs": ["map-editor-spec-claude-v2.md", "map-editor-spec-claude-v2-astra.md", "native-map-editor-spec-v1.1.md", "reference/map-editor-spec-final.md", "engine-decision.md"],
+  "locked": false,
+  "precedence": null,
+  "notes": "Technical data models, rendering contracts, resource budgets and persistence protocols dominate. Product priorities and acceptance gates also appear, but this is not a single decision record. No authoritative type frontmatter or matching strong filename convention."
+}

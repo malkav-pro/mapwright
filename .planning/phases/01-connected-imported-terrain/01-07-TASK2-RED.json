@@ -1,0 +1,10 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "repository exposes durable staged blob recovery",
+  "failingTest": "repository exposes durable staged blob recovery",
+  "targetFile": "tests/Mapwright.ContractTests/ExportRecoveryContracts.cs",
+  "expected": "The SQLite repository publishes verified flushed blobs before references, exposes proven recovery facts, and the worker supports explicit adjacent storage/export interruption stages.",
+  "actual": "The repository durability/recovery APIs and StorageCrashStage enum were absent; the two target cases failed while all 51 unrelated contracts passed.",
+  "output": "TAP version 13\nnot ok 1 - repository exposes durable staged blob recovery\nnot ok 2 - crash worker exposes explicit interruption stages\n1..53\n# tests 53\n# pass 51\n# fail 2\n"
+}

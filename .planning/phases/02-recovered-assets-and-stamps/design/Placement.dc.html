@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Placement and transform</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1240px; height: 1000px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">Placement and transform</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P2-05</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">Stamp tool · <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">S</span></span>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; min-height: 0;">
+
+    <!-- LEFT: canvas + handles -->
+    <div style="flex-grow: 1; box-sizing: border-box; display: flex; flex-direction: column; min-width: 0; padding: 13px 14px; overflow: hidden;">
+
+      <!-- PLACEMENT GHOST -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Placing — the ghost is the result before the click</div>
+      <div style="box-sizing: border-box; margin-top: 8px; border: 1px solid #2F3447; border-radius: 4px; overflow: hidden;">
+        <svg viewBox="0 0 800 256" width="100%" height="256" style="display:block; background:#3E4A33;">
+          <path d="M0 186q120-40 250-14t290-26 260-12v122H0z" fill="#4E5C3D"></path>
+          <path d="M60 172l14-28 14 28z" fill="#2F5A42"></path><path d="M96 174l12-24 12 24z" fill="#2F5A42"></path>
+          <path d="M600 168l16-32 16 32z" fill="#2F5A42"></path><path d="M640 172l13-26 13 26z" fill="#2F5A42"></path>
+          <!-- already placed -->
+          <g opacity="1"><path d="M300 170l18-38h-36zM300 148l22-44h-44zM300 124l26-50h-52z" fill="#3E6B4E"></path><path d="M295 170h10v18h-10z" fill="#4A3C2E"></path></g>
+          <g opacity="1"><path d="M370 176l16-34h-32zM370 156l19-38h-38zM370 134l23-44h-46z" fill="#456F52"></path><path d="M366 176h8v16h-8z" fill="#4A3C2E"></path></g>
+          <!-- the ghost -->
+          <g opacity="0.55"><path d="M470 168l18-38h-36zM470 146l22-44h-44zM470 122l26-50h-52z" fill="#3E6B4E"></path><path d="M465 168h10v18h-10z" fill="#4A3C2E"></path></g>
+          <ellipse cx="482" cy="192" rx="26" ry="6" fill="#000000" opacity="0.22"></ellipse>
+          <rect x="440" y="64" width="60" height="122" fill="none" stroke="#93A6FF" stroke-width="1.4" stroke-dasharray="5 4"></rect>
+          <circle cx="470" cy="186" r="4" fill="#93A6FF"></circle>
+          <path d="M470 176v-5M470 196v-5M458 186h-5M487 186h-5" stroke="#93A6FF" stroke-width="1.3"></path>
+          <rect x="512" y="70" width="176" height="74" rx="3" fill="#0D0F16" opacity="0.94"></rect>
+          <text x="522" y="88" fill="#ECEDF3" font-family="'IBM Plex Mono', monospace" font-size="11">Highland pine, mature</text>
+          <text x="522" y="104" fill="#ADB3C6" font-family="'IBM Plex Mono', monospace" font-size="10">50 map units · 7.5° · tint 34% · 88%</text>
+          <text x="522" y="120" fill="#8990A6" font-family="'IBM Plex Mono', monospace" font-size="10">shadow 315° 18 px</text>
+          <text x="522" y="136" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="10">Terrain marks · click to place</text>
+          <text x="14" y="26" fill="#C6CFFF" font-family="'IBM Plex Mono', monospace" font-size="10">two already placed · the third is a ghost, nothing committed</text>
+        </svg>
+      </div>
+      <p style="margin: 8px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">Each click commits one stamp and <span style="color:#ECEDF3;">placement stays active</span>, so a row of trees is a row of clicks. <span style="font-family:'IBM Plex Mono',monospace; color:#ECEDF3;">Esc</span> or another tool leaves placement; leaving does not undo what you already placed. The ghost carries every current placement setting, including the shadow, so what you see is what lands.</p>
+
+      <!-- HANDLES -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 16px;">Selected — transform handles</div>
+      <div style="box-sizing: border-box; margin-top: 8px; border: 1px solid #2F3447; border-radius: 4px; overflow: hidden;">
+        <svg viewBox="0 0 800 268" width="100%" height="268" style="display:block; background:#3E4A33;">
+          <path d="M0 200q140-32 280-10t290-22 230-8v108H0z" fill="#4E5C3D"></path>
+          <g><path d="M300 186l22-46h-44zM300 160l27-54h-54zM300 132l32-60h-64z" fill="#3E6B4E"></path><path d="M294 186h12v22h-12z" fill="#4A3C2E"></path></g>
+          <ellipse cx="316" cy="212" rx="32" ry="7" fill="#000000" opacity="0.26"></ellipse>
+          <!-- effect bounds -->
+          <rect x="234" y="62" width="126" height="164" fill="none" stroke="#9D7BE0" stroke-width="1.2" stroke-dasharray="4 4"></rect>
+          <text x="366" y="70" fill="#9D7BE0" font-family="'IBM Plex Mono', monospace" font-size="10">effect bounds — redraw, export band</text>
+          <!-- geometry bounds + handles -->
+          <rect x="266" y="64" width="68" height="144" fill="none" stroke="#5C6FE0" stroke-width="1.6"></rect>
+          <text x="366" y="90" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="10">geometry bounds — picking, handles</text>
+          <g fill="#ECEDF3" stroke="#0D0F16" stroke-width="1">
+            <rect x="262" y="60" width="8" height="8"></rect><rect x="296" y="60" width="8" height="8"></rect><rect x="330" y="60" width="8" height="8"></rect>
+            <rect x="262" y="132" width="8" height="8"></rect><rect x="330" y="132" width="8" height="8"></rect>
+            <rect x="262" y="204" width="8" height="8"></rect><rect x="296" y="204" width="8" height="8"></rect><rect x="330" y="204" width="8" height="8"></rect>
+          </g>
+          <!-- rotation handle -->
+          <path d="M300 60v-22" stroke="#5C6FE0" stroke-width="1.4"></path>
+          <circle cx="300" cy="32" r="6" fill="#5C6FE0" stroke="#0D0F16" stroke-width="1"></circle>
+          <text x="316" y="36" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="10">rotate</text>
+          <!-- anchor -->
+          <circle cx="300" cy="208" r="4" fill="#93A6FF"></circle>
+          <text x="312" y="226" fill="#93A6FF" font-family="'IBM Plex Mono', monospace" font-size="10">anchor — the rotation pivot for one stamp</text>
+          <!-- readout -->
+          <rect x="560" y="120" width="224" height="104" rx="3" fill="#0D0F16" opacity="0.94"></rect>
+          <text x="570" y="138" fill="#ECEDF3" font-family="'IBM Plex Mono', monospace" font-size="11">1 selected</text>
+          <text x="570" y="156" fill="#ADB3C6" font-family="'IBM Plex Mono', monospace" font-size="10">x 612.4  y 623.7</text>
+          <text x="570" y="172" fill="#ADB3C6" font-family="'IBM Plex Mono', monospace" font-size="10">50 × 60 map units   7.5°</text>
+          <text x="570" y="188" fill="#8990A6" font-family="'IBM Plex Mono', monospace" font-size="10">geometry 68 × 144 screen px</text>
+          <text x="570" y="204" fill="#9D7BE0" font-family="'IBM Plex Mono', monospace" font-size="10">+32 px right, +32 px down</text>
+          <text x="570" y="218" fill="#6A7089" font-family="'IBM Plex Mono', monospace" font-size="9">outlines and handles never reach an export</text>
+        </svg>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px;">
+        <div style="box-sizing: border-box; padding: 10px 11px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="font-size: 11px; color: #ECEDF3;">Dragging a handle</div>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">A corner scales on both axes and <span style="color:#ADB3C6;">keeps the aspect ratio by default</span>; an edge handle scales one axis. <span style="font-family:'IBM Plex Mono',monospace; color:#ADB3C6;">Shift</span> inverts the lock so a corner can go nonuniform. Nonuniform scale is allowed while editing and refused at export preflight, which names the offending stamps.</p>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">The drag is a preview. Release commits one undoable command; <span style="font-family:'IBM Plex Mono',monospace;">Esc</span> mid-drag cancels with nothing committed. <em>Proposed:</em> <span style="font-family:'IBM Plex Mono',monospace;">Alt</span> scales about the anchor instead of the opposite corner.</p>
+        </div>
+        <div style="box-sizing: border-box; padding: 10px 11px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="font-size: 11px; color: #ECEDF3;">Rotating</div>
+          <p style="margin: 5px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">Degrees, positive clockwise, wrapping at 360 (370 → 10). One stamp rotates about its <span style="color:#ADB3C6;">anchor</span>, not its box centre, so a tree pivots at its trunk. <em>Proposed:</em> <span style="font-family:'IBM Plex Mono',monospace;">Shift</span> snaps to 15°.</p>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">An asset declaring a rotation limit clamps to it and the readout says so rather than silently ignoring the drag. A rotation-locked asset shows no rotation handle.</p>
+        </div>
+      </div>
+
+      <!-- dragging alternative -->
+      <div style="box-sizing: border-box; margin-top: 12px; padding: 11px 12px; background: #141822; border: 1px solid #3B4159; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Browser gestures, and the way round dragging</div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 9px;">
+          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">click</div><p style="margin: 4px 0 0; font-size: 10px; line-height: 1.45; color: #8990A6;">Selects the asset in the browser. Shows its defaults. Places nothing.</p></div>
+          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">double-click</div><p style="margin: 4px 0 0; font-size: 10px; line-height: 1.45; color: #8990A6;">Selects it <em>and</em> arms the Stamp tool, so the next canvas click places. The same as click then <span style="font-family:'IBM Plex Mono',monospace;">S</span>.</p></div>
+          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">drag to canvas</div><p style="margin: 4px 0 0; font-size: 10px; line-height: 1.45; color: #8990A6;">Places one stamp where you release and stays in placement. A convenience, never the only route.</p></div>
+          <div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E2CFA8;">keyboard only</div><p style="margin: 4px 0 0; font-size: 10px; line-height: 1.45; color: #8990A6;">Arrow keys move the grid focus, <span style="font-family:'IBM Plex Mono',monospace;">Enter</span> arms placement, <span style="font-family:'IBM Plex Mono',monospace;">F6</span> reaches the canvas, <span style="font-family:'IBM Plex Mono',monospace;">Enter</span> places at the cursor. Nothing requires a drag.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: the two panels, side by side -->
+    <div style="width: 452px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border-left: 1px solid #2F3447; overflow: hidden;">
+
+      <!-- PLACEMENT SETTINGS -->
+      <div style="box-sizing: border-box; padding: 11px 13px; background: #1D2130; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 600;">Placement settings</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #93A6FF; background: #23294A; border: 1px solid #5C6FE0; border-radius: 2px; padding: 1px 6px;">next stamp</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">What the <span style="color:#ECEDF3;">next</span> click will place. Carried across asset changes — choose another pine and the size, rotation, tint and opacity stay. Changing anything here never touches a stamp already on the map.</p>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 11px 13px; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 60px; flex-shrink: 0;">Size</span>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;"><div style="width: 44%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div><span style="position: absolute; left: 44%; top: -4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 6px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span></div>
+          <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 74px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px; flex-shrink: 0;"><input type="text" value="50" aria-label="Placement size, long edge in map units" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">px</span></div>
+        </div>
+        <div style="font-size: 10px; color: #6A7089; margin-top: 4px; margin-left: 68px;">long edge, map units · asset default 42 · <em>proposed</em> 8–8,192</div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 9px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 60px; flex-shrink: 0;">Rotation</span>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;"><div style="width: 52%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div><span style="position: absolute; left: 52%; top: -4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 6px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span></div>
+          <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 74px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px; flex-shrink: 0;"><input type="text" value="7.5" aria-label="Placement rotation in degrees" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">°</span></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 9px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 60px; flex-shrink: 0;">Opacity</span>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;"><div style="width: 88%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div><span style="position: absolute; left: 88%; top: -4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 6px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span></div>
+          <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 74px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px; flex-shrink: 0;"><input type="text" value="88" aria-label="Placement opacity percent" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">%</span></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 9px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 60px; flex-shrink: 0;">Tint</span>
+          <button type="button" aria-label="Tint colour 6E8A5C" style="width: 26px; height: 26px; background: #6E8A5C; border: 1px solid #3B4159; border-radius: 3px; flex-shrink: 0;"></button>
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; position: relative;"><div style="width: 34%; height: 4px; background: #5C6FE0; border-radius: 2px;"></div><span style="position: absolute; left: 34%; top: -4px; width: 12px; height: 12px; margin-left: -6px; border-radius: 6px; background: #ECEDF3; border: 1px solid #0D0F16; display: block;"></span></div>
+          <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 74px; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px; flex-shrink: 0;"><input type="text" value="34" aria-label="Tint amount percent" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">%</span></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 7px; margin-top: 10px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 60px; flex-shrink: 0;">Flip</span>
+          <button type="button" aria-pressed="true" style="height: 26px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 12px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v18"></path><path d="M7 8L3 12l4 4M17 8l4 4-4 4"></path></svg>H</button>
+          <button type="button" aria-pressed="false" style="height: 26px; padding: 0 10px; display: flex; align-items: center; gap: 6px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ADB3C6" stroke-width="1.8" stroke-linecap="round"><path d="M3 12h18"></path><path d="M8 7l4-4 4 4M8 17l4 4-4 4"></path></svg>V</button>
+          <div style="flex-grow: 1;"></div>
+          <button type="button" aria-label="Reset placement settings to this asset's defaults" style="height: 26px; padding: 0 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Use asset defaults</button>
+        </div>
+
+        <!-- shadow -->
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 12px; padding-top: 10px; border-top: 1px solid #252A3A;">
+          <span style="font-size: 11px; color: #ADB3C6;">Shadow</span>
+          <button type="button" role="switch" aria-checked="true" aria-label="Shadow enabled" style="width: 34px; height: 18px; padding: 0; background: #5C6FE0; border: 1px solid #5C6FE0; border-radius: 9px; position: relative;"><span style="position: absolute; top: 2px; left: 18px; width: 12px; height: 12px; border-radius: 6px; background: #080A14; display: block;"></span></button>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #9D7BE0;">bounds +32 px</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; margin-top: 8px;">
+          <div><div style="font-size: 10px; color: #8990A6; margin-bottom: 4px;">Angle</div><div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="315" aria-label="Shadow angle degrees" style="width: 30px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0;"><span style="font-size: 9px; color: #8990A6;">°</span></div></div>
+          <div><div style="font-size: 10px; color: #8990A6; margin-bottom: 4px;">Offset</div><div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="2.2" aria-label="Shadow offset map units" style="width: 30px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0;"><span style="font-size: 9px; color: #8990A6;">px</span></div></div>
+          <div><div style="font-size: 10px; color: #8990A6; margin-bottom: 4px;">Blur</div><div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="1.7" aria-label="Shadow blur map units" style="width: 30px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0;"><span style="font-size: 9px; color: #8990A6;">px</span></div></div>
+          <div><div style="font-size: 10px; color: #8990A6; margin-bottom: 4px;">Opacity</div><div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="42" aria-label="Shadow opacity percent" style="width: 30px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0;"><span style="font-size: 9px; color: #8990A6;">%</span></div></div>
+        </div>
+        <p style="margin: 7px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Shadows are rendered from these values, never baked into art. The asset's light hint (315°) seeds the angle; art with a shadow already painted in raises a validation warning instead of being treated as one.</p>
+      </div>
+
+      <!-- SELECTED INSTANCE -->
+      <div style="box-sizing: border-box; padding: 11px 13px; background: #1D2130; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 12px; font-weight: 600;">Selected stamp</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #E2CFA8; background: #221E17; border: 1px solid #4A4030; border-radius: 2px; padding: 1px 6px;">1 on the map</span>
+        </div>
+        <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">A stamp that <span style="color:#ECEDF3;">already exists</span>. Editing here is a document command and appears in history. It does not change what the next click will place.</p>
+      </div>
+
+      <div style="flex-grow: 1; min-height: 0; overflow: hidden; box-sizing: border-box; padding: 11px 13px;">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px;">
+          <div style="display: flex; align-items: center; gap: 6px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6; width: 12px;">X</span><div style="box-sizing: border-box; display: flex; align-items: center; flex-grow: 1; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="612.4" aria-label="X position map units" style="width: 100%; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"></div></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6; width: 12px;">Y</span><div style="box-sizing: border-box; display: flex; align-items: center; flex-grow: 1; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="623.7" aria-label="Y position map units" style="width: 100%; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"></div></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6; width: 12px;">W</span><div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; flex-grow: 1; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="50" aria-label="Width map units" style="width: 44px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">px</span></div></div>
+          <div style="display: flex; align-items: center; gap: 6px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6; width: 12px;">H</span><div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; flex-grow: 1; height: 26px; padding: 0 7px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px;"><input type="text" value="60" aria-label="Height map units" style="width: 44px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">px</span></div></div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 7px; margin-top: 8px;">
+          <button type="button" aria-pressed="true" style="height: 24px; padding: 0 8px; display: flex; align-items: center; gap: 5px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 11px;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Aspect</button>
+          <span style="font-size: 10px; color: #6A7089;">1.21 · Shift on a corner releases it</span>
+        </div>
+
+        <!-- invalid value -->
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 11px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 60px; flex-shrink: 0;">Rotation</span>
+          <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 74px; height: 26px; padding: 0 7px; background: #1A1416; border: 1px solid #E2685A; border-radius: 3px;"><input type="text" value="24" aria-label="Rotation degrees, out of range" aria-invalid="true" style="width: 40px; background: transparent; border: none; color: #ECEDF3; font-family: 'IBM Plex Mono', monospace; font-size: 12px; padding: 0;"><span style="font-size: 10px; color: #8990A6;">°</span></div>
+          <span style="font-size: 10px; line-height: 1.4; color: #E2685A; flex-grow: 1;">This asset allows ±15°. Nothing committed; the field keeps focus. Esc restores 7.5°.</span>
+        </div>
+
+        <div style="box-sizing: border-box; margin-top: 13px; padding: 10px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="font-size: 11px; color: #ADB3C6;">Numeric entry, everywhere</div>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.55; color: #8990A6;">Arrow keys step 1, <span style="font-family:'IBM Plex Mono',monospace;">Shift</span> 10, <span style="font-family:'IBM Plex Mono',monospace;">Alt</span> 0.1 where decimals exist. <span style="font-family:'IBM Plex Mono',monospace;">Enter</span> commits and clamps, <span style="font-family:'IBM Plex Mono',monospace;">Esc</span> restores the last committed value, <span style="font-family:'IBM Plex Mono',monospace;">Tab</span> commits and moves. The label scrubs on drag. Out of range turns the field red and commits nothing. <span style="font-family:'IBM Plex Mono',monospace;">Ctrl+Z</span> inside a focused field undoes text, not the document — stated in the panel, as in Phase 1.</p>
+        </div>
+
+        <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #141822; border: 1px solid #3B4159; border-radius: 4px;">
+          <div style="font-size: 11px; color: #ECEDF3;">Tool sizes do not cross</div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 8px;">
+            <div><div style="font-size: 10px; color: #8990A6;">Stamp</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #ECEDF3;">50 map units</div></div>
+            <div><div style="font-size: 10px; color: #8990A6;">Texture brush</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #ECEDF3;">31 map units</div></div>
+            <div><div style="font-size: 10px; color: #8990A6;">Land</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #ECEDF3;">125 map units</div></div>
+          </div>
+          <p style="margin: 7px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">Each tool keeps its own. Switching to the Texture brush and back leaves the stamp at 408 px; the brush is still 256. Only the Stamp tool's settings carry across <em>asset</em> changes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

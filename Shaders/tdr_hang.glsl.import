@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://cqyvw1xjssgnd"
+path="res://.godot/imported/tdr_hang.glsl-480ec712a0c262da2eaae1c87049c05f.res"
+
+[deps]
+
+source_file="res://Shaders/tdr_hang.glsl"
+dest_files=["res://.godot/imported/tdr_hang.glsl-480ec712a0c262da2eaae1c87049c05f.res"]
+
+[params]
+

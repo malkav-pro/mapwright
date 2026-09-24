@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "rivers expose editable width softness and modifier contracts",
+  "targetFile": "tests/Mapwright.ContractTests/MaskRiverContracts.cs",
+  "expected": "A stable river owns a versioned per-point width profile, bank softness and enabled state, exposes renderer-ready subtraction geometry, and supports atomic point/width/softness/toggle/delete commands.",
+  "actual": "The target test failed on its planned behavior assertion because Mapwright.Domain.RiverWidthProfile and the expanded editable-river contract surface were absent; 24 unrelated contracts passed.",
+  "output": "TAP version 13\nnot ok 1 - rivers expose editable width softness and modifier contracts\n1..25\n# tests 25\n# pass 24\n# fail 1\n"
+}

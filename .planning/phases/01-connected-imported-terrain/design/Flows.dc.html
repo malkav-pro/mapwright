@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Phase 1 flows</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1700px; height: 1200px; box-sizing: border-box; padding: 24px; display: flex; flex-direction: column; gap: 14px; background: #0D0F16; color: #ECEDF3; font-size: 13px;">
+
+  <div style="display: flex; align-items: baseline; gap: 12px;">
+    <h2 style="margin: 0; font-family: Spectral, Georgia, serif; font-size: 24px; font-weight: 600;">The six Phase 1 flows</h2>
+    <span style="font-size: 12px; color: #8990A6;">Solid step = the user acts · outlined = the system responds · amber = a branch the design must answer</span>
+  </div>
+
+  <!-- 1 -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6FE0;">01</span>
+      <span style="font-size: 13px; font-weight: 600;">Recover and paint</span>
+      <span style="font-size: 11px; color: #8990A6;">IMPT-01/02 · LAYR-01 · TERR-01/02 · DOC-01</span>
+    </div>
+    <div style="margin-top: 10px; display: flex; align-items: center; gap: 7px; flex-wrap: nowrap;">
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Choose an .ink</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Preview + bases listed</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #E2CFA8;">Recovered terrain or flattened appearance? (neither preselected)</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Create project</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Editor opens · Foreground over Background</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Pick a layer and a texture</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Set size / opacity / rotation</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #C6CFFF;">Paint across a tile edge</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">One command · rev + 1</div>
+    </div>
+    <div style="margin-top: 8px; font-size: 11px; color: #8990A6;">The tool panel and status bar name the layer and tool at every step, so the stroke can never land somewhere the user did not look. Painting does not change land coverage — only the mask brush does.</div>
+  </div>
+
+  <!-- 2 -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6FE0;">02</span>
+      <span style="font-size: 13px; font-weight: 600;">Shape a coast and a river</span>
+      <span style="font-size: 11px; color: #8990A6;">MASK-01 · WATR-01 · REND-02/03</span>
+    </div>
+    <div style="margin-top: 10px; display: flex; align-items: center; gap: 7px;">
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Land tool: Edge, Subtract — reveals Background</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #C6CFFF;">Draw the coast</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">0.5 contour moves · stroke, fade, rings, isolines follow</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Select river point 7</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Width 96 px, softness 34%</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #C6CFFF;">Paint land over the bank</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Channel stays open — modifier runs after painting</div>
+    </div>
+    <div style="margin-top: 8px; font-size: 11px; color: #8990A6;">Neither masking nor the river creates a layer. Mask coverage under 0.5 still shows but grows no coastline — visible on the map as you draw, not explained in a panel.</div>
+  </div>
+
+  <!-- 3 -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6FE0;">03</span>
+      <span style="font-size: 13px; font-weight: 600;">Navigate without painting by accident</span>
+      <span style="font-size: 11px; color: #8990A6;">UIIN-01</span>
+    </div>
+    <div style="margin-top: 10px; display: flex; align-items: center; gap: 7px;">
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Hold Space mid-session</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Cursor becomes a hand · brush ring hidden</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Drag to pan, Ctrl+wheel to zoom</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Release Space → previous tool returns</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Click into the Size field</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #E2CFA8;">Tool letters are inert while typing</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Enter commits · focus returns to canvas</div>
+    </div>
+    <div style="margin-top: 8px; font-size: 11px; color: #8990A6;">A pointer that leaves the canvas mid-stroke still ends that stroke on release; a stroke never resumes because the pointer came back.</div>
+  </div>
+
+  <!-- 4 -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6FE0;">04</span>
+      <span style="font-size: 13px; font-weight: 600;">Undo and preserve</span>
+      <span style="font-size: 11px; color: #8990A6;">HIST-01/02/04 · DOC-02</span>
+    </div>
+    <div style="margin-top: 10px; display: flex; align-items: center; gap: 7px;">
+      <div style="padding: 8px 11px; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #C6CFFF;">Commit a stroke</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Ctrl+Z</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Delta undo · ≤ 16 tiles</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Ctrl+Shift+Z</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Undo again, then paint</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #E2CFA8;">Redo discarded, shown struck through</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Undo an older step</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #1C1730; border: 1px solid #3A2F59; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #CFBDF2;">Reconstruction with progress · Cancel</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Back at the current revision, intact</div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6FE0;">05</span>
+      <span style="font-size: 13px; font-weight: 600;">Export while editing</span>
+      <span style="font-size: 11px; color: #8990A6;">EXPT-01 · REND-04/05</span>
+    </div>
+    <div style="margin-top: 10px; display: flex; align-items: center; gap: 7px;">
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Export PNG… at rev 1,284</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Revision frozen · assets pinned</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #C6CFFF;">Keep painting → rev 1,287</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #1C1730; border: 1px solid #3A2F59; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #CFBDF2;">Rendering band 14 / 32</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #1C1730; border: 1px solid #3A2F59; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #CFBDF2;">Validating — no percentage</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #15241D; border: 1px solid #2F5A46; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #A9D8BE;">Published — replaces the old file</div>
+      <span style="color: #4C5268;">/</span>
+      <div style="padding: 8px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #E2CFA8;">Cancelled — previous file intact</div>
+    </div>
+    <div style="margin-top: 8px; font-size: 11px; color: #8990A6;">The job chip always carries the frozen revision number, so a file on disk can be traced back to a version of the document.</div>
+  </div>
+
+  <!-- 6 -->
+  <div style="box-sizing: border-box; padding: 13px 15px; background: #161923; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="display: flex; align-items: baseline; gap: 9px;">
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5C6FE0;">06</span>
+      <span style="font-size: 13px; font-weight: 600;">Recover after failure</span>
+      <span style="font-size: 11px; color: #8990A6;">DURA-01/02 · DOC-03</span>
+    </div>
+    <div style="margin-top: 10px; display: flex; align-items: center; gap: 7px;">
+      <div style="padding: 8px 11px; background: #23294A; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #C6CFFF;">Stroke in progress</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #221518; border: 1px solid #5E3330; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #F3B5AB;">Device loss · process gone</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #14161F; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #8990A6;">No dialog is attempted here</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #252A3A; border: 1px solid #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Relaunch</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #12141D; border: 1px dashed #3B4159; border-radius: 4px; font-size: 12px; white-space: nowrap;">Journal replayed to rev 1,284</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #15241D; border: 1px solid #2F5A46; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #A9D8BE;">Recovery sheet lists what returned</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #E2CFA8;">One unacknowledged gesture absent</div>
+      <span style="color: #4C5268;">→</span>
+      <div style="padding: 8px 11px; background: #1C1730; border: 1px solid #3A2F59; border-radius: 4px; font-size: 12px; white-space: nowrap; color: #CFBDF2;">Caches rebuild in the background</div>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1;"></div>
+  <div style="box-sizing: border-box; padding: 12px 15px; background: #12141D; border: 1px solid #252A3A; border-radius: 5px;">
+    <div style="font-size: 12px; font-weight: 600; color: #ADB3C6;">Preview, commit, save — the three words this design keeps apart</div>
+    <div style="margin-top: 8px; display: flex; gap: 26px;">
+      <div style="flex-grow: 1;"><span style="font-size: 12px; color: #ECEDF3;">Preview</span><p style="margin: 4px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">What a drag shows before release. Discardable by Esc, never in history, never in an export.</p></div>
+      <div style="flex-grow: 1;"><span style="font-size: 12px; color: #ECEDF3;">Commit</span><p style="margin: 4px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">One gesture becomes one undoable command on pointer release, Enter or blur. It advances the revision and appears in History.</p></div>
+      <div style="flex-grow: 1;"><span style="font-size: 12px; color: #ECEDF3;">Save</span><p style="margin: 4px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">The commit is on disk and acknowledged. Only then does the chip read Saved; a visible canvas proves nothing about durability.</p></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1700,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

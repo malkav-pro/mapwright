@@ -1,0 +1,199 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "AssetDetails.dc.html": {
+      "h": 940,
+      "title": "P2-02 Asset details and validation",
+      "w": 1200,
+      "x": 1280,
+      "y": 1200
+    },
+    "Browser.dc.html": {
+      "h": 900,
+      "title": "P2-01 Asset browser — category first",
+      "w": 1200,
+      "x": 0,
+      "y": 1200
+    },
+    "Compact.dc.html": {
+      "h": 768,
+      "title": "P2-00b The same shell at 1366 × 768",
+      "w": 1366,
+      "x": 2000,
+      "y": 0
+    },
+    "Controls.dc.html": {
+      "h": 1400,
+      "title": "Control matrix and components",
+      "w": 1600,
+      "x": 3280,
+      "y": 3460
+    },
+    "Import.dc.html": {
+      "h": 1000,
+      "title": "P2-03 File and pack import",
+      "w": 1200,
+      "x": 2560,
+      "y": 1200
+    },
+    "Journeys.dc.html": {
+      "h": 1340,
+      "title": "The six journeys",
+      "w": 1740,
+      "x": 0,
+      "y": 5080
+    },
+    "Main.dc.html": {
+      "h": 1080,
+      "title": "P2-00 Editor shell with stamps — 1920 × 1080",
+      "w": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "MissingArt.dc.html": {
+      "h": 980,
+      "title": "P2-04 Missing artwork and scoped replacement",
+      "w": 1200,
+      "x": 0,
+      "y": 2320
+    },
+    "Order.dc.html": {
+      "h": 1020,
+      "title": "P2-06 Selection, picking and object order",
+      "w": 1240,
+      "x": 2600,
+      "y": 2320
+    },
+    "Placement.dc.html": {
+      "h": 1000,
+      "title": "P2-05 Placement and transform",
+      "w": 1240,
+      "x": 1280,
+      "y": 2320
+    },
+    "Scatter.dc.html": {
+      "h": 900,
+      "title": "P2-07 Scatter brush",
+      "w": 1240,
+      "x": 3920,
+      "y": 2320
+    },
+    "States.dc.html": {
+      "h": 1500,
+      "title": "Seventeen states and their copy",
+      "w": 1560,
+      "x": 1640,
+      "y": 3460
+    },
+    "Targets.dc.html": {
+      "h": 940,
+      "title": "Targets, tool memory and layer aiming",
+      "w": 1560,
+      "x": 0,
+      "y": 3460
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-23T00:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "n1": {
+      "fill": "teal",
+      "text": "Status: proposed. Amended 2026-09-24: all map-relative sizes, positions, offsets and spacing are in map units (1,000 on the longest edge), converted from the pixel draft at the recovered map's scale. Asset image dimensions stay in pixels.\n\nThese are interface drawings, not evidence that anything works. No size, count or duration here has been measured, and the sample data is invented: Aethermoor — West Reaches, the Aethermoor Starter pack 0.4.2, the pine-highland and ridge-peak families. The 238 stamps and 7,559 x 8,192 source figures come from the specification's own fixture observations.\n\nBuilt on Phase 1's shell and tokens unchanged. Additions are listed on the Control matrix.",
+      "w": 520,
+      "x": 3450,
+      "y": 0
+    },
+    "n2": {
+      "fill": "purple",
+      "text": "The one idea the whole phase turns on:\n\nthree different things are called \"size\", and they must never share a panel.\n\nlibrary defaults - what a future placement starts from, shared across projects, no undo step.\n\nnext stamp - the Stamp tool's own state, what the ghost shows, carried across asset changes.\n\non the map - a placement that exists; every edit is a document command.\n\nEach panel header carries its tag. See the Targets frame.",
+      "w": 520,
+      "x": 3450,
+      "y": 560
+    },
+    "n3": {
+      "fill": "orange",
+      "text": "Scatter, precisely:\n\nspacing is an AVERAGE centre-to-centre distance in map units - not a minimum distance, not a collision solver, not a percentage of stamp size, and unaffected by zoom or by editing and export resolution.\n\nSize and rotation ranges switch on independently. Random flip, tint and opacity are not offered: they were considered and left out, so there is no disabled row pretending otherwise.\n\nCommitted placements are resolved and stored. Nothing re-randomises them - not reopening, not export, not a future algorithm. Only Re-roll, which is its own command.",
+      "w": 520,
+      "x": 5240,
+      "y": 2320
+    },
+    "n4": {
+      "fill": "blue",
+      "text": "Multi-selection, the mixed rule:\n\nSCALING resizes each stamp about its own anchor. A forest gets bigger trees, not a spread-out forest.\n\nROTATION turns the arrangement about one shared centre - proposed as the bounding-box centre of the unlocked selection, fixed when the drag starts so it cannot drift.\n\nLocked objects are excluded from both, and from the shared centre, and the selection count says so rather than silently skipping them.",
+      "w": 520,
+      "x": 5240,
+      "y": 3060
+    },
+    "n5": {
+      "fill": "red",
+      "text": "Open questions for engineering, in DESIGN-RESPONSE §12:\n\nevery bound marked P on the Control matrix; the shared rotation-centre convention; hit-cycle wrap feedback; the five-category vocabulary; scatter asset weighting; the 180 ms search debounce; the 4 map-unit duplicate offset; whether the keyboard nudge steps in screen pixels (zoom-relative) or map units (fixed); whether nonuniform scale should be refused at edit time rather than at export preflight.",
+      "w": 520,
+      "x": 1800,
+      "y": 5080
+    },
+    "t1": {
+      "kind": "title1",
+      "maxW": 3366,
+      "text": "The shell, with stamps in it",
+      "w": 240,
+      "x": 0,
+      "y": -260
+    },
+    "t2": {
+      "kind": "title1",
+      "maxW": 3760,
+      "text": "Library, details, import",
+      "w": 240,
+      "x": 0,
+      "y": 940
+    },
+    "t3": {
+      "kind": "title1",
+      "maxW": 5160,
+      "text": "Missing art, placement, order, scatter",
+      "w": 240,
+      "x": 0,
+      "y": 2060
+    },
+    "t4": {
+      "kind": "title1",
+      "maxW": 4880,
+      "text": "The shared system",
+      "w": 240,
+      "x": 0,
+      "y": 3200
+    },
+    "t5": {
+      "kind": "title1",
+      "maxW": 1740,
+      "text": "Journeys",
+      "w": 240,
+      "x": 0,
+      "y": 4820
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Compact.dc.html",
+    "Browser.dc.html",
+    "AssetDetails.dc.html",
+    "Import.dc.html",
+    "MissingArt.dc.html",
+    "Placement.dc.html",
+    "Order.dc.html",
+    "Scatter.dc.html",
+    "Targets.dc.html",
+    "States.dc.html",
+    "Controls.dc.html",
+    "Journeys.dc.html"
+  ],
+  "pages": [],
+  "title": "Mapwright Phase 2 — Recovered Assets and Stamps"
+}

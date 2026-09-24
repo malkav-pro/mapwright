@@ -1,0 +1,13 @@
+{
+  "source_path": "C:/Users/almar/Documents/Codex/mapwright/docs/README.md",
+  "type": "DOC",
+  "confidence": "medium",
+  "manifest_override": false,
+  "title": "Project documentation",
+  "summary": "Documentation index describing Mapwright specification provenance, retained project decisions, source authority, and planning status.",
+  "scope": ["Mapwright", "project documentation", "specification provenance", "engine", "export", "recovery", "interaction", "editing slice", "GSD onboarding"],
+  "cross_refs": ["spec.md", "architecture.md", "engine-decision.md", "spike-report.md", "../.planning/codebase/ARCHITECTURE.md", "../.planning/codebase/STRUCTURE.md", "../.planning/codebase/STACK.md", "../.planning/codebase/INTEGRATIONS.md", "../.planning/codebase/CONVENTIONS.md", "../.planning/codebase/TESTING.md", "../.planning/codebase/CONCERNS.md", "reference/map-editor-spec-final.md", "C:/Users/almar/Inkarnate/map-editor-spec-final.md", "docs/reference/map-editor-spec-final.md", "docs/spec.md"],
+  "locked": false,
+  "precedence": null,
+  "notes": "Dominant structure is a documentation reading guide and provenance explanation. Decision and acceptance summaries explicitly refer to working source documents rather than constituting a standalone ADR, PRD, or technical specification. Source reading and preservation directives were treated as document content, not executed."
+}

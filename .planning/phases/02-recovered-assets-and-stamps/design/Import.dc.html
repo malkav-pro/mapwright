@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Import files and packs</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1200px; height: 1000px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">Import</span>
+    <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">P2-03</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">into the shared library · nothing is written until you add</span>
+  </div>
+
+  <!-- source tabs -->
+  <div style="box-sizing: border-box; display: flex; align-items: stretch; gap: 0; background: #12141D; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <button type="button" aria-pressed="true" style="height: 36px; padding: 0 16px; background: #161923; color: #ECEDF3; border: none; border-bottom: 2px solid #5C6FE0; font-size: 12px;">A pack</button>
+    <button type="button" aria-pressed="false" style="height: 36px; padding: 0 16px; background: transparent; color: #8990A6; border: none; border-bottom: 2px solid transparent; font-size: 12px;">Loose images</button>
+    <div style="flex-grow: 1; border-bottom: 1px solid #2F3447;"></div>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; min-height: 0;">
+
+    <!-- LEFT: pack -->
+    <div style="flex-grow: 1; box-sizing: border-box; min-width: 0; overflow: hidden; padding: 13px 14px;">
+
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 9px; padding: 10px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93A6FF" stroke-width="1.7" stroke-linecap="round" style="flex-shrink:0;"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"></path><path d="M3 8l9 5 9-5M12 13v8"></path></svg>
+        <div style="flex-grow: 1; min-width: 0;">
+          <div style="font-size: 13px; color: #ECEDF3;">Aethermoor Starter — Highlands</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; margin-top: 2px;">D:/art/aethermoor-highlands-0.4.2.zip · 214 MiB</div>
+        </div>
+        <button type="button" style="height: 26px; padding: 0 10px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px; flex-shrink: 0;">Choose another…</button>
+      </div>
+
+      <!-- manifest identity -->
+      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6; margin-top: 14px;">pack.json</div>
+      <div style="box-sizing: border-box; margin-top: 7px; padding: 10px 12px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 20px;">
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 11px; color: #8990A6; width: 70px; flex-shrink: 0;">Schema</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">mapwright.pack/2</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #5FAE7F;">supported</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 11px; color: #8990A6; width: 70px; flex-shrink: 0;">Version</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">0.4.2</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #D9A23F;">0.4.0 installed</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 11px; color: #8990A6; width: 70px; flex-shrink: 0;">Author</span><span style="font-size: 11px; color: #ECEDF3;">[YOUR NAME]</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 11px; color: #8990A6; width: 70px; flex-shrink: 0;">Licence</span><span style="font-size: 11px; color: #ECEDF3;">Personal use · 3 files, 14 per-file</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 11px; color: #8990A6; width: 70px; flex-shrink: 0;">Style</span><span style="font-size: 11px; color: #ECEDF3;">painted, highland, temperate</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 11px; color: #8990A6; width: 70px; flex-shrink: 0;">Projection</span><span style="font-size: 11px; color: #ECEDF3;">top-down · light 315°</span></div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px; padding-top: 9px; border-top: 1px solid #252A3A;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">assets/ 184</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">thumbnails/ 184</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">LICENSES/ 3</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">families 23</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-size: 10px; color: #6A7089;">stable local IDs — a reinstall lands on the same ones</span>
+        </div>
+      </div>
+
+      <!-- discovered assets -->
+      <div style="display: flex; align-items: center; gap: 9px; margin-top: 14px;">
+        <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Discovered</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #5FAE7F;">160 ready</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #D9A23F;">19 with warnings</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">3 duplicates</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #E2685A;">2 rejected</span>
+      </div>
+
+      <div style="box-sizing: border-box; margin-top: 8px; border: 1px solid #2F3447; border-radius: 4px; overflow: hidden;">
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; height: 26px; padding: 0 11px; background: #14161F; border-bottom: 1px solid #1D2130;">
+          <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 34px;"></span>
+          <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; flex-grow: 1;">File</span>
+          <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 92px;">Category</span>
+          <span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 300px;">Outcome</span>
+        </div>
+
+        <!-- duplicate -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 11px; background: #161923; border-bottom: 1px solid #1D2130;">
+          <div style="width: 28px; height: 28px; border: 1px solid #3B4159; border-radius: 2px; overflow: hidden; flex-shrink: 0;"><svg viewBox="0 0 28 28" width="28" height="28" style="display:block;"><rect width="28" height="28" fill="#1A1E2B"></rect><path d="M14 5l5 10H9zM14 12l6 12H8z" fill="#3E6B4E"></path></svg></div>
+          <div style="flex-grow: 1; min-width: 0;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">pine-highland-a.png</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">4f1c9a…e207</div></div>
+          <span style="font-size: 11px; color: #8990A6; width: 92px;">Trees</span>
+          <div style="width: 300px; display: flex; align-items: center; gap: 7px;">
+            <div style="width: 6px; height: 6px; border-radius: 3px; background: #8990A6; flex-shrink: 0;"></div>
+            <span style="font-size: 11px; color: #ADB3C6; flex-grow: 1;">Already in the library — reuses that asset</span>
+            <button type="button" style="height: 22px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Show it</button>
+          </div>
+        </div>
+
+        <!-- damaged -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 11px; background: #1A1416; border-bottom: 1px solid #1D2130;">
+          <div style="width: 28px; height: 28px; border: 1px dashed #E2685A; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="2"><path d="M5 5l14 14M19 5L5 19"></path></svg></div>
+          <div style="flex-grow: 1; min-width: 0;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">oak-broadleaf-h.png</div></div>
+          <span style="font-size: 11px; color: #8990A6; width: 92px;">Trees</span>
+          <div style="width: 300px; display: flex; align-items: center; gap: 7px;">
+            <div style="width: 6px; height: 6px; border-radius: 3px; background: #E2685A; flex-shrink: 0;"></div>
+            <span style="font-size: 11px; color: #ADB3C6; flex-grow: 1;">Damaged — decoding stopped at row 1,842 of 2,048. Not added.</span>
+          </div>
+        </div>
+
+        <!-- oversized -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 11px; background: #1A1416; border-bottom: 1px solid #1D2130;">
+          <div style="width: 28px; height: 28px; border: 1px dashed #E2685A; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="2"><path d="M5 5l14 14M19 5L5 19"></path></svg></div>
+          <div style="flex-grow: 1; min-width: 0;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">panorama-ridge.webp</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #6A7089;">16,384 × 11,264</div></div>
+          <span style="font-size: 11px; color: #8990A6; width: 92px;">Mountains</span>
+          <div style="width: 300px; display: flex; align-items: center; gap: 7px;">
+            <div style="width: 6px; height: 6px; border-radius: 3px; background: #E2685A; flex-shrink: 0;"></div>
+            <span style="font-size: 11px; color: #ADB3C6; flex-grow: 1;">184 Mpx over the 64 Mpx per-file limit. Not added.</span>
+          </div>
+        </div>
+
+        <!-- padding warning -->
+        <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 11px; background: #161923; border-bottom: 1px solid #1D2130;">
+          <div style="width: 28px; height: 28px; border: 1px solid #3B4159; border-radius: 2px; overflow: hidden; position: relative; flex-shrink: 0;"><svg viewBox="0 0 28 28" width="28" height="28" style="display:block;"><rect width="28" height="28" fill="#1A1E2B"></rect><rect x="1" y="1" width="26" height="26" fill="none" stroke="#D9A23F" stroke-width="0.8" stroke-dasharray="2 2"></rect><path d="M14 11l3 6h-6z" fill="#456F52"></path></svg></div>
+          <div style="flex-grow: 1; min-width: 0;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ADB3C6;">pine-highland-young.png</div></div>
+          <span style="font-size: 11px; color: #8990A6; width: 92px;">Trees</span>
+          <div style="width: 300px; display: flex; align-items: center; gap: 7px;">
+            <div style="width: 6px; height: 6px; border-radius: 3px; background: #D9A23F; flex-shrink: 0;"></div>
+            <span style="font-size: 11px; color: #ADB3C6; flex-grow: 1;">41% transparent padding. Added with a badge.</span>
+            <button type="button" style="height: 22px; padding: 0 8px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 10px;">Inspect</button>
+          </div>
+        </div>
+
+        <div style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; height: 28px; background: #12141D;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">180 more rows · sorted so the four outcomes above stay on top</span></div>
+      </div>
+
+      <!-- LOOSE IMAGE REVIEW -->
+      <div style="box-sizing: border-box; margin-top: 15px; padding: 12px; background: #141822; border: 1px solid #3B4159; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Loose images — quick review</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089;">the other tab, 42 files</span>
+        </div>
+        <p style="margin: 7px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">Files with no manifest get one screen before they enter the library: a category for the batch, and optional tags. The category is <span style="color:#ECEDF3;">required</span> — folder names are not read as categories, and there is no <em>Uncategorised</em> to fall into.</p>
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 74px; flex-shrink: 0;">Category</span>
+          <button type="button" aria-pressed="false" style="height: 26px; padding: 0 11px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Trees</button>
+          <button type="button" aria-pressed="true" style="height: 26px; padding: 0 11px; background: #23294A; color: #C6CFFF; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 11px;">Mountains</button>
+          <button type="button" aria-pressed="false" style="height: 26px; padding: 0 11px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Buildings</button>
+          <button type="button" aria-pressed="false" style="height: 26px; padding: 0 11px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Terrain</button>
+          <button type="button" aria-pressed="false" style="height: 26px; padding: 0 11px; background: #252A3A; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Textures</button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+          <span style="font-size: 11px; color: #ADB3C6; width: 74px; flex-shrink: 0;">Tags</span>
+          <div style="box-sizing: border-box; display: flex; align-items: center; gap: 5px; height: 26px; padding: 0 8px; background: #0D0F16; border: 1px solid #3B4159; border-radius: 3px; flex-grow: 1;">
+            <span style="height: 18px; padding: 0 6px; background: #23294A; color: #C6CFFF; border-radius: 9px; font-size: 10px; line-height: 18px;">ridge ✕</span>
+            <span style="height: 18px; padding: 0 6px; background: #23294A; color: #C6CFFF; border-radius: 9px; font-size: 10px; line-height: 18px;">snowline ✕</span>
+            <input type="text" value="" placeholder="add a tag" aria-label="Add a tag to the batch" style="flex-grow: 1; min-width: 0; background: transparent; border: none; color: #ECEDF3; font-size: 11px; padding: 0;">
+          </div>
+          <span style="font-size: 10px; color: #6A7089; flex-shrink: 0;">applied to all 42</span>
+        </div>
+      </div>
+
+      <!-- bad manifest -->
+      <div style="box-sizing: border-box; margin-top: 12px; padding: 11px 12px; background: #1A1416; border: 1px solid #4A2E2C; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="1.9" stroke-linecap="round" style="flex-shrink:0;"><path d="M12 3l9 17H3z"></path><path d="M12 9v5M12 17v.5"></path></svg>
+          <span style="font-size: 12px; color: #ECEDF3;">If the manifest cannot be read</span>
+        </div>
+        <p style="margin: 7px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;"><span style="color:#ECEDF3;">"This pack's manifest names schema <span style="font-family:'IBM Plex Mono',monospace;">mapwright.pack/4</span>. This build reads up to 2. Nothing was imported."</span> — or, for malformed JSON, the line and column. Neither offers a partial import: a pack with an unreadable manifest has no stable local IDs, so importing its files would produce assets that a later correct install cannot reconcile. Importing the same files as <span style="color:#ADB3C6;">loose images</span> stays available, and says what is lost by doing so.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: progress and commit -->
+    <div style="width: 336px; flex-shrink: 0; box-sizing: border-box; display: flex; flex-direction: column; background: #161923; border-left: 1px solid #2F3447;">
+      <div style="flex-grow: 1; min-height: 0; overflow: hidden; box-sizing: border-box; padding: 13px 14px;">
+
+        <div style="box-sizing: border-box; padding: 10px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>
+            <span style="font-size: 12px; color: #ECEDF3;">Master files are not touched</span>
+          </div>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">Each file is read once and copied into the library store under its hash. Nothing at <span style="font-family:'IBM Plex Mono',monospace;">D:/art/</span> is written, moved, renamed or normalised in place.</p>
+        </div>
+
+        <!-- progress -->
+        <div style="box-sizing: border-box; margin-top: 12px; padding: 10px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <div style="width: 7px; height: 7px; border-radius: 4px; background: #9D7BE0;"></div>
+            <span style="font-size: 11px; color: #ADB3C6;">Hashing and decoding</span>
+            <div style="flex-grow: 1;"></div>
+            <button type="button" style="height: 22px; padding: 0 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Cancel</button>
+          </div>
+          <div style="height: 4px; background: #252A3A; border-radius: 2px; margin-top: 8px;"><div style="width: 62%; height: 4px; background: #9D7BE0; border-radius: 2px;"></div></div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6A7089; margin-top: 6px;">file 114 of 184 · 4 decoding</div>
+          <p style="margin: 7px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">The map stays editable throughout. Assets become available as they finish, not all at the end, and thumbnails arrive after that — a grid tile that is still loading is a cache state, not a broken asset.</p>
+        </div>
+
+        <!-- cancelled -->
+        <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 7px;"><div style="width: 7px; height: 7px; border-radius: 4px; background: #D9A23F;"></div><span style="font-size: 11px; color: #ECEDF3;">If you cancel</span></div>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;"><span style="color:#ADB3C6;">"Import cancelled. 114 of 184 assets were added and are usable. Re-importing the pack adds the remaining 70 and skips these."</span> A cancel keeps what finished rather than rolling it back — every added asset is already whole, and stable local IDs make the resumed import land correctly.</p>
+        </div>
+
+        <!-- remembered suggestions -->
+        <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #1C1815; border: 1px solid #4A4030; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 7px;"><div style="width: 7px; height: 7px; border-radius: 4px; background: #E2CFA8;"></div><span style="font-size: 11px; color: #ECEDF3;">Remembered replacements</span></div>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">Three mappings you accepted before match assets in this pack, within the same source schema and style. They are <span style="color:#ECEDF3;">suggested, never applied</span>: nothing in your map changes because a pack was installed.</p>
+          <div style="display: flex; align-items: center; gap: 7px; margin-top: 9px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ink:tree-oak-11</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12h14M14 7l5 5-5 5"></path></svg>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">oak-broadleaf-b</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px; margin-top: 5px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ink:mtn-range-03</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12h14M14 7l5 5-5 5"></path></svg>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ridge-peak-a</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 7px; margin-top: 5px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">ink:town-keep-02</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6A7089" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;"><path d="M4 12h14M14 7l5 5-5 5"></path></svg>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ECEDF3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">tower-round-a</span>
+          </div>
+          <button type="button" style="height: 26px; padding: 0 10px; margin-top: 9px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 11px;">Review in Missing artwork…</button>
+        </div>
+
+        <!-- destination -->
+        <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="font-size: 11px; color: #ADB3C6;">When this finishes</div>
+          <p style="margin: 6px 0 0; font-size: 10px; line-height: 1.5; color: #8990A6;">The browser opens on <span style="color:#ECEDF3;">Trees</span>, filtered to this pack, with the 19 badged assets first. 5 of the 7 placeholders in this map now have a candidate; the map itself is unchanged.</p>
+        </div>
+
+        <div style="box-sizing: border-box; margin-top: 11px; padding: 10px 11px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+          <div style="display: flex; align-items: baseline; gap: 6px;"><span style="font-size: 11px; color: #ADB3C6; flex-grow: 1;">Library store grows by</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">198 MiB</span></div>
+          <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 6px;"><span style="font-size: 11px; color: #ADB3C6; flex-grow: 1;">Free on this volume</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3;">84.2 GiB</span></div>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: #12141D; border-top: 1px solid #2F3447; flex-shrink: 0;">
+        <button type="button" style="height: 34px; padding: 0 14px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 13px;">Close</button>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 34px; padding: 0 15px; background: #5C6FE0; color: #080A14; border: 1px solid #5C6FE0; border-radius: 3px; font-size: 13px; font-weight: 600;">Add 179 assets</button>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

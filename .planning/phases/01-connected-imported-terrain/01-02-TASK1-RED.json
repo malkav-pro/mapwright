@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "import project maps verified or flattened recovery",
+  "targetFile": "tests/Mapwright.ContractTests/ImportContracts.cs",
+  "expected": "An unselected recovery choice publishes nothing; flattened and verified editable modes create one fixed two-role project with complete source/raster provenance and an honest fallback.",
+  "actual": "The Mapwright.Application.ImportProject use case is absent, so no application boundary can enforce mode choice, trusted mapping, provenance, or one-project publication.",
+  "output": "TAP version 13\nnot ok 1 - import project maps verified or flattened recovery\n  ---\n  message: ImportProject is absent; neither unselected recovery nor verified editable mapping can publish one authoritative project.\n  ...\n1..1\n# tests 1\n# pass 0\n# fail 1\n"
+}

@@ -1,0 +1,13 @@
+{
+  "source_path": "C:/Users/almar/Documents/Codex/mapwright/docs/architecture.md",
+  "type": "SPEC",
+  "confidence": "medium",
+  "manifest_override": false,
+  "title": "Mapwright architecture",
+  "summary": "Defines Mapwright's production architecture, domain state, durable edit protocol, revision snapshots, tile rendering, storage, failure handling, testing, and first vertical-slice completion criteria.",
+  "scope": ["Mapwright.Domain", "Mapwright.Application", "Mapwright.Infrastructure", "Mapwright.Rendering.Godot", "Mapwright.Godot", "Mapwright.Spike", "MapProject", "ProjectRevision", "TerrainLayer", "PaintStroke", "River", "EditCommand", "DocumentSnapshot", "SQLite", "tile scheduler", "export"],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": null,
+  "notes": "The prose status says accepted for the first implementation, but dominant content defines multiple implementation contracts, domain models, dependency boundaries and persistence protocols rather than one ADR decision. Completion criteria add PRD signals; technical specification content dominates. No type frontmatter or filename convention."
+}

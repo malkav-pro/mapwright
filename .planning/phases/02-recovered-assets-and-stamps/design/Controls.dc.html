@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Control matrix</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+
+<div style="width: 1600px; height: 1400px; box-sizing: border-box; display: flex; flex-direction: column; background: #0D0F16; border: 1px solid #2F3447; border-radius: 5px; color: #ECEDF3; font-size: 13px; overflow: hidden;">
+
+  <div style="box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 11px 16px; background: #161923; border-bottom: 1px solid #2F3447; flex-shrink: 0;">
+    <span style="font-family: Spectral, Georgia, serif; font-size: 17px; font-weight: 600;">Control matrix</span>
+    <div style="flex-grow: 1;"></div>
+    <span style="font-size: 11px; color: #8990A6;">bounds and defaults marked <em>P</em> are proposed and need engineering confirmation</span>
+  </div>
+
+  <div style="flex-grow: 1; min-height: 0; overflow: hidden; box-sizing: border-box; padding: 12px 16px;">
+
+    <!-- header -->
+    <div style="box-sizing: border-box; display: flex; align-items: center; gap: 8px; height: 26px; padding: 0 10px; background: #14161F; border: 1px solid #2F3447; border-bottom: none; border-radius: 4px 4px 0 0;">
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 138px;">Label</span>
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 118px;">Target</span>
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 96px;">Units</span>
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 138px;">Range · default</span>
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 176px;">Enabled when</span>
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; width: 190px;">Keyboard · modifiers</span>
+      <span style="font-size: 9px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #6A7089; flex-grow: 1;">Preview → commit</span>
+    </div>
+
+    <div style="box-sizing: border-box; border: 1px solid #2F3447; border-radius: 0 0 4px 4px; overflow: hidden;">
+
+      <!-- section: placement -->
+      <div style="box-sizing: border-box; display: flex; align-items: center; height: 24px; padding: 0 10px; background: #1D2130; border-bottom: 1px solid #2F3447;"><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #93A6FF;">Placement settings — P2-05 · the next stamp</span></div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Size</span>
+        <span style="font-size: 10px; color: #93A6FF; width: 118px;">next stamp</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">map units, long edge</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">1 – 1,000 <em style="color:#E2CFA8;">P</em> · asset default</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">Stamp tool active</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10 · label scrubs</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Ghost updates live; no commit until a click places a stamp</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Rotation</span>
+        <span style="font-size: 10px; color: #93A6FF; width: 118px;">next stamp</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">degrees, CW</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">wraps at 360 · 0</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">the asset allows rotation</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10 · Alt 0.1</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Clamped to the asset's limit, and the readout says so</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Opacity</span>
+        <span style="font-size: 10px; color: #93A6FF; width: 118px;">next stamp</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">integer %, stored 0–1</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">0 – 100 · 100</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">always</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Ghost updates live</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Tint colour · amount</span>
+        <span style="font-size: 10px; color: #93A6FF; width: 118px;">next stamp</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">sRGB hex · integer %</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">0 – 100 · 0</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">always</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Mixed in linear light before premultiplication; alpha untouched</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Flip H · Flip V</span>
+        <span style="font-size: 10px; color: #93A6FF; width: 118px;">next stamp</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">boolean</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">off</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">the asset allows that mirror</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">Shift+H · Shift+V</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Mirrors the placement, never the asset</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Shadow angle · offset · blur · opacity</span>
+        <span style="font-size: 10px; color: #93A6FF; width: 118px;">next stamp</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">° · map units · map units · %</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">wraps · 0–62.5 <em style="color:#E2CFA8;">P</em> · 0–31.25 <em style="color:#E2CFA8;">P</em> · 0–100 · asset light hint</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">shadow switched on</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Rendered, never baked; the panel shows the effect-bounds growth</span>
+      </div>
+
+      <!-- section: selected -->
+      <div style="box-sizing: border-box; display: flex; align-items: center; height: 24px; padding: 0 10px; background: #1D2130; border-bottom: 1px solid #2F3447;"><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5FAE7F;">Selected stamps — P2-05, P2-06 · document commands</span></div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">X · Y</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">map units, anchor</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">0 – map width / height (≤ 1,000)</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">1 selected, layer unlocked</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">arrows nudge 1 px · Shift 10</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Drag previews; release = 1 command. Several selected: <span style="font-family:'IBM Plex Mono',monospace;">Move by</span></span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">W · H</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">map units</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">1 – 2,000 <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">1 selected, layer unlocked</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">corner drag; Shift releases the aspect lock</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Nonuniform allowed here, refused at export preflight by name</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Scale by</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">relative %</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">1 – 1,000 <em style="color:#E2CFA8;">P</em> · 100</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">≥1 unlocked selected</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">handle drag, or type</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;"><span style="color:#ADB3C6;">Each object in place, about its own anchor.</span> 1 command</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Rotate</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">degrees, CW</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">wraps at 360</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">≥1 unlocked; hidden if all lock rotation</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">handle drag; Shift snaps 15° <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">1 object: about its anchor. Several: <span style="color:#ADB3C6;">the arrangement, about the unlocked bounds centre fixed at drag start</span></span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Order — back / fwd / to back / to front</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">list position</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">1 – n, within one layer</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">≥1 unlocked selected</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">[ ] · Ctrl+[ Ctrl+] · row drag</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Drop indicator previews; drop = 1 command. Row 001 draws last</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Duplicate · Copy · Paste</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">—</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">offset 32 px <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">≥1 selected · paste needs a clipboard and an unlocked layer</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">Ctrl+D · Ctrl+C · Ctrl+V</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Lands in front of the frontmost source, selected. New entity ids, same asset refs. Same map only in P0</span>
+      </div>
+
+      <!-- section: scatter -->
+      <div style="box-sizing: border-box; display: flex; align-items: center; height: 24px; padding: 0 10px; background: #1D2130; border-bottom: 1px solid #2F3447;"><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #9D7BE0;">Scatter — P2-07 · the next stroke</span></div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Asset set</span>
+        <span style="font-size: 10px; color: #9D7BE0; width: 118px;">next stroke</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">list of assets</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">1 – 32 <em style="color:#E2CFA8;">P</em> · even weights <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">Scatter tool active</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">Enter adds the browser selection</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Any assets, any family or category. Mixed as you paint</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Brush width</span>
+        <span style="font-size: 10px; color: #9D7BE0; width: 118px;">next stroke</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">map units, diameter</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">8 – 2,000 <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">Scatter tool active</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10 · label scrubs</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Cursor ring in document space, so it scales with zoom</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Spacing</span>
+        <span style="font-size: 10px; color: #9D7BE0; width: 118px;">next stroke</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">map units, <span style="color:#E2CFA8;">average</span> centre to centre</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">2 – 1,000 <em style="color:#E2CFA8;">P</em> · 51 <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">Scatter tool active</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Independent of zoom and of stamp size. An average with natural variation — not a minimum distance</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Size range · on/off</span>
+        <span style="font-size: 10px; color: #9D7BE0; width: 118px;">next stroke</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">% of asset default</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">10 – 400 <em style="color:#E2CFA8;">P</em> · 78–118 <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">its own switch, independent of rotation</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10 · min clamps to max</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Off = every stamp at its asset's default size</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Rotation range · on/off</span>
+        <span style="font-size: 10px; color: #9D7BE0; width: 118px;">next stroke</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">degrees</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">−180 – 180 · −22 to 22 <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">its own switch, independent of size</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Shift 10</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Clamped per asset to its allowed rotation; the panel names which assets clamp and the preview shows the clamped result</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Seed</span>
+        <span style="font-size: 10px; color: #9D7BE0; width: 118px;">next stroke</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">32-bit hex</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">any · random at tool activation</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">Scatter tool active</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">typed or <span style="font-family:'IBM Plex Mono',monospace;">New seed</span></span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Affects only the next stroke. Never disturbs a committed group</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Re-roll</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">—</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">—</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">a committed scatter group is selected and unlocked</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">—</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Confirms the count first, then 1 command. <span style="color:#ADB3C6;">The only thing that moves committed placements</span></span>
+      </div>
+
+      <!-- section: browser -->
+      <div style="box-sizing: border-box; display: flex; align-items: center; height: 24px; padding: 0 10px; background: #1D2130; border-bottom: 1px solid #2F3447;"><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #E2CFA8;">Browser and library — P2-01, P2-02 · no undo step</span></div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Category</span>
+        <span style="font-size: 10px; color: #6A7089; width: 118px;">the view</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">one of five</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">Trees, Mountains, Buildings, Terrain, Textures <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">always; exactly one active</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">←→ between chips</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Resets nothing else. Textures paint; the other four place</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Search</span>
+        <span style="font-size: 10px; color: #6A7089; width: 118px;">the view</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">text</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">180 ms idle <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">always</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">Esc clears · ↓ enters the grid</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Matches title, tag, family and hash prefix. Typing never blocks the grid</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Pack · folder · tag · style</span>
+        <span style="font-size: 10px; color: #6A7089; width: 118px;">the view</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">multi-select</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">none selected = all</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">always</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">Space toggles · <span style="font-family:'IBM Plex Mono',monospace;">Reset n</span></span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Filters combine with AND across kinds, OR within a kind. Tag reset clears tags alone</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Title · tags · category</span>
+        <span style="font-size: 10px; color: #E2CFA8; width: 118px;">library defaults</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">text · list · one of five</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">title ≤ 200 chars <em style="color:#E2CFA8;">P</em></span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">1 asset selected</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">F2 renames · Enter commits · Esc reverts</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Shows the live reference count. Never identity; no placement changes</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Default size · anchor</span>
+        <span style="font-size: 10px; color: #E2CFA8; width: 118px;">library defaults</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">map units · 0–1 fractions</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">1 – 1,000 <em style="color:#E2CFA8;">P</em> · pack value</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">1 asset selected</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Alt 0.01 on the anchor</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Where future placements start. Existing ones are untouched, always</span>
+      </div>
+
+      <!-- section: replacement -->
+      <div style="box-sizing: border-box; display: flex; align-items: center; height: 24px; padding: 0 10px; background: #1D2130; border-bottom: 1px solid #2F3447;"><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #E2CFA8;">Missing-art replacement — P2-04</span></div>
+
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Scope</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">one of three</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;"><span style="color:#ECEDF3;">all matching in this map</span> — the default</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">a replacement asset is chosen; "current selection" needs one</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ between radios</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">The affected count is on the radio and on the Apply button. Other projects are never in scope</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; border-bottom: 1px solid #1D2130;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Fit size · anchor Y</span>
+        <span style="font-size: 10px; color: #5FAE7F; width: 118px;">on the map</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">relative % · 0–1 offset</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">10 – 400 <em style="color:#E2CFA8;">P</em> · 100 · ±0.5 · 0</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">a replacement asset is chosen</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">↑↓ 1 · Alt 0.01 · reset button</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Relative to each instance's own transform. Aspect always kept; nothing stretches. Previewed before Apply, then 1 command</span>
+      </div>
+      <div style="box-sizing: border-box; display: flex; align-items: flex-start; gap: 8px; padding: 7px 10px; background: #161923;">
+        <span style="font-size: 11px; color: #ECEDF3; width: 138px;">Remember this mapping</span>
+        <span style="font-size: 10px; color: #E2CFA8; width: 118px;">library defaults</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 96px;">boolean</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #ADB3C6; width: 138px;">on</span>
+        <span style="font-size: 10px; color: #8990A6; width: 176px;">always</span>
+        <span style="font-size: 10px; color: #8990A6; width: 190px;">Space toggles</span>
+        <span style="font-size: 10px; color: #8990A6; flex-grow: 1;">Suggested at future import reviews within the same source schema and style. Never applied on its own</span>
+      </div>
+    </div>
+
+    <!-- shortcuts -->
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 13px;">
+      <div style="box-sizing: border-box; padding: 12px 13px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Shortcuts this phase adds</div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px 18px; margin-top: 9px;">
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">V</span><span style="font-size: 10px; color: #8990A6;">Select</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">S</span><span style="font-size: 10px; color: #8990A6;">Stamp</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Shift+S</span><span style="font-size: 10px; color: #8990A6;">Scatter</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Ctrl+L</span><span style="font-size: 10px; color: #8990A6;">Asset library</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Alt+click</span><span style="font-size: 10px; color: #8990A6;">Cycle overlapping hits</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Shift+click</span><span style="font-size: 10px; color: #8990A6;">Add to / remove from selection</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Ctrl+A</span><span style="font-size: 10px; color: #8990A6;">Select all on the active layer</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Ctrl+D</span><span style="font-size: 10px; color: #8990A6;">Duplicate</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">[ ]</span><span style="font-size: 10px; color: #8990A6;">Backward · forward</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Ctrl+[ ]</span><span style="font-size: 10px; color: #8990A6;">To back · to front</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Shift+H / V</span><span style="font-size: 10px; color: #8990A6;">Flip horizontal · vertical</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">F2</span><span style="font-size: 10px; color: #8990A6;">Rename (library, or a layer)</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Esc</span><span style="font-size: 10px; color: #8990A6;">Cancel a drag · leave placement · clear a search</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #ECEDF3; width: 74px; flex-shrink: 0;">Del</span><span style="font-size: 10px; color: #8990A6;">Delete the selection</span></div>
+        </div>
+        <p style="margin: 9px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Phase 1's four application-wide bindings are unchanged: <span style="font-family:'IBM Plex Mono',monospace;">Ctrl+S</span>, <span style="font-family:'IBM Plex Mono',monospace;">Ctrl+Z</span>, <span style="font-family:'IBM Plex Mono',monospace;">Ctrl+Shift+Z</span>, <span style="font-family:'IBM Plex Mono',monospace;">Ctrl+Shift+E</span>. Every single-letter key above is canvas-scope and cannot fire while a field has focus.</p>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 12px 13px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #8990A6;">Component specifications</div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 16px; margin-top: 9px;">
+          <div><div style="font-size: 11px; color: #ECEDF3;">Asset card</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">tile 104 px (panel 66, compact 54) · radius 3 · border 1 #3B4159, selected 2 #5C6FE0 · badge 16 px circle #D9A23F · 2-line label 10 px, ellipsis at 2 lines · loading: spinner, "Loading…"</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Filter chip · tag</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">height 20 · radius 10 · 11 px label · off #252A3A/#3B4159, on #23294A/#5C6FE0 + ✕ · Reset n at 18 px text button</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Validation row</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">2 px left border in the status hue · 7 px dot + 12 px title + actions right · body 10/1.5 · inline example figure 150 × 106</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Replacement preview</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">three panes: original #C9BFA4 dashed, fitted #5FAE7F solid, stretched #E2685A · dimensions and ratio under each</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Ordered object row</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">36 px (compact 32) · grip 11 · index 26 mono 10 · thumb 20 · name · page chip 22 · opacity 34 right · selected 2 px left #5C6FE0 · drop line 2 px #5C6FE0</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Transform handles</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">8 × 8 #ECEDF3 on #0D0F16 · geometry box 1.6 px solid #5C6FE0 · effect box 1.2 px dashed #9D7BE0 · rotate 6 px circle, 22 px stem · anchor 4 px + crosshair #93A6FF</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Mixed numeric field</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">26 px · <em>Mixed</em> italic #8990A6, never 0 or blank · real values beneath in mono 10 · relative twin below, focused border #93A6FF · invalid #1A1416/#E2685A</div></div>
+          <div><div style="font-size: 11px; color: #ECEDF3;">Placeholder footprint</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; line-height: 1.5; color: #8990A6;">rest 1.2 px dashed #C9BFA4 at 62% + 6 px marker · hover 1.6 px #E2CFA8 + name plate · anchor dot 2.8 · never the ink: id on the map</div></div>
+        </div>
+        <p style="margin: 9px 0 0; font-size: 10px; line-height: 1.5; color: #6A7089;">Reused unchanged from Phase 1: every colour, the type ramp (Spectral display, IBM Plex Sans UI, IBM Plex Mono for all numbers), the 4 px base metric, radii 3 and 5, field height 26, the 2 px <span style="font-family:'IBM Plex Mono',monospace;">#93A6FF</span> focus ring at 2 px offset, the numeric-entry contract, and the preview / commit / save vocabulary. <span style="color:#ADB3C6;">Additions:</span> the three target tags, the page chip, the mixed-value field, the two-tier placeholder footprint, and the 20 px order-row grip.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reopen after an interrupted session</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0D0F16}
+a{color:#93A6FF}a:hover{color:#B7C2FF}
+button{font:inherit}
+</style>
+</helmet>
+<div style="width: 1100px; height: 740px; box-sizing: border-box; padding: 18px; display: flex; flex-direction: column; gap: 14px; background: #0D0F16; color: #ECEDF3; font-size: 13px;">
+
+  <div style="display: flex; align-items: baseline; gap: 10px;">
+    <h2 style="margin: 0; font-family: Spectral, Georgia, serif; font-size: 20px; font-weight: 600;">Reopening after an interrupted session</h2>
+    <span style="font-size: 12px; color: #8990A6;">DURA-02 · DOC-03 · REND-05 — shown on the next launch, not after the crash</span>
+  </div>
+
+  <div style="display: flex; gap: 14px; min-height: 0;">
+    <!-- recovery sheet -->
+    <div style="width: 560px; flex-shrink: 0; box-sizing: border-box; padding: 16px; background: #161923; border: 1px solid #3B4159; border-radius: 6px; display: flex; flex-direction: column; gap: 13px;">
+      <div style="display: flex; align-items: center; gap: 9px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"></path><path d="M20 4v4h-4"></path></svg>
+        <span style="font-size: 15px; font-weight: 600;">Aethermoor — West Reaches was recovered</span>
+      </div>
+      <p style="margin: 0; font-size: 12px; line-height: 1.55; color: #ADB3C6;">The last session ended without closing — the graphics driver reset at 12:06. Mapwright reopened the last acknowledged revision from its journal. No save was needed after the failure.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 9px; padding: 9px 11px; background: #15241D; border: 1px solid #2F5A46; border-radius: 4px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2" stroke-linecap="round"><path d="M5 13l4 4 10-10"></path></svg>
+          <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">1,284 acknowledged commands restored, including the undo position</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8FCBAA;">rev 1,284</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 9px 11px; background: #15241D; border: 1px solid #2F5A46; border-radius: 4px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5FAE7F" stroke-width="2" stroke-linecap="round"><path d="M5 13l4 4 10-10"></path></svg>
+          <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">Imported source and recovered rasters verified by hash</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8FCBAA;">intact</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 9px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.9" stroke-linecap="round"><path d="M12 3l9 17H3z"></path><path d="M12 9v5"></path></svg>
+          <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">One brush stroke in progress was not acknowledged and is not present</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #D9A23F;">1 gesture</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 9px; padding: 9px 11px; background: #201D16; border: 1px solid #5A4A2C; border-radius: 4px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.9" stroke-linecap="round"><path d="M12 3l9 17H3z"></path><path d="M12 9v5"></path></svg>
+          <span style="flex-grow: 1; font-size: 12px; color: #D5D9E6;">The 16K export that was running did not publish; your previous PNG is unchanged</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #D9A23F;">not published</span>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 11px 12px; background: #12141D; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 7px; height: 7px; border-radius: 4px; background: #9D7BE0;"></div>
+          <span style="font-size: 12px; font-weight: 600;">Rebuilding render caches</span>
+          <div style="flex-grow: 1;"></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8990A6;">72 of 96 visible tiles</span>
+        </div>
+        <div style="margin-top: 8px; height: 4px; background: #252A3A; border-radius: 2px; overflow: hidden;"><div style="width: 75%; height: 4px; background: #9D7BE0;"></div></div>
+        <div style="margin-top: 6px; font-size: 11px; color: #8990A6;">Caches are disposable. You can start painting now; tiles sharpen as they finish.</div>
+      </div>
+
+      <div style="flex-grow: 1;"></div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button type="button" style="height: 34px; padding: 0 12px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 4px; font-size: 13px;">Open the report</button>
+        <div style="flex-grow: 1;"></div>
+        <button type="button" style="height: 34px; padding: 0 16px; background: #5C6FE0; color: #080A14; border: 1px solid #5C6FE0; border-radius: 4px; font-size: 13px; font-weight: 600;">Continue editing</button>
+      </div>
+    </div>
+
+    <!-- adjacent failure states -->
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+      <div style="box-sizing: border-box; padding: 13px; background: #221518; border: 1px solid #5E3330; border-left: 3px solid #E2685A; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E2685A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+          <span style="font-size: 13px; font-weight: 600;">Save failed — disk full</span>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #D5D9E6;">Two commands are waiting and the document is <strong style="font-weight:600;">not saved</strong>. Earlier work up to rev 1,282 is durable.</p>
+        <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.45; color: #ADB3C6;">Free space on D: and press Save again, or move the project to another drive. Keep the window open — the queue is held, not discarded.</p>
+        <div style="margin-top: 10px; display: flex; gap: 7px;">
+          <button type="button" style="height: 28px; padding: 0 11px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Retry save</button>
+          <button type="button" style="height: 28px; padding: 0 11px; background: transparent; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Save a copy elsewhere…</button>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 13px; background: #161923; border: 1px solid #3B4159; border-left: 3px solid #C98A45; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C98A45" stroke-width="1.9" stroke-linecap="round"><path d="M12 3l9 17H3z"></path><path d="M12 9v5M12 17h.01"></path></svg>
+          <span style="font-size: 13px; font-weight: 600;">Graphics backend unavailable</span>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 12px; line-height: 1.5; color: #D5D9E6;">No compute-capable device was found, so the rendering editor cannot open. Your project is untouched.</p>
+        <p style="margin: 6px 0 0; font-size: 11px; line-height: 1.45; color: #ADB3C6;">Inspection still works: you can read the import report, verify source hashes and copy out the original .ink.</p>
+        <div style="margin-top: 10px; display: flex; gap: 7px;">
+          <button type="button" style="height: 28px; padding: 0 11px; background: #252A3A; color: #ECEDF3; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Open inspection view</button>
+          <button type="button" style="height: 28px; padding: 0 11px; background: transparent; color: #ADB3C6; border: 1px solid #3B4159; border-radius: 3px; font-size: 12px;">Copy diagnostics</button>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 13px; background: #161923; border: 1px solid #2F3447; border-radius: 4px;">
+        <div style="font-size: 12px; font-weight: 600;">Deleting caches (DOC-03)</div>
+        <p style="margin: 7px 0 0; font-size: 11px; line-height: 1.5; color: #ADB3C6;">Project ▸ Storage ▸ <span style="color:#ECEDF3;">Delete all render and history caches</span> frees 5.9 GiB. Sources, hashes and your native edits are kept; the next open and export rebuild from them within the declared render tolerance.</p>
+        <div style="margin-top: 10px; display: flex; align-items: center; gap: 9px;">
+          <div style="flex-grow: 1; height: 4px; background: #252A3A; border-radius: 2px; overflow: hidden;"><div style="width: 100%; height: 4px; background: #5FAE7F;"></div></div>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8FCBAA;">reopened, verified</span>
+        </div>
+      </div>
+
+      <div style="box-sizing: border-box; padding: 13px; background: #12141D; border: 1px solid #252A3A; border-radius: 4px;">
+        <div style="font-size: 12px; font-weight: 600; color: #ADB3C6;">What the design does not claim</div>
+        <p style="margin: 7px 0 0; font-size: 11px; line-height: 1.5; color: #8990A6;">No dialog is shown at the moment of device loss: the process may be gone. Every message here belongs to the next launch, driven by what the journal proves. These screens describe intended behaviour; they are not evidence that recovery works.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1100,"height":740}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "document export publishes a frozen bounded PNG",
+  "failingTest": "document export publishes a frozen bounded PNG",
+  "targetFile": "tests/Mapwright.ContractTests/ExportRecoveryContracts.cs",
+  "expected": "A cancellable DocumentPngExport captures a frozen revision and publishes only a validated bounded straight-alpha sRGB PNG while preserving the prior destination on failure.",
+  "actual": "The target assertion failed because DocumentPngExport was absent; the companion PNG metadata assertion also failed, while all 49 unrelated contracts passed.",
+  "output": "TAP version 13\nnot ok 1 - document export publishes a frozen bounded PNG\nnot ok 2 - PNG writer declares straight alpha sRGB metadata\n1..51\n# tests 51\n# pass 49\n# fail 2\n"
+}

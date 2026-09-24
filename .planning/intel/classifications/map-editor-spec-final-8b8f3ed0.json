@@ -1,0 +1,13 @@
+{
+  "source_path": "C:/Users/almar/Documents/Codex/mapwright/docs/reference/map-editor-spec-final.md",
+  "type": "SPEC",
+  "confidence": "medium",
+  "manifest_override": false,
+  "title": "Malkav's Mapwright: Specification and Architecture (final)",
+  "summary": "Specifies Mapwright's native map editor architecture, document model, tiled rendering, persistent history, storage, Inkarnate recovery, feature priorities, and acceptance gates.",
+  "scope": ["Mapwright", "Godot 4 .NET", "document model", "tiled rendering", "coverage masks", "water modifiers", "stamps", "text", "history", "SQLite", "asset packs", "Inkarnate import", "PNG export"],
+  "cross_refs": ["map-editor-spec-claude-v2.md", "map-editor-spec-claude-v2-astra.md", "native-map-editor-spec-v1.1.md"],
+  "locked": false,
+  "precedence": null,
+  "notes": "Contains product priorities, acceptance gates, and architecture decisions, but technical models, resource limits, rendering contracts, and persistence protocols dominate. No authoritative type frontmatter or matching filename convention; no Accepted ADR status."
+}

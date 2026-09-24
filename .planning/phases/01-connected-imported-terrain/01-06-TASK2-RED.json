@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "coast policy keeps generated edges unstyled across bank identities",
+  "targetFile": "tests/Mapwright.ContractTests/RenderContracts.cs",
+  "expected": "CoastStylePolicy and RenderResourceLedger exist and satisfy branch, bank-identity, exact-cap, one-byte-over, band and halo contracts.",
+  "actual": "Both target cases failed on their planned behavior assertions because CoastStylePolicy and RenderResourceLedger were absent; all 47 unrelated contracts passed.",
+  "output": "TAP version 13\nnot ok 1 - coast policy keeps generated edges unstyled across bank identities\nnot ok 2 - render resource ledger admits exact caps and rejects one byte over\n1..49\n# tests 49\n# pass 47\n# fail 2\n"
+}

@@ -1,0 +1,9 @@
+{
+  "command": "./Scripts/run-contract-tests.ps1",
+  "exitCode": 1,
+  "targetTest": "history cursor and redo branch survive restart",
+  "targetFile": "tests/Mapwright.ContractTests/HistoryContracts.cs",
+  "expected": "SQLite persists an independent history cursor and redo tip, a replacement edit drops the redo branch transactionally, and Save waits for the ordered durable command queue while exposing truthful queue state.",
+  "actual": "SqliteProjectRepository had no durable history cursor transition API and EditSession exposed no authoritative SaveState queue facts.",
+  "output": "TAP version 13\nnot ok 1 - history cursor and redo branch survive restart\nnot ok 2 - history cursor rejects stale transitions\nnot ok 3 - save drains queued commands and reports durable state\n1..3\n# tests 3\n# pass 0\n# fail 3\n"
+}
